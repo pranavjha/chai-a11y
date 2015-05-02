@@ -2,8 +2,7 @@
   "name": "chai-accessibility",
   "version": "0.0.1",
   "description": "accessibility plugin for chai",
-  "main": "chai-accessibility.js",
-  "author": "jha.pranav.s@gmail.com",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/pranavjha/chai-accessibility.git"
@@ -11,10 +10,22 @@
   "dependencies": {
     "phantomjs": "^1.9.10",
     "accessibility-developer-tools": "*",
-    "q": "*",
-    "jquery": "*"
+    "q": "^1",
+    "jquery": "^1"
   },
   "devDependencies": {
-    "grunt": "^0.4"
-  }
+    "grunt": "^0",
+    "grunt-contrib-jshint": "^0",
+    "grunt-docco": "^0",
+    "grunt-gh-pages": "^0"
+  },
+  "keywords": [
+    "chai",
+    "chai plugins",
+    "testing",
+    "a11y",
+    "accessibility"
+  ],
+  "author": "Pranav Jha <jha.pranav.s@gmail.com> (https://github.com/pranavjha)",
+  "license": "MIT"
 }
