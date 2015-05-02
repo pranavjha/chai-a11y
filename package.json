@@ -1,0 +1,21 @@
+{
+  "name": "chai-accessibility",
+  "version": "0.0.1",
+  "description": "accessibility plugin for chai",
+  "main": "chai-accessibility.js",
+  "author": "jha.pranav.s@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pranavjha/chai-accessibility.git"
+  },
+  "dependencies": {
+    "a11y": "0.2.3",
+    "accessibility-developer-tools": "*",
+    "q": "*",
+    "vow": "*",
+    "jquery": "*"
+  },
+  "devDependencies": {
+    "grunt": "^0.4"
+  }
+}
