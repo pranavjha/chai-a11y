@@ -9,10 +9,9 @@
     "url": "https://github.com/pranavjha/chai-accessibility.git"
   },
   "dependencies": {
-    "a11y": "0.2.3",
+    "phantomjs": "^1.9.10",
     "accessibility-developer-tools": "*",
     "q": "*",
-    "vow": "*",
     "jquery": "*"
   },
   "devDependencies": {
