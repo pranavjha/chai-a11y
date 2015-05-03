@@ -19,22 +19,40 @@ Can be used with the `should`, `expect` or `assert` interfaces.
 
 // 1. testing an HTML string for accessibility
 var htmlString = '<div id="id">Demo</div>';
-return expect(htmlString).to.be.accessible();
+return expect(htmlString).to.be.accessible(options);
 
 // 2. testing a jQuery element for accessibility
 var jqElement = $('<div id="id">Demo</div>'); // or $('.abacus')
-return expect(jqElement).to.be.accessible();
+return expect(jqElement).to.be.accessible(options);
 
 // 3. testing a DOM element for accessibility
 var domElement = document.getElementById('abacus');
-return expect(domElement).to.be.accessible();
+return expect(domElement).to.be.accessible(options);
 
 ```
 
 
-## Configuration Options
+## Configuration Options passed
 
-**TODO**
+An options object can be passed to the plugin assertion. This object has the following keys:
+
+ - `ignore` is an array or string
+
+   - If it is a string, it represents an
+   [accessibility rule](https://github.com/GoogleChrome/accessibility-developer-tools/wiki/Audit-Rules) name to ignore
+
+   - If it is an array, the array elements can be a String or another Array
+
+   - If the array element is another array, it should have 2 elements: a rule name and a query selector string
+   representing the parts of the page to be ignored for that audit rule.
+
+   - If the array element is a string, it represents the rule name to ignore.
+
+ - `width` is the width of the phantomJS browser to run the tests on. This option is honoured only for server side tests
+
+ - `height` is the height of the phantomJS browser to run the tests on. This option is honoured only for server side
+ tests
+
 
 ## Installation and Setup
 
