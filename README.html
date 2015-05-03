@@ -73,15 +73,71 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p><a href="https://travis-ci.org/pranavjha/chai-accessibility"><img src="https://travis-ci.org/pranavjha/chai-accessibility.svg" alt="Build Status"></a>
-<a href="https://codeclimate.com/github/pranavjha/chai-accessibility"><img src="https://codeclimate.com/github/pranavjha/chai-accessibility/badges/gpa.svg" alt="Code Climate"></a></p>
-<p><a href="https://david-dm.org/pranavjha/chai-accessibility"><img src="https://david-dm.org/pranavjha/chai-accessibility.svg" alt="Dependency Status"></a>
-<a href="https://david-dm.org/pranavjha/chai-accessibility#info=devDependencies"><img src="https://david-dm.org/pranavjha/chai-accessibility/dev-status.svg" alt="devDependency Status"></a>
-<a href="https://david-dm.org/pranavjha/chai-accessibility#info=peerDependencies"><img src="https://david-dm.org/pranavjha/chai-accessibility/peer-status.svg" alt="peerDependency Status"></a></p>
-<h1 id="chai-accessibility">chai-accessibility</h1>
+              <p><a href="https://travis-ci.org/pranavjha/chai-a11y"><img src="https://travis-ci.org/pranavjha/chai-a11y.svg" alt="Build Status"></a>
+<a href="https://codeclimate.com/github/pranavjha/chai-a11y"><img src="https://codeclimate.com/github/pranavjha/chai-a11y/badges/gpa.svg" alt="Code Climate"></a></p>
+<p><a href="https://david-dm.org/pranavjha/chai-a11y"><img src="https://david-dm.org/pranavjha/chai-a11y.svg" alt="Dependency Status"></a>
+<a href="https://david-dm.org/pranavjha/chai-a11y#info=devDependencies"><img src="https://david-dm.org/pranavjha/chai-a11y/dev-status.svg" alt="devDependency Status"></a>
+<a href="https://david-dm.org/pranavjha/chai-a11y#info=peerDependencies"><img src="https://david-dm.org/pranavjha/chai-a11y/peer-status.svg" alt="peerDependency Status"></a></p>
+<h1 id="chai-a11y">chai-a11y</h1>
 <blockquote>
 <p>accessibility testing plugin for chai</p>
 </blockquote>
+<h2 id="how-to-use">How to use</h2>
+<p>Can be used with the <code>should</code>, <code>expect</code> or <code>assert</code> interfaces.</p>
+<pre><code class="lang-javascript">
+<span class="hljs-comment">// 1. testing an HTML string for accessibility</span>
+<span class="hljs-keyword">var</span> htmlString = <span class="hljs-string">'&lt;div id="id"&gt;Demo&lt;/div&gt;'</span>;
+<span class="hljs-keyword">return</span> expect(htmlString).to.be.accessible();
+
+<span class="hljs-comment">// 2. testing a jQuery element for accessibility</span>
+<span class="hljs-keyword">var</span> jqElement = $(<span class="hljs-string">'&lt;div id="id"&gt;Demo&lt;/div&gt;'</span>); <span class="hljs-comment">// or $('.abacus')</span>
+<span class="hljs-keyword">return</span> expect(jqElement).to.be.accessible();
+
+<span class="hljs-comment">// 3. testing a DOM element for accessibility</span>
+<span class="hljs-keyword">var</span> domElement = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'abacus'</span>);
+<span class="hljs-keyword">return</span> expect(domElement).to.be.accessible();
+</code></pre>
+<h2 id="configuration-options">Configuration Options</h2>
+<p><strong>TODO</strong></p>
+<h2 id="installation-and-setup">Installation and Setup</h2>
+<h3 id="nodejs">NodeJS</h3>
+<p>Do an <code>npm install chai-a11y</code> to get up and running. Then:</p>
+<pre><code class="lang-javascript">
+<span class="hljs-keyword">var</span> chai = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chai'</span>);
+<span class="hljs-keyword">var</span> chaiA11y = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chai-a11y'</span>);
+
+chai.use(chaiA11y);
+</code></pre>
+<h3 id="amd-requirejs">AMD / RequireJS</h3>
+<p>Chai A11y supports being used as an [AMD][amd] module, registering itself anonymously (just like Chai). So, assuming
+you have configured your loader to map the Chai and Chai a11y files to the respective module IDs <code>&quot;chai&quot;</code> and
+<code>&quot;chai-a11y&quot;</code>, you can use them as follows:</p>
+<pre><code class="lang-javascript">
+define(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(require, exports, module)</span> </span>{
+<span class="hljs-keyword">var</span> chai = <span class="hljs-built_in">require</span>(<span class="hljs-string">"chai"</span>);
+<span class="hljs-keyword">var</span> chaiA11y = <span class="hljs-built_in">require</span>(<span class="hljs-string">"chai-a11y"</span>);
+
+chai.use(chaiA11y);
+});
+</code></pre>
+<p>When using AMD / RequireJS style code, the <code>jquery</code> dependency must be fulfilled by <a href="https://jquery.com/">jQuery</a>.</p>
+<h3 id="raptorjs-browserify">RaptorJS / Browserify</h3>
+<p>For <a href="http://raptorjs.org/">RaptorJS</a> and <a href="http://browserify.org/">Browserify</a>, usage will be similar to when using in a
+NodeJS environment.</p>
+<h3 id="-script-tag"><code>&lt;script ... &gt;</code> tag</h3>
+<p>If you include Chai A11y directly with a <code>&lt;script&gt;</code> tag, after the one for Chai itself, then it will
+automatically plug in to Chai and be ready for use:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"chai.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"chai-a11y/lib/index.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<h3 id="optional-dependency">Optional Dependency</h3>
+<p><code>chai-a11y</code> plugin relies on
+<a href="https://github.com/GoogleChrome/accessibility-developer-tools">accessibility-developer-tools</a>.</p>
+<p>The plugin will look for the file [axs_testing.js]
+(<a href="https://raw.github.com/GoogleChrome/accessibility-developer-tools/stable/dist/js/axs_testing.js">https://raw.github.com/GoogleChrome/accessibility-developer-tools/stable/dist/js/axs_testing.js</a>) on the browser and if
+it is not present, will try loading it form the remote url. So, if there is no internet access in the test environment,
+it is recommended that a local copy of the file be served in the test runner. This is not required for NodeJS
+environment.</p>
 
             </div>
             
