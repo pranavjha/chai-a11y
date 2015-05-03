@@ -1,11 +1,11 @@
 {
-  "name": "chai-accessibility",
+  "name": "chai-a11y",
   "version": "0.0.1",
   "description": "accessibility plugin for chai",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pranavjha/chai-accessibility.git"
+    "url": "https://github.com/pranavjha/chai-a11y.git"
   },
   "dependencies": {
     "phantomjs": "^1.9.10",

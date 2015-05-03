@@ -1,9 +1,9 @@
-[![Build Status](https://travis-ci.org/pranavjha/chai-accessibility.svg)](https://travis-ci.org/pranavjha/chai-accessibility)
-[![Code Climate](https://codeclimate.com/github/pranavjha/chai-accessibility/badges/gpa.svg)](https://codeclimate.com/github/pranavjha/chai-accessibility)
+[![Build Status](https://travis-ci.org/pranavjha/chai-a11y.svg)](https://travis-ci.org/pranavjha/chai-a11y)
+[![Code Climate](https://codeclimate.com/github/pranavjha/chai-a11y/badges/gpa.svg)](https://codeclimate.com/github/pranavjha/chai-a11y)
 
-[![Dependency Status](https://david-dm.org/pranavjha/chai-accessibility.svg)](https://david-dm.org/pranavjha/chai-accessibility)
-[![devDependency Status](https://david-dm.org/pranavjha/chai-accessibility/dev-status.svg)](https://david-dm.org/pranavjha/chai-accessibility#info=devDependencies)
-[![peerDependency Status](https://david-dm.org/pranavjha/chai-accessibility/peer-status.svg)](https://david-dm.org/pranavjha/chai-accessibility#info=peerDependencies)
+[![Dependency Status](https://david-dm.org/pranavjha/chai-a11y.svg)](https://david-dm.org/pranavjha/chai-a11y)
+[![devDependency Status](https://david-dm.org/pranavjha/chai-a11y/dev-status.svg)](https://david-dm.org/pranavjha/chai-a11y#info=devDependencies)
+[![peerDependency Status](https://david-dm.org/pranavjha/chai-a11y/peer-status.svg)](https://david-dm.org/pranavjha/chai-a11y#info=peerDependencies)
 
-# chai-accessibility
+# chai-a11y
 > accessibility testing plugin for chai
