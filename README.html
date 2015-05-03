@@ -44,6 +44,11 @@
               </a>
             
               
+              <a class="source" href="normalize-config.html">
+                normalize-config.js
+              </a>
+            
+              
               <a class="source" href="phantomjs-runner.html">
                 phantomjs-runner.js
               </a>
@@ -87,18 +92,37 @@
 <pre><code class="lang-javascript">
 <span class="hljs-comment">// 1. testing an HTML string for accessibility</span>
 <span class="hljs-keyword">var</span> htmlString = <span class="hljs-string">'&lt;div id="id"&gt;Demo&lt;/div&gt;'</span>;
-<span class="hljs-keyword">return</span> expect(htmlString).to.be.accessible();
+<span class="hljs-keyword">return</span> expect(htmlString).to.be.accessible(options);
 
 <span class="hljs-comment">// 2. testing a jQuery element for accessibility</span>
 <span class="hljs-keyword">var</span> jqElement = $(<span class="hljs-string">'&lt;div id="id"&gt;Demo&lt;/div&gt;'</span>); <span class="hljs-comment">// or $('.abacus')</span>
-<span class="hljs-keyword">return</span> expect(jqElement).to.be.accessible();
+<span class="hljs-keyword">return</span> expect(jqElement).to.be.accessible(options);
 
 <span class="hljs-comment">// 3. testing a DOM element for accessibility</span>
 <span class="hljs-keyword">var</span> domElement = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'abacus'</span>);
-<span class="hljs-keyword">return</span> expect(domElement).to.be.accessible();
+<span class="hljs-keyword">return</span> expect(domElement).to.be.accessible(options);
 </code></pre>
-<h2 id="configuration-options">Configuration Options</h2>
-<p><strong>TODO</strong></p>
+<h2 id="configuration-options-passed">Configuration Options passed</h2>
+<p>An options object can be passed to the plugin assertion. This object has the following keys:</p>
+<ul>
+<li><p><code>ignore</code> is an array or string</p>
+</li>
+<li><p>If it is a string, it represents an
+<a href="https://github.com/GoogleChrome/accessibility-developer-tools/wiki/Audit-Rules">accessibility rule</a> name to ignore</p>
+</li>
+<li><p>If it is an array, the array elements can be a String or another Array</p>
+</li>
+<li><p>If the array element is another array, it should have 2 elements: a rule name and a query selector string
+representing the parts of the page to be ignored for that audit rule.</p>
+</li>
+<li><p>If the array element is a string, it represents the rule name to ignore.</p>
+</li>
+<li><p><code>width</code> is the width of the phantomJS browser to run the tests on. This option is honoured only for server side tests</p>
+</li>
+<li><p><code>height</code> is the height of the phantomJS browser to run the tests on. This option is honoured only for server side
+tests</p>
+</li>
+</ul>
 <h2 id="installation-and-setup">Installation and Setup</h2>
 <h3 id="nodejs">NodeJS</h3>
 <p>Do an <code>npm install chai-a11y</code> to get up and running. Then:</p>

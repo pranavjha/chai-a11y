@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>stringify-response.js</title>
+  <title>normalize-config.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -66,7 +66,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>stringify-response.js</h1>
+                  <h1>normalize-config.js</h1>
               </div>
           </li>
         
@@ -78,14 +78,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p>creates a message string from the response object received from the axs audit</p>
+              <h2 id="normalizing-the-configuration">normalizing the configuration</h2>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-pi">'use strict'</span>;
-<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(response)</span> </span>{
-  <span class="hljs-keyword">var</span> message = <span class="hljs-string">''</span>;
-  response.filter(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(item)</span> </span>{</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-pi">'use strict'</span>;</pre></div></div>
             
         </li>
         
@@ -96,37 +93,28 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <p>filter all the FAILed cases</p>
+              <p>This function normalizes the config object.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">return</span> (item.result === <span class="hljs-string">'FAIL'</span>);
-  }).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(item)</span> </span>{</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-3">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-3">&#182;</a>
-              </div>
-              <p>get the important information in the string to be returned</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    message += (<span class="hljs-string">'\nrule name:       '</span> + item.rule.name);
-    message += (<span class="hljs-string">'\nrule severity:   '</span> + item.rule.severity);
-    message += (<span class="hljs-string">'\nrule code:       '</span> + item.rule.code);
-    message += (<span class="hljs-string">'\nrule heading:    '</span> + item.rule.heading);
-    message += (<span class="hljs-string">'\nrule url:        '</span> + item.rule.url);
-    item.elements.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(el, index)</span> </span>{
-      message += (<span class="hljs-string">'\nviolation #'</span> + index + <span class="hljs-string">':    '</span> + el.outerHTML);
-    });
-    message += <span class="hljs-string">'\n'</span>;
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(config)</span> </span>{
+  config = config || {};
+  config.ignore = config.ignore || [];
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> config.ignore === <span class="hljs-string">'string'</span>) {
+    config.ignore = [
+      config.ignore
+    ];
+  }
+  config.ignore = config.ignore.map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(singleIgnore)</span> </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> singleIgnore === <span class="hljs-string">'string'</span>) {
+      <span class="hljs-keyword">return</span> [
+        singleIgnore,
+        <span class="hljs-string">'*'</span>
+      ];
+    }
+    <span class="hljs-keyword">return</span> singleIgnore;
   });
-  <span class="hljs-keyword">return</span> message;
+  <span class="hljs-keyword">return</span> config;
 };</pre></div></div>
             
         </li>

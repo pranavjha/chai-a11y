@@ -44,6 +44,11 @@
               </a>
             
               
+              <a class="source" href="normalize-config.html">
+                normalize-config.js
+              </a>
+            
+              
               <a class="source" href="phantomjs-runner.html">
                 phantomjs-runner.js
               </a>
@@ -193,7 +198,7 @@ already exist. Once it ensures that the accessibility tool is loaded in the brow
             
             <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chaiAccessibility</span><span class="hljs-params">(chai)</span> </span>{
   <span class="hljs-keyword">var</span> Assertion = chai.Assertion;
-  Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+  Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(config)</span> </span>{
     <span class="hljs-keyword">var</span> deferred = $.Deferred();</pre></div></div>
             
         </li>
@@ -262,8 +267,7 @@ jQuery object to normalize</p>
             
             <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">var</span> configuration = <span class="hljs-keyword">new</span> axs.AuditConfiguration();
       configuration.scope = element.get(<span class="hljs-number">0</span>);
-      configuration.showUnsupportedRulesWarning = <span class="hljs-literal">false</span>;
-      <span class="hljs-keyword">var</span> response = axs.Audit.run(configuration);</pre></div></div>
+      configuration.showUnsupportedRulesWarning = <span class="hljs-literal">false</span>;</pre></div></div>
             
         </li>
         
@@ -274,11 +278,15 @@ jQuery object to normalize</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
-              <p>parse the audit results</p>
+              <p>normalize config</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">var</span> message = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/stringify-response'</span>)(response);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>      config = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/normalize-config'</span>)(config);
+      config.ignore.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(ignores)</span> </span>{
+        configuration.ignoreSelectors(ignores[<span class="hljs-number">0</span>], ignores[<span class="hljs-number">1</span>] || <span class="hljs-string">'*'</span>);
+      });
+      <span class="hljs-keyword">var</span> response = axs.Audit.run(configuration);</pre></div></div>
             
         </li>
         
@@ -288,6 +296,21 @@ jQuery object to normalize</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>parse the audit results</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">var</span> message = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/stringify-response'</span>)(response);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
               <p>if the element was appended in this assertion, detach it</p>
 
@@ -301,11 +324,11 @@ jQuery object to normalize</p>
         </li>
         
         
-        <li id="section-15">
+        <li id="section-16">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-15">&#182;</a>
+                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p>if the audit is successful, the test passes</p>
 
@@ -317,11 +340,11 @@ jQuery object to normalize</p>
         </li>
         
         
-        <li id="section-16">
+        <li id="section-17">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p>if the audit fails, the test fails</p>
 
@@ -334,11 +357,11 @@ jQuery object to normalize</p>
         </li>
         
         
-        <li id="section-17">
+        <li id="section-18">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               <p>fail the test if the plugin doesn’t load</p>
 

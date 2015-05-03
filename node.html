@@ -44,6 +44,11 @@
               </a>
             
               
+              <a class="source" href="normalize-config.html">
+                normalize-config.js
+              </a>
+            
+              
               <a class="source" href="phantomjs-runner.html">
                 phantomjs-runner.js
               </a>
@@ -85,7 +90,7 @@
 
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chaiAccessibility</span><span class="hljs-params">(chai)</span> </span>{
   <span class="hljs-keyword">var</span> Assertion = chai.Assertion;
-  Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{</pre></div></div>
+  Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(config)</span> </span>{</pre></div></div>
             
         </li>
         
@@ -132,7 +137,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/phantomjs-runner'</span>)(fileName);
+            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/phantomjs-runner'</span>)(fileName, <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/normalize-config'</span>)(config));
     }).then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(response)</span> </span>{</pre></div></div>
             
         </li>

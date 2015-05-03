@@ -44,6 +44,11 @@
               </a>
             
               
+              <a class="source" href="normalize-config.html">
+                normalize-config.js
+              </a>
+            
+              
               <a class="source" href="phantomjs-runner.html">
                 phantomjs-runner.js
               </a>
@@ -98,20 +103,20 @@ complete</p>
 <p><strong>Parameters</strong></p>
 <ul>
 <li><code>url</code> the absolute path of the html file</li>
-<li><code>opts</code> options passed to phantomJS runner. can contain width and height of browser</li>
+<li><code>config</code> options passed to phantomJS runner. can contain width and height of browser</li>
 </ul>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(url, opts)</span> </span>{
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(url, config)</span> </span>{
   <span class="hljs-keyword">var</span> deferred = q.defer();
-  opts = opts || {};
-  opts.width = opts.width || <span class="hljs-number">1024</span>;
-  opts.width = opts.width || <span class="hljs-number">768</span>;
-  opts.url = <span class="hljs-string">'file://'</span> + url;
+  config = config || {};
+  config.width = config.width || <span class="hljs-number">1024</span>;
+  config.height = config.height || <span class="hljs-number">768</span>;
+  config.url = <span class="hljs-string">'file://'</span> + url;
   execFile(phantomjs.path, [
     path.join(__dirname, <span class="hljs-string">'a11y-auditor.js'</span>),
-    <span class="hljs-built_in">JSON</span>.stringify(opts),
+    <span class="hljs-built_in">JSON</span>.stringify(config),
     <span class="hljs-string">'--ignore-ssl-errors=true'</span>,
     <span class="hljs-string">'--ssl-protocol=tlsv1'</span>,
     <span class="hljs-string">'--local-to-remote-url-access=true'</span>

@@ -44,6 +44,11 @@
               </a>
             
               
+              <a class="source" href="normalize-config.html">
+                normalize-config.js
+              </a>
+            
+              
               <a class="source" href="phantomjs-runner.html">
                 phantomjs-runner.js
               </a>
@@ -94,7 +99,7 @@
             <div class="content"><div class='highlight'><pre><span class="hljs-pi">'use strict'</span>;
 <span class="hljs-keyword">var</span> system = <span class="hljs-built_in">require</span>(<span class="hljs-string">'system'</span>);
 <span class="hljs-keyword">var</span> webpage = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpage'</span>).create();
-<span class="hljs-keyword">var</span> opts = <span class="hljs-built_in">JSON</span>.parse(system.args[<span class="hljs-number">1</span>]);
+<span class="hljs-keyword">var</span> config = <span class="hljs-built_in">JSON</span>.parse(system.args[<span class="hljs-number">1</span>]);
 <span class="hljs-keyword">var</span> PAGE_TIMEOUT = <span class="hljs-number">9000</span>;</pre></div></div>
             
         </li>
@@ -151,8 +156,8 @@
 webpage.settings.resourceTimeout = PAGE_TIMEOUT;
 
 webpage.viewportSize = {
-  width: opts.width,
-  height: opts.height
+  width: config.width,
+  height: config.height
 };
 
 webpage.onResourceTimeout = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err)</span> </span>{
@@ -164,7 +169,7 @@ webpage.onError = <span class="hljs-function"><span class="hljs-keyword">functio
   <span class="hljs-built_in">console</span>.error(err + <span class="hljs-string">'\n'</span> + formatTrace(trace[<span class="hljs-number">0</span>]) + <span class="hljs-string">'\n'</span>);
 };
 
-webpage.open(opts.url, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(status)</span> </span>{
+webpage.open(config.url, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(status)</span> </span>{
   <span class="hljs-keyword">if</span> (status === <span class="hljs-string">'fail'</span>) {
     <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'Couldn\'t load url.'</span>);
     phantom.exit(<span class="hljs-number">1</span>);
@@ -184,10 +189,42 @@ webpage.open(opts.url, <span class="hljs-function"><span class="hljs-keyword">fu
             </div>
             
             <div class="content"><div class='highlight'><pre>  webpage.injectJs(TOOLS_PATH);
+  <span class="hljs-keyword">var</span> ret = webpage.evaluate(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(config)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Run the auditor</p>
 
-  <span class="hljs-keyword">var</span> ret = webpage.evaluate(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">return</span> axs.Audit.run();
-  });
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> configuration = <span class="hljs-keyword">new</span> axs.AuditConfiguration();
+    configuration.showUnsupportedRulesWarning = <span class="hljs-literal">false</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>normalize config</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    config.ignore.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(ignores)</span> </span>{
+      configuration.ignoreSelectors(ignores[<span class="hljs-number">0</span>], ignores[<span class="hljs-number">1</span>] || <span class="hljs-string">'*'</span>);
+    });
+    <span class="hljs-keyword">return</span> axs.Audit.run(configuration);
+  }, config);
 
   <span class="hljs-keyword">if</span> (!ret) {
     system.stderr.writeLine(<span class="hljs-string">'Audit failed'</span>);
@@ -198,11 +235,11 @@ webpage.open(opts.url, <span class="hljs-function"><span class="hljs-keyword">fu
         </li>
         
         
-        <li id="section-7">
+        <li id="section-9">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
+                <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
               <p>log the result in console so that it can be picked up form node</p>
 
