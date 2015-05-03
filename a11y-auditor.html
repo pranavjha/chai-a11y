@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>a11y-auditor.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="README.html">
+                README.md
+              </a>
+            
+              
+              <a class="source" href="browser.html">
+                browser.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="node.html">
+                node.js
+              </a>
+            
+              
+              <a class="source" href="a11y-auditor.html">
+                a11y-auditor.js
+              </a>
+            
+              
+              <a class="source" href="phantomjs-runner.html">
+                phantomjs-runner.js
+              </a>
+            
+              
+              <a class="source" href="stringify-response.html">
+                stringify-response.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>a11y-auditor.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/* globals phantom, axs */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Conducts audits using the Chrome Accessibility Tools and PhantomJS.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-pi">'use strict'</span>;
+<span class="hljs-keyword">var</span> system = <span class="hljs-built_in">require</span>(<span class="hljs-string">'system'</span>);
+<span class="hljs-keyword">var</span> webpage = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpage'</span>).create();
+<span class="hljs-keyword">var</span> opts = <span class="hljs-built_in">JSON</span>.parse(system.args[<span class="hljs-number">1</span>]);
+<span class="hljs-keyword">var</span> PAGE_TIMEOUT = <span class="hljs-number">9000</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>path for accessibility testing files</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> TOOLS_PATH = <span class="hljs-string">'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>formats the webpage error for readability</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> formatTrace = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(trace)</span> </span>{
+  <span class="hljs-keyword">var</span> src = trace.file || trace.sourceURL;
+  <span class="hljs-keyword">var</span> fn = (trace.function ? <span class="hljs-string">' in function '</span> + trace.function : <span class="hljs-string">''</span>);
+  <span class="hljs-keyword">return</span> <span class="hljs-string">'→ '</span> + src + <span class="hljs-string">' on line '</span> + trace.line + fn;
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>console.error is broken in PhantomJS</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">console</span>.error = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+  system.stderr.writeLine([].slice.call(<span class="hljs-built_in">arguments</span>).join(<span class="hljs-string">' '</span>));
+};
+
+webpage.settings.resourceTimeout = PAGE_TIMEOUT;
+
+webpage.viewportSize = {
+  width: opts.width,
+  height: opts.height
+};
+
+webpage.onResourceTimeout = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err)</span> </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error code:'</span> + err.errorCode + <span class="hljs-string">' '</span> + err.errorString + <span class="hljs-string">' for '</span> + err.url);
+  phantom.exit(<span class="hljs-number">1</span>);
+};
+
+webpage.onError = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, trace)</span> </span>{
+  <span class="hljs-built_in">console</span>.error(err + <span class="hljs-string">'\n'</span> + formatTrace(trace[<span class="hljs-number">0</span>]) + <span class="hljs-string">'\n'</span>);
+};
+
+webpage.open(opts.url, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(status)</span> </span>{
+  <span class="hljs-keyword">if</span> (status === <span class="hljs-string">'fail'</span>) {
+    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'Couldn\'t load url.'</span>);
+    phantom.exit(<span class="hljs-number">1</span>);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Inject axs_testing</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  webpage.injectJs(TOOLS_PATH);
+
+  <span class="hljs-keyword">var</span> ret = webpage.evaluate(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> axs.Audit.run();
+  });
+
+  <span class="hljs-keyword">if</span> (!ret) {
+    system.stderr.writeLine(<span class="hljs-string">'Audit failed'</span>);
+    phantom.exit(<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">return</span>;
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>log the result in console so that it can be picked up form node</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(ret));
+  phantom.exit();
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
