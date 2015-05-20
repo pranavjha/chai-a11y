@@ -89,7 +89,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            <div class="content"><div class='highlight'><pre>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
 <span class="hljs-pi">  'use strict'</span>;</pre></div></div>
             
         </li>
@@ -105,7 +105,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> normalizeConfig = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(config)</span> </span>{
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> normalizeConfig = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) </span>{
     config = config || {};
     config.ignore = config.ignore || [];
     <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> config.ignore === <span class="hljs-string">'string'</span>) {
@@ -113,7 +113,7 @@
         config.ignore
       ];
     }
-    config.ignore = config.ignore.map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(singleIgnore)</span> </span>{
+    config.ignore = config.ignore.map(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">singleIgnore</span>) </span>{
       <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> singleIgnore === <span class="hljs-string">'string'</span>) {
         <span class="hljs-keyword">return</span> [
           singleIgnore,
@@ -138,11 +138,11 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> stringifyResponse = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(response)</span> </span>{
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> stringifyResponse = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{
     <span class="hljs-keyword">var</span> message = <span class="hljs-string">''</span>;
-    response.filter(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(item)</span> </span>{
+    response.filter(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">item</span>) </span>{
       <span class="hljs-keyword">return</span> (item.result === <span class="hljs-string">'FAIL'</span>);
-    }).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(item)</span> </span>{</pre></div></div>
+    }).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">item</span>) </span>{</pre></div></div>
             
         </li>
         
@@ -162,7 +162,7 @@
       message += (<span class="hljs-string">'\nrule code:       '</span> + item.rule.code);
       message += (<span class="hljs-string">'\nrule heading:    '</span> + item.rule.heading);
       message += (<span class="hljs-string">'\nrule url:        '</span> + item.rule.url);
-      item.elements.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(el, index)</span> </span>{
+      item.elements.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">el, index</span>) </span>{
         message += (<span class="hljs-string">'\nviolation #'</span> + index + <span class="hljs-string">':    '</span> + el.outerHTML);
       });
       message += <span class="hljs-string">'\n'</span>;
@@ -183,11 +183,11 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> chaiAccessibility = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(chai, utils, modules)</span> </span>{
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> chaiAccessibility = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">chai, utils, modules</span>) </span>{
     <span class="hljs-comment">/* global document */</span>
     <span class="hljs-keyword">var</span> $ = modules.$;
     <span class="hljs-keyword">var</span> Assertion = chai.Assertion;
-    Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(config)</span> </span>{</pre></div></div>
+    Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) </span>{</pre></div></div>
             
         </li>
         
@@ -223,7 +223,7 @@
             <div class="content"><div class='highlight'><pre>        element.appendTo($(<span class="hljs-string">'body'</span>));
       }
       <span class="hljs-keyword">var</span> deferred = $.Deferred();
-      loadPlugin(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+      loadPlugin(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
         <span class="hljs-comment">/* global axs */</span></pre></div></div>
             
         </li>
@@ -257,7 +257,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>        config = normalizeConfig(config);
-        config.ignore.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(ignores)</span> </span>{
+        config.ignore.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">ignores</span>) </span>{
           configuration.ignoreSelectors(ignores[<span class="hljs-number">0</span>], ignores[<span class="hljs-number">1</span>] || <span class="hljs-string">'*'</span>);
         });
         <span class="hljs-keyword">var</span> response = axs.Audit.run(configuration);
@@ -267,7 +267,7 @@
         } <span class="hljs-keyword">else</span> {
           deferred.resolve(<span class="hljs-string">'OK'</span>);
         }
-      }, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(e)</span> </span>{
+      }, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{
         deferred.reject(e);
       });
       <span class="hljs-keyword">return</span> deferred.promise();
@@ -288,7 +288,7 @@ already exist. Once it ensures that the accessibility tool is loaded in the brow
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> loadPlugin = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(cb, eb)</span> </span>{
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> loadPlugin = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">cb, eb</span>) </span>{
     <span class="hljs-comment">/* global window */</span>
     <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">window</span>.axs) {</pre></div></div>
             
@@ -373,7 +373,7 @@ scenarios listed above.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> wrap = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(plugin)</span> </span>{
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> wrap = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">plugin</span>) </span>{
     <span class="hljs-comment">/* global module:false, define:false */</span>
     <span class="hljs-comment">/* global jQuery, axs, chai */</span>
     <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">require</span> === <span class="hljs-string">'function'</span> &amp;&amp;
@@ -412,8 +412,8 @@ inject with <code>chai.use()</code>.</p>
             
             <div class="content"><div class='highlight'><pre>      define([
         <span class="hljs-string">'jquery'</span>
-      ], <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($)</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(chai, utils)</span> </span>{
+      ], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">$</span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">chai, utils</span>) </span>{
           <span class="hljs-keyword">return</span> plugin(chai, utils, {
             $: $
           });
@@ -434,7 +434,7 @@ inject with <code>chai.use()</code>.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      chai.use(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(chai, utils)</span> </span>{
+            <div class="content"><div class='highlight'><pre>      chai.use(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">chai, utils</span>) </span>{
         <span class="hljs-keyword">return</span> plugin(chai, utils, {
           $: jQuery
         });

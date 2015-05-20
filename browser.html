@@ -113,7 +113,7 @@ already exist. Once it ensures that the accessibility tool is loaded in the brow
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> loadPlugin = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(cb, eb)</span> </span>{
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> loadPlugin = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">cb, eb</span>) </span>{
   <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">window</span>.axs) {</pre></div></div>
             
         </li>
@@ -196,9 +196,9 @@ already exist. Once it ensures that the accessibility tool is loaded in the brow
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chaiAccessibility</span><span class="hljs-params">(chai)</span> </span>{
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chaiAccessibility</span>(<span class="hljs-params">chai</span>) </span>{
   <span class="hljs-keyword">var</span> Assertion = chai.Assertion;
-  Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(config)</span> </span>{
+  Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) </span>{
     <span class="hljs-keyword">var</span> deferred = $.Deferred();</pre></div></div>
             
         </li>
@@ -250,7 +250,7 @@ jQuery object to normalize</p>
             <div class="content"><div class='highlight'><pre>      element.appendTo($(<span class="hljs-string">'body'</span>));
       isAppended = <span class="hljs-literal">true</span>;
     }
-    loadPlugin(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{</pre></div></div>
+    loadPlugin(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{</pre></div></div>
             
         </li>
         
@@ -283,7 +283,7 @@ jQuery object to normalize</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>      config = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/normalize-config'</span>)(config);
-      config.ignore.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(ignores)</span> </span>{
+      config.ignore.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">ignores</span>) </span>{
         configuration.ignoreSelectors(ignores[<span class="hljs-number">0</span>], ignores[<span class="hljs-number">1</span>] || <span class="hljs-string">'*'</span>);
       });
       <span class="hljs-keyword">var</span> response = axs.Audit.run(configuration);</pre></div></div>
@@ -352,7 +352,7 @@ jQuery object to normalize</p>
             
             <div class="content"><div class='highlight'><pre>        deferred.reject(message);
       }
-    }, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(e)</span> </span>{</pre></div></div>
+    }, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{</pre></div></div>
             
         </li>
         

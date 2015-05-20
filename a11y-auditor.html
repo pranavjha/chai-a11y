@@ -130,7 +130,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> formatTrace = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(trace)</span> </span>{
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> formatTrace = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">trace</span>) </span>{
   <span class="hljs-keyword">var</span> src = trace.file || trace.sourceURL;
   <span class="hljs-keyword">var</span> fn = (trace.function ? <span class="hljs-string">' in function '</span> + trace.function : <span class="hljs-string">''</span>);
   <span class="hljs-keyword">return</span> <span class="hljs-string">'→ '</span> + src + <span class="hljs-string">' on line '</span> + trace.line + fn;
@@ -149,7 +149,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">console</span>.error = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">console</span>.error = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
   system.stderr.writeLine([].slice.call(<span class="hljs-built_in">arguments</span>).join(<span class="hljs-string">' '</span>));
 };
 
@@ -160,16 +160,16 @@ webpage.viewportSize = {
   height: config.height
 };
 
-webpage.onResourceTimeout = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err)</span> </span>{
+webpage.onResourceTimeout = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error code:'</span> + err.errorCode + <span class="hljs-string">' '</span> + err.errorString + <span class="hljs-string">' for '</span> + err.url);
   phantom.exit(<span class="hljs-number">1</span>);
 };
 
-webpage.onError = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, trace)</span> </span>{
+webpage.onError = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, trace</span>) </span>{
   <span class="hljs-built_in">console</span>.error(err + <span class="hljs-string">'\n'</span> + formatTrace(trace[<span class="hljs-number">0</span>]) + <span class="hljs-string">'\n'</span>);
 };
 
-webpage.open(config.url, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(status)</span> </span>{
+webpage.open(config.url, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">status</span>) </span>{
   <span class="hljs-keyword">if</span> (status === <span class="hljs-string">'fail'</span>) {
     <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'Couldn\'t load url.'</span>);
     phantom.exit(<span class="hljs-number">1</span>);
@@ -189,7 +189,7 @@ webpage.open(config.url, <span class="hljs-function"><span class="hljs-keyword">
             </div>
             
             <div class="content"><div class='highlight'><pre>  webpage.injectJs(TOOLS_PATH);
-  <span class="hljs-keyword">var</span> ret = webpage.evaluate(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(config)</span> </span>{</pre></div></div>
+  <span class="hljs-keyword">var</span> ret = webpage.evaluate(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) </span>{</pre></div></div>
             
         </li>
         
@@ -220,7 +220,7 @@ webpage.open(config.url, <span class="hljs-function"><span class="hljs-keyword">
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    config.ignore.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(ignores)</span> </span>{
+            <div class="content"><div class='highlight'><pre>    config.ignore.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">ignores</span>) </span>{
       configuration.ignoreSelectors(ignores[<span class="hljs-number">0</span>], ignores[<span class="hljs-number">1</span>] || <span class="hljs-string">'*'</span>);
     });
     <span class="hljs-keyword">return</span> axs.Audit.run(configuration);

@@ -97,7 +97,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(config)</span> </span>{
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) </span>{
   config = config || {};
   config.ignore = config.ignore || [];
   <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> config.ignore === <span class="hljs-string">'string'</span>) {
@@ -105,7 +105,7 @@
       config.ignore
     ];
   }
-  config.ignore = config.ignore.map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(singleIgnore)</span> </span>{
+  config.ignore = config.ignore.map(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">singleIgnore</span>) </span>{
     <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> singleIgnore === <span class="hljs-string">'string'</span>) {
       <span class="hljs-keyword">return</span> [
         singleIgnore,

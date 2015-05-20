@@ -83,9 +83,9 @@
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="hljs-pi">'use strict'</span>;
-<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(response)</span> </span>{
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{
   <span class="hljs-keyword">var</span> message = <span class="hljs-string">''</span>;
-  response.filter(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(item)</span> </span>{</pre></div></div>
+  response.filter(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">item</span>) </span>{</pre></div></div>
             
         </li>
         
@@ -101,7 +101,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">return</span> (item.result === <span class="hljs-string">'FAIL'</span>);
-  }).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(item)</span> </span>{</pre></div></div>
+  }).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">item</span>) </span>{</pre></div></div>
             
         </li>
         
@@ -121,7 +121,7 @@
     message += (<span class="hljs-string">'\nrule code:       '</span> + item.rule.code);
     message += (<span class="hljs-string">'\nrule heading:    '</span> + item.rule.heading);
     message += (<span class="hljs-string">'\nrule url:        '</span> + item.rule.url);
-    item.elements.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(el, index)</span> </span>{
+    item.elements.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">el, index</span>) </span>{
       message += (<span class="hljs-string">'\nviolation #'</span> + index + <span class="hljs-string">':    '</span> + el.outerHTML);
     });
     message += <span class="hljs-string">'\n'</span>;

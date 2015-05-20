@@ -84,9 +84,9 @@
             
             <div class="content"><div class='highlight'><pre><span class="hljs-pi">'use strict'</span>;
 <span class="hljs-keyword">var</span> q = <span class="hljs-built_in">require</span>(<span class="hljs-string">'q'</span>);
-<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chaiAccessibility</span><span class="hljs-params">(chai)</span> </span>{
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chaiAccessibility</span>(<span class="hljs-params">chai</span>) </span>{
   <span class="hljs-keyword">var</span> Assertion = chai.Assertion;
-  Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(config)</span> </span>{</pre></div></div>
+  Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) </span>{</pre></div></div>
             
         </li>
         
@@ -146,7 +146,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> server = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>).createServer(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(request, response)</span> </span>{
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> server = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>).createServer(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">request, response</span>) </span>{
       response.writeHeader(<span class="hljs-number">200</span>, {
         <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'text/html'</span>
       });
@@ -171,7 +171,7 @@
       (<span class="hljs-string">'http://localhost:'</span> + port),
       normalizedConfig
     ).then(
-      <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(response)</span> </span>{</pre></div></div>
+      <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) </span>{</pre></div></div>
             
         </li>
         
