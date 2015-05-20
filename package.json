@@ -1,17 +1,19 @@
 {
   "name": "chai-a11y",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "accessibility plugin for chai",
-  "main": "lib/index.js",
+  "main": "lib/node.js",
+  "browser": "lib/index.js",
+  "author": "Pranav Jha <jha.pranav.s@gmail.com> (https://github.com/pranavjha)",
   "repository": {
     "type": "git",
     "url": "https://github.com/pranavjha/chai-a11y.git"
   },
   "dependencies": {
-    "phantomjs": "^1.9.10",
+    "phantomjs": "^1",
     "accessibility-developer-tools": "*",
     "q": "^1",
-    "jquery": "^1"
+    "jquery": "^2"
   },
   "devDependencies": {
     "grunt": "^0",
@@ -26,6 +28,5 @@
     "a11y",
     "accessibility"
   ],
-  "author": "Pranav Jha <jha.pranav.s@gmail.com> (https://github.com/pranavjha)",
   "license": "MIT"
 }

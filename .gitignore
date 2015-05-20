@@ -28,3 +28,5 @@ node_modules
 
 # idea files
 .idea
+# documentation resources
+.docs

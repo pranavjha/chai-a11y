@@ -4,7 +4,7 @@ node_js:
   - "0.11"
 
 before_install:
-  - "npm install -g grunt-cli node-gyp"
+  - "npm install -g grunt-cli"
 
 after_success:
     # run the coverage task and push the coverage report to coveralls
