@@ -378,8 +378,7 @@ scenarios listed above.</p>
     <span class="hljs-comment">/* global jQuery, axs, chai */</span>
     <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">require</span> === <span class="hljs-string">'function'</span> &amp;&amp;
       <span class="hljs-keyword">typeof</span> exports === <span class="hljs-string">'object'</span> &amp;&amp;
-      <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">module</span> === <span class="hljs-string">'object'</span>) {
-      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span> !== <span class="hljs-string">'undefined'</span>) {</pre></div></div>
+      <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">module</span> === <span class="hljs-string">'object'</span>) {</pre></div></div>
             
         </li>
         
@@ -394,8 +393,8 @@ scenarios listed above.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./browser'</span>);
-      } <span class="hljs-keyword">else</span> {</pre></div></div>
+            <div class="content"><div class='highlight'><pre>      <span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./browser'</span>);
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> define === <span class="hljs-string">'function'</span> &amp;&amp; define.amd) {</pre></div></div>
             
         </li>
         
@@ -405,25 +404,6 @@ scenarios listed above.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-17">&#182;</a>
-              </div>
-              <p><strong>pure nodejs stack</strong>
-this is for tricking browserify / raptorJS to not try and flatten <code>./node</code> file</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">var</span> trickRequire = <span class="hljs-built_in">require</span>;
-        <span class="hljs-built_in">module</span>.exports = trickRequire(<span class="hljs-string">'./node'</span>);
-      }
-    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> define === <span class="hljs-string">'function'</span> &amp;&amp; define.amd) {</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-18">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               <p><strong>AMD:</strong> Assumes importing <code>chai</code>, <code>jquery</code> and <code>accessibility-developer-tools (axs)</code>. Returns a function to
 inject with <code>chai.use()</code>.</p>
@@ -444,11 +424,11 @@ inject with <code>chai.use()</code>.</p>
         </li>
         
         
-        <li id="section-19">
+        <li id="section-18">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
+                <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               <p><strong>Other environment</strong> (usually <script> tag): plug in to global chai instance directly.</p>
 
@@ -465,11 +445,11 @@ inject with <code>chai.use()</code>.</p>
         </li>
         
         
-        <li id="section-20">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p>Hook it all together.</p>
 
