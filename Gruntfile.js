@@ -90,16 +90,15 @@ module.exports = function (grunt) {
         },
         testCommonJs: {
           frameworks: [
-            'optimizer',
+            'lasso',
             'mocha'
           ],
-          optimizer: {
+          lasso: {
             minify: false,
             bundlingEnabled: false,
             cacheProfile: 'development',
             tempdir: '.test',
-            ignore: 'node_modules/accessibility-developer-tools/**',
-            plugins: []
+            ignore: 'node_modules/accessibility-developer-tools/**'
           },
           files: [
             {
@@ -112,7 +111,7 @@ module.exports = function (grunt) {
           plugins: [
             'karma-chai',
             'karma-mocha',
-            'karma-optimizer',
+            'karma-lasso',
             'karma-mocha-reporter',
             'karma-phantomjs-launcher'
           ]
