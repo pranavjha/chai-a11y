@@ -53,6 +53,9 @@ An options object can be passed to the plugin assertion. This object has the fol
  - `height` is the height of the phantomJS browser to run the tests on. This option is honoured only for server side
  tests
 
+ - `port` is the port on which the http server serving the html should start. This option is honoured only for server
+ side tests
+
 
 ## Installation and Setup
 
@@ -73,17 +76,20 @@ chai.use(chaiA11y);
 
 ### AMD / RequireJS
 
-Chai A11y supports being used as an [AMD][amd] module, registering itself anonymously (just like Chai). So, assuming
-you have configured your loader to map the Chai and Chai a11y files to the respective module IDs `"chai"` and
-`"chai-a11y"`, you can use them as follows:
+Chai A11y supports being used as an [AMD](http://requirejs.org/) module, registering itself anonymously (just like
+Chai). So, assuming you have configured your loader to map the Chai and Chai a11y files to the respective module IDs
+`"chai"` and `"chai-a11y"`, you can use them as follows:
 
 ```javascript
 
-define(function (require, exports, module) {
-    var chai = require("chai");
-    var chaiA11y = require("chai-a11y");
-
-    chai.use(chaiA11y);
+define([
+  'chai',
+  'chai-a11y'
+], function (chai, chaiA11y) {
+  'use strict';
+  chai.use(chaiA11y);
+  var expect = chai.expect;
+  // ... write your its here
 });
 
 ```
@@ -91,9 +97,9 @@ define(function (require, exports, module) {
 When using AMD / RequireJS style code, the `jquery` dependency must be fulfilled by [jQuery](https://jquery.com/).
 
 
-### RaptorJS / Browserify
+### Lasso JS / Browserify
 
-For [RaptorJS](http://raptorjs.org/) and [Browserify](http://browserify.org/), usage will be similar to when using in a
+For [Lasso JS](http://raptorjs.org/) and [Browserify](http://browserify.org/), usage will be similar to when using in a
 NodeJS environment.
 
 
