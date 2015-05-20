@@ -2,8 +2,8 @@
   "name": "chai-a11y",
   "version": "1.0.0",
   "description": "accessibility plugin for chai",
-  "main": "lib/node.js",
-  "browser": "lib/index.js",
+  "main": "./lib/node.js",
+  "browser": "./lib/index.js",
   "author": "Pranav Jha <jha.pranav.s@gmail.com> (https://github.com/pranavjha)",
   "repository": {
     "type": "git",
@@ -16,10 +16,22 @@
     "jquery": "^2"
   },
   "devDependencies": {
+    "app-module-path": "^1.0.0",
     "grunt": "^0",
     "grunt-contrib-jshint": "^0",
     "grunt-docco": "^0",
-    "grunt-gh-pages": "^0"
+    "grunt-gh-pages": "^0",
+    "chai": "^2",
+    "requirejs": "^2",
+    "grunt-mocha-test": "^0",
+    "grunt-karma": "^0.10.1",
+    "karma-requirejs": "^0.2.2",
+    "karma-optimizer": "*",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^0.1.10",
+    "karma-mocha-reporter": "^0.3.1",
+    "karma-coverage": "~0.1",
+    "karma-phantomjs-launcher": "^0.1.4"
   },
   "keywords": [
     "chai",

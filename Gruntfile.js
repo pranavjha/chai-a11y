@@ -32,9 +32,17 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-docco');
   grunt.loadNpmTasks('grunt-gh-pages');
+  grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    clean: [
+      '.coverage',
+      '.test',
+      '.cache'
+    ],
     jshint: {
       lib: {
         src: [
@@ -43,6 +51,99 @@ module.exports = function (grunt) {
           'package.json'
         ],
         options: jshintOptions
+      }
+    },
+    karma: {
+      testAMD: {
+        reporters: [
+          'mocha'
+        ],
+        frameworks: [
+          'requirejs',
+          'mocha',
+          'chai'
+        ],
+        files: [
+          {
+            src: [
+              'node_modules/accessibility-developer-tools/dist/js/axs_testing.js',
+              'node_modules/requirejs/require.js',
+              'test/require-config.js'
+            ],
+            served: true,
+            included: true
+          },
+          {
+            src: [
+              'test/amd-specs.js',
+              'lib/**/*.js',
+              'node_modules/jquery/dist/jquery.js'
+            ],
+            served: true,
+            included: false
+          }
+        ],
+        plugins: [
+          'karma-requirejs',
+          'karma-chai',
+          'karma-mocha',
+          'karma-mocha-reporter',
+          'karma-phantomjs-launcher'
+        ]
+      },
+      testCommonJs: {
+        reporters: [
+          'mocha'
+        ],
+        frameworks: [
+          'optimizer',
+          'mocha'
+        ],
+        optimizer: {
+          minify: false,
+          bundlingEnabled: false,
+          cacheProfile: 'development',
+          tempdir: '.test',
+          ignore: 'node_modules/accessibility-developer-tools/**'
+        },
+        files: [
+          {
+            src: [
+              'test/commonjs-specs.js',
+              'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'
+            ]
+          }
+        ],
+        plugins: [
+          'karma-chai',
+          'karma-mocha',
+          'karma-optimizer',
+          'karma-mocha-reporter',
+          'karma-phantomjs-launcher'
+        ]
+      },
+      options: {
+        browsers: [
+          'PhantomJS'
+        ],
+        client: {
+          mocha: {
+            timeout: 500,
+            ui: 'bdd'
+          }
+        },
+        singleRun: true
+      }
+    },
+    // Configure a mochaTest task
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec'
+        },
+        src: [
+          'test/nodejs-specs.js'
+        ]
       }
     },
     docco: {
@@ -76,7 +177,9 @@ module.exports = function (grunt) {
     }
   });
   grunt.registerTask('test', [
-    'jshint'
+    'jshint',
+    'mochaTest',
+    'karma'
   ]);
   grunt.registerTask('document', [
     'docco'
