@@ -113,7 +113,7 @@ complete</p>
   config = config || {};
   config.width = config.width || <span class="hljs-number">1024</span>;
   config.height = config.height || <span class="hljs-number">768</span>;
-  config.url = <span class="hljs-string">'file://'</span> + url;
+  config.url = url;
   execFile(phantomjs.path, [
     path.join(__dirname, <span class="hljs-string">'a11y-auditor.js'</span>),
     <span class="hljs-built_in">JSON</span>.stringify(config),
