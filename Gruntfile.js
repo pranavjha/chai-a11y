@@ -98,7 +98,8 @@ module.exports = function (grunt) {
             bundlingEnabled: false,
             cacheProfile: 'development',
             tempdir: '.test',
-            ignore: 'node_modules/accessibility-developer-tools/**'
+            ignore: 'node_modules/accessibility-developer-tools/**',
+            plugins: []
           },
           files: [
             {
