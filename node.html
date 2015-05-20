@@ -121,7 +121,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> fileName = path.join(os.tmpdir() + <span class="hljs-string">'file_'</span> + <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">99999999</span>) + <span class="hljs-string">'.html'</span>);
-    <span class="hljs-keyword">var</span> contents = <span class="hljs-string">'&lt;html&gt;&lt;head&gt;&lt;title&gt;Sample A11y Check&lt;/title&gt;&lt;body&gt;'</span> + element + <span class="hljs-string">'&lt;/body&gt;&lt;/head&gt;'</span>;
+    <span class="hljs-keyword">var</span> contents = <span class="hljs-string">'&lt;html lang="en"&gt;&lt;head&gt;&lt;title&gt;Sample A11y Check&lt;/title&gt;&lt;body&gt;'</span> + element + <span class="hljs-string">'&lt;/body&gt;&lt;/head&gt;'</span>;
     <span class="hljs-keyword">return</span> q.nfcall(fs.writeFile, fileName, contents).then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{</pre></div></div>
             
         </li>
