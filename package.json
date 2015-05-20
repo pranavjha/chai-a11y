@@ -5,6 +5,9 @@
   "main": "./lib/node.js",
   "browser": "./lib/index.js",
   "author": "Pranav Jha <jha.pranav.s@gmail.com> (https://github.com/pranavjha)",
+  "scripts": {
+    "test": "grunt clean test"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/pranavjha/chai-a11y.git"
