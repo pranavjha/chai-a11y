@@ -210,12 +210,12 @@ already exist. Once it ensures that the accessibility tool is loaded in the brow
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <p>this boolean is true if the element send was not a part of the DOM and is appended to the DOM by this assertion
-library</p>
+              <p>fetch the element, Element here can be a DOM element, a jQuery element or a HTML String. So, we wrap it in a
+jQuery object to normalize</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> isAppended = <span class="hljs-literal">false</span>;</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> element = $(<span class="hljs-keyword">this</span>._obj);</pre></div></div>
             
         </li>
         
@@ -226,13 +226,13 @@ library</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <p>fetch the element, Element here can be a DOM element, a jQuery element or a HTML String. So, we wrap it in a
-jQuery object to normalize</p>
+              <p>this boolean is true if the element send was not a part of the DOM and is appended to the DOM by this assertion
+library</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> element = $(<span class="hljs-keyword">this</span>._obj);
-    <span class="hljs-keyword">if</span> (!$.contains(<span class="hljs-built_in">document</span>, element.get(<span class="hljs-number">0</span>))) {</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> isOrphan = !$.contains(<span class="hljs-built_in">document</span>, element.get(<span class="hljs-number">0</span>));
+    <span class="hljs-keyword">if</span> (isOrphan) {</pre></div></div>
             
         </li>
         
@@ -248,7 +248,6 @@ jQuery object to normalize</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>      element.appendTo($(<span class="hljs-string">'body'</span>));
-      isAppended = <span class="hljs-literal">true</span>;
     }
     loadPlugin(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{</pre></div></div>
             
@@ -301,7 +300,8 @@ jQuery object to normalize</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">var</span> message = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/stringify-response'</span>)(response);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">var</span> message = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/stringify-response'</span>)(response);
+      <span class="hljs-keyword">if</span> (isOrphan) {</pre></div></div>
             
         </li>
         
@@ -312,12 +312,11 @@ jQuery object to normalize</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
-              <p>if the element was appended in this assertion, detach it</p>
+              <p>if the element was not in the dom, we remove it</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">if</span> (isAppended) {
-        element.detach();
+            <div class="content"><div class='highlight'><pre>        element.remove();
       }
       <span class="hljs-keyword">if</span> (!message) {</pre></div></div>
             
