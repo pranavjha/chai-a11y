@@ -1,6 +1,6 @@
 {
   "name": "chai-a11y",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "accessibility plugin for chai",
   "main": "./lib/node.js",
   "browser": "./lib/index.js",
