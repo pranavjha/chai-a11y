@@ -1,7 +1,8 @@
 define([
   'chai',
-  'chaiA11y'
-], function (chai, chaiA11y) {
+  'chaiA11y',
+  'jquery'
+], function (chai, chaiA11y, $) {
   'use strict';
   chai.use(chaiA11y);
   var expect = chai.expect;
@@ -29,5 +30,18 @@ define([
         ]
       });
     });
+    it('should not pollute the DOM', function () {
+      return expect('<button id="temp_id">temp</button>').to.be.accessible().then(function () {
+        return expect($('#temp_id').size()).to.eql(0);
+      });
+    });
+    it('should not move or delete an existing element', function () {
+      var btn = $('<button id="temp_id">temp</button>');
+      $('body').append($('<div id="temp_div"></div>').append(btn));
+      return expect(btn).to.be.accessible().then(function () {
+        expect($('#temp_div > #temp_id').size()).to.eql(1);
+        $('#temp_id').remove();
+      });
+    })
   });
 });
