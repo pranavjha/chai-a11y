@@ -25,23 +25,8 @@
                 </a>
               
                 
-                <a class="source" href="index.html">
-                  index.js
-                </a>
-              
-                
-                <a class="source" href="html.html">
-                  html.js
-                </a>
-              
-                
-                <a class="source" href="marko.html">
-                  marko.js
-                </a>
-              
-                
-                <a class="source" href="server.html">
-                  server.js
+                <a class="source" href="lockable.html">
+                  lockable.js
                 </a>
               
             </div>
@@ -65,68 +50,14 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p><a href="https://travis-ci.org/pranavjha/chai-modshot"><img src="https://travis-ci.org/pranavjha/chai-modshot.svg" alt="Build Status"></a>
-<a href="https://codeclimate.com/github/pranavjha/chai-modshot"><img src="https://codeclimate.com/github/pranavjha/chai-modshot/badges/gpa.svg" alt="Code Climate"></a>
-<a href="https://coveralls.io/r/pranavjha/chai-modshot"><img src="http://img.shields.io/coveralls/pranavjha/chai-modshot.svg" alt="Coverage Status"></a></p>
-<p><a href="https://david-dm.org/pranavjha/chai-modshot"><img src="https://david-dm.org/pranavjha/chai-modshot.svg" alt="Dependency Status"></a>
-<a href="https://david-dm.org/pranavjha/chai-modshot#info=devDependencies"><img src="https://david-dm.org/pranavjha/chai-modshot/dev-status.svg" alt="devDependency Status"></a>
-<a href="https://david-dm.org/pranavjha/chai-modshot#info=peerDependencies"><img src="https://david-dm.org/pranavjha/chai-modshot/peer-status.svg" alt="peerDependency Status"></a></p>
-<h1 id="chai-modshot">chai-modshot</h1>
-<blockquote>
-<p>visual regression testing plugin for chai. Uses <a href="https://www.npmjs.com/package/modshot">modshot</a> to create screenshots and compare them</p>
-</blockquote>
-<h2 id="how-to-use">How to use</h2>
-<p>Can be used with the <code>should</code>, <code>expect</code> or <code>assert</code> interfaces.</p>
-<pre><code class="lang-javascript">
-<span class="hljs-comment">// 1. testing an HTML file for visual regression</span>
-<span class="hljs-keyword">var</span> htmlFilePath = <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'./index.html'</span>);
-<span class="hljs-keyword">return</span> expect(htmlFilePath).to.be.consistentWith(<span class="hljs-string">'html-file-1'</span>);
-
-<span class="hljs-comment">// 2. testing a marko template for visual regression</span>
-<span class="hljs-keyword">var</span> templatePath = <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'./template.marko'</span>);
-<span class="hljs-keyword">return</span> expect(templatePath).to.be.consistentWith(<span class="hljs-string">'marko-template-1'</span>);
-</code></pre>
-<h2 id="installation-and-setup">Installation and Setup</h2>
-<p>Do an <code>npm install chai-modshot</code> to get up and running. Then use it for assertions.</p>
-<pre><code class="lang-javascript">
-<span class="hljs-keyword">var</span> chai = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chai'</span>);
-<span class="hljs-keyword">var</span> chaiModshot = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chai-modshot'</span>);
-
-chai.use(chaiModshot);
-</code></pre>
-<h2 id="configuring-chai-modshot">Configuring chai-modshot</h2>
-<p><code>chai-modshot</code> can <strong>optionally</strong> be configured using a configure function as shown below. This should be done before
-the assertions. Also, configuring <code>chai-modshot</code> multiple times overrides the previous configurations.</p>
-<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">'chai-modshot'</span>).configure({
-outDir: <span class="hljs-string">'shots/units'</span>,
-tolerance: <span class="hljs-number">5</span>,
-port: <span class="hljs-number">4567</span>,
-templateType: <span class="hljs-string">'marko'</span>,
-lassoConfig: {
-plugins: [
-<span class="hljs-string">'lasso-less'</span>,
-<span class="hljs-string">'lasso-autoprefixer'</span>,
-<span class="hljs-string">'lasso-marko'</span>
-],
-<span class="hljs-string">'url-prefix'</span>: <span class="hljs-string">'/static'</span>,
-outputDir: <span class="hljs-string">'static'</span>,
-fingerprintsEnabled: <span class="hljs-literal">false</span>,
-minify: <span class="hljs-literal">false</span>,
-bundlingEnabled: <span class="hljs-literal">false</span>,
-resolveCssUrls: <span class="hljs-literal">true</span>,
-cacheProfile: <span class="hljs-string">'development'</span>
-}
-});
-</code></pre>
-<p>The <code>.configure</code> function takes an object with the below keys as parameter:</p>
-<ul>
-<li><code>outDir</code> (Default: <code>&#39;shots/units&#39;</code>) the output directory for screenshots.</li>
-<li><code>tolerance</code> (Default: <code>5</code>) the percentage deviation with original screenshots upto which, the assertions should not fail.</li>
-<li><code>port</code> (Default: <code>4567</code>) the port to start the server on.</li>
-<li><code>templateType</code> (Default: <code>&#39;marko&#39;</code>) the template engine that should be used. Currently, <code>marko</code> and <code>html</code> are supported</li>
-<li><code>lassoConfig</code> the lasso configuration that should be passed to the template. The default configuration is as in the
-above example.</li>
-</ul>
+              <p><a href="https://travis-ci.org/pranavjha/lockable"><img src="https://travis-ci.org/pranavjha/lockable.svg" alt="Build Status"></a>
+<a href="https://codeclimate.com/github/pranavjha/lockable"><img src="https://codeclimate.com/github/pranavjha/lockable/badges/gpa.svg" alt="Code Climate"></a>
+<a href="https://coveralls.io/r/pranavjha/lockable"><img src="http://img.shields.io/coveralls/pranavjha/lockable.svg" alt="Coverage Status"></a></p>
+<p><a href="https://david-dm.org/pranavjha/lockable"><img src="https://david-dm.org/pranavjha/lockable.svg" alt="Dependency Status"></a>
+<a href="https://david-dm.org/pranavjha/lockable#info=devDependencies"><img src="https://david-dm.org/pranavjha/lockable/dev-status.svg" alt="devDependency Status"></a>
+<a href="https://david-dm.org/pranavjha/lockable#info=peerDependencies"><img src="https://david-dm.org/pranavjha/lockable/peer-status.svg" alt="peerDependency Status"></a></p>
+<h1 id="lockable">lockable</h1>
+<p>Lockable is a utility module for promises to control their execution and their resolution sequence</p>
 
             </div>
             
