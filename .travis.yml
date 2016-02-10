@@ -8,4 +8,4 @@ before_install:
 
 after_success:
     # run the coverage task and push the coverage report to coveralls
-  - "grunt document gh-pages"
+  - "grunt coverage document gh-pages"

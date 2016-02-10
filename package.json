@@ -1,47 +1,55 @@
 {
-  "name": "chai-a11y",
-  "version": "1.0.1",
-  "description": "accessibility plugin for chai",
-  "main": "./lib/node.js",
-  "browser": "./lib/index.js",
-  "author": "Pranav Jha <jha.pranav.s@gmail.com> (https://github.com/pranavjha)",
-  "scripts": {
-    "test": "grunt clean test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pranavjha/chai-a11y.git"
-  },
-  "dependencies": {
-    "phantomjs": "^1",
-    "accessibility-developer-tools": "*",
-    "q": "^1",
-    "jquery": "^2"
-  },
-  "devDependencies": {
-    "grunt": "^0",
-    "grunt-contrib-jshint": "^0",
-    "grunt-contrib-clean": "^0",
-    "grunt-docco": "^0",
-    "grunt-gh-pages": "^0",
-    "chai": "^2",
-    "requirejs": "^2",
-    "grunt-mocha-test": "^0",
-    "grunt-karma": "^0",
-    "karma-requirejs": "^0",
-    "karma-lasso": "^1",
-    "karma-chai": "^0",
-    "karma-mocha": "^0",
-    "karma-mocha-reporter": "^1",
-    "karma-coverage": "^0",
-    "karma-phantomjs-launcher": "^0"
-  },
-  "keywords": [
-    "chai",
-    "chai plugins",
-    "testing",
-    "a11y",
-    "accessibility"
-  ],
-  "license": "MIT"
+    "name": "chai-a11y",
+    "version": "1.0.1",
+    "description": "accessibility plugin for chai",
+    "main": "./lib/node.js",
+    "browser": "./lib/index.js",
+    "author": "Pranav Shekhar Jha <jha.pranav.s@gmail.com> (http://github.com/pranavjha)",
+    "scripts": {
+        "test": "grunt clean test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pranavjha/chai-a11y.git"
+    },
+    "dependencies": {
+        "phantomjs": "^1",
+        "accessibility-developer-tools": "2.10.0",
+        "bluebird": "^3.2.2",
+        "jquery": "^2"
+    },
+    "devDependencies": {
+        "chai": "^2",
+        "grunt": "^0",
+        "grunt-contrib-clean": "^0",
+        "grunt-contrib-jshint": "^0",
+        "grunt-coveralls": "^1.0.0",
+        "grunt-docco": "^0",
+        "grunt-docco-plus": "^2.0.1",
+        "grunt-env": "^0.4.4",
+        "grunt-gh-pages": "^0",
+        "grunt-istanbul": "^0.6.2",
+        "grunt-karma": "^0",
+        "grunt-mocha-test": "^0",
+        "karma-chai": "^0",
+        "karma-coverage": "^0",
+        "karma-lasso": "^1",
+        "karma-mocha": "^0",
+        "karma-mocha-reporter": "^1",
+        "karma-phantomjs-launcher": "^0",
+        "karma-requirejs": "^0",
+        "requirejs": "^2"
+    },
+    "keywords": [
+        "chai",
+        "chai plugins",
+        "testing",
+        "a11y",
+        "accessibility"
+    ],
+    "license": "Unlicense",
+    "bugs": {
+        "url": "https://github.com/pranavjha/chai-a11y/issues"
+    },
+    "homepage": "https://pranavjha.github.io/chai-a11y"
 }
