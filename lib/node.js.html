@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>node</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+        content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../assets/file_1.css"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../assets/file_5.css"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../assets/32px.png"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../assets/40px.png"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../assets/throbber.gif"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../assets/file_7.css"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../assets/file_8.css"/>
+    
+
+    
+    <script src="../assets/file_2.js"
+        type="text/javascript"></script>
+    
+    <script src="../assets/file_3.js"
+        type="text/javascript"></script>
+    
+    <script src="../assets/file_4.js"
+        type="text/javascript"></script>
+    
+    <script src="../assets/file_6.js"
+        type="text/javascript"></script>
+    
+
+    <script type="application/json" id="jsTreeJSON">
+        [{"id":"lib/utils/stringify-response.js","text":"stringify-response.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"utils/stringify-response.js.html"},"state":{"selected":false}},{"id":"lib","text":"lib","icon":"jstree-folder","parent":"#","a_attr":{"href":"."},"state":{"opened":true}},{"id":"lib/index.js","text":"index.js","icon":"jstree-file","parent":"lib","a_attr":{"href":"index.js.html"},"state":{"selected":false}},{"id":"lib/node.js","text":"node.js","icon":"jstree-file","parent":"lib","a_attr":{"href":"node.js.html"},"state":{"selected":true}},{"id":"lib/utils","text":"utils","icon":"jstree-folder","parent":"lib","a_attr":{"href":"utils"},"state":{"opened":false}},{"id":"lib/utils/a11y-auditor.js","text":"a11y-auditor.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"utils/a11y-auditor.js.html"},"state":{"selected":false}},{"id":"lib/utils/normalize-config.js","text":"normalize-config.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"utils/normalize-config.js.html"},"state":{"selected":false}},{"id":"lib/utils/phantomjs-runner.js","text":"phantomjs-runner.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"utils/phantomjs-runner.js.html"},"state":{"selected":false}},{"id":"lib/browser.js","text":"browser.js","icon":"jstree-file","parent":"lib","a_attr":{"href":"browser.js.html"},"state":{"selected":false}},{"id":"test","text":"test","icon":"jstree-folder","parent":"#","a_attr":{"href":"../test"},"state":{"opened":false}},{"id":"test/amd-specs.js","text":"amd-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"../test/amd-specs.js.html"},"state":{"selected":false}},{"id":"test/commonjs-specs.js","text":"commonjs-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"../test/commonjs-specs.js.html"},"state":{"selected":false}},{"id":"test/nodejs-specs.js","text":"nodejs-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"../test/nodejs-specs.js.html"},"state":{"selected":false}},{"id":"test/require-config.js","text":"require-config.js","icon":"jstree-file","parent":"test","a_attr":{"href":"../test/require-config.js.html"},"state":{"selected":false}},{"id":"test/script-tag-specs.js","text":"script-tag-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"../test/script-tag-specs.js.html"},"state":{"selected":false}},{"id":"Gruntfile.js","text":"Gruntfile.js","icon":"jstree-file","parent":"#","a_attr":{"href":"../Gruntfile.js.html"},"state":{"selected":false}},{"id":"README.md","text":"README.md","icon":"jstree-file","parent":"#","a_attr":{"href":"../README.md.html"},"state":{"selected":false}}]
+    </script>
+</head>
+<body class="markdown-body">
+<h1>
+    node
+</h1>
+<div class="subHeading">
+    lib/node.js
+</div>
+<button type="button" class="navigatorToggle">&#9776; files...</button>
+<nav class="navigationTree minimized">
+    <input type="text" id="jsTreeSearch" placeholder="search..."/>
+    <div></div>
+</nav>
+<section>
+    <ul class="sectionDetails ">
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+                <h2 id="plugin-implementation-for-node-">plugin implementation for node.</h2>
+
+            </div><div class="content">
+                <div class="highlight"><pre><span class="hljs-meta">'use strict'</span>;
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chaiAccessibility</span>(<span class="hljs-params">chai</span>) </span>{
+    <span class="hljs-keyword">var</span> Assertion = chai.Assertion;
+    Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config</span>) </span>{</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+                <p> extract the DOM element which will be a string in this case</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>        <span class="hljs-keyword">var</span> element = <span class="hljs-keyword">this</span>._obj;</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+                <p> get the config object</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>        <span class="hljs-keyword">var</span> normalizedConfig = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/normalize-config'</span>)(config);</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+                <p> get the value of port</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>        <span class="hljs-keyword">var</span> port = normalizedConfig.port || <span class="hljs-number">4567</span>;</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+                <p> create a temporary http server</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>        <span class="hljs-keyword">var</span> server = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>).createServer(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">request, response</span>) </span>{
+            response.writeHeader(<span class="hljs-number">200</span>, {
+                <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'text/html'</span>
+            });
+            response.write(<span class="hljs-string">'&lt;html lang="en"&gt;&lt;head&gt;&lt;title&gt;Sample A11y Check&lt;/title&gt;&lt;body&gt;'</span> + element + <span class="hljs-string">'&lt;/body&gt;&lt;/head&gt;'</span>);
+            response.end();
+        }).listen(port);</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+                <p> run the file on phantomJS to test accessibility</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/phantomjs-runner'</span>)(
+            (<span class="hljs-string">'http://localhost:'</span> + port),
+            normalizedConfig
+        ).then(
+            <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>{</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+                <p> parse the response and check for any errors</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>                <span class="hljs-keyword">var</span> message = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/stringify-response'</span>)(response);</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+                <p> if there is no error, the test passes</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>                <span class="hljs-keyword">if</span> (!message) {
+                    <span class="hljs-keyword">return</span> <span class="hljs-string">'OK'</span>;
+                }</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+                <p> else, the error is thrown</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>                <span class="hljs-keyword">throw</span> message;
+            }
+        ).finally(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+                <p> shut down the server after the test</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>            server.close();
+
+        });
+    });
+};</pre></div>
+            </div>
+        </li>
+        
+    </ul>
+</section>
+</body>
+</html>

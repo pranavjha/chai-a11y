@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gruntfile</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+        content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    
+    <link rel="stylesheet"
+        media="all"
+        href="assets/file_1.css"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="assets/file_5.css"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="assets/32px.png"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="assets/40px.png"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="assets/throbber.gif"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="assets/file_7.css"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="assets/file_8.css"/>
+    
+
+    
+    <script src="assets/file_2.js"
+        type="text/javascript"></script>
+    
+    <script src="assets/file_3.js"
+        type="text/javascript"></script>
+    
+    <script src="assets/file_4.js"
+        type="text/javascript"></script>
+    
+    <script src="assets/file_6.js"
+        type="text/javascript"></script>
+    
+
+    <script type="application/json" id="jsTreeJSON">
+        [{"id":"lib/utils/stringify-response.js","text":"stringify-response.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"lib/utils/stringify-response.js.html"},"state":{"selected":false}},{"id":"lib","text":"lib","icon":"jstree-folder","parent":"#","a_attr":{"href":"lib"},"state":{"opened":false}},{"id":"lib/index.js","text":"index.js","icon":"jstree-file","parent":"lib","a_attr":{"href":"lib/index.js.html"},"state":{"selected":false}},{"id":"lib/node.js","text":"node.js","icon":"jstree-file","parent":"lib","a_attr":{"href":"lib/node.js.html"},"state":{"selected":false}},{"id":"lib/utils","text":"utils","icon":"jstree-folder","parent":"lib","a_attr":{"href":"lib/utils"},"state":{"opened":false}},{"id":"lib/utils/a11y-auditor.js","text":"a11y-auditor.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"lib/utils/a11y-auditor.js.html"},"state":{"selected":false}},{"id":"lib/utils/normalize-config.js","text":"normalize-config.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"lib/utils/normalize-config.js.html"},"state":{"selected":false}},{"id":"lib/utils/phantomjs-runner.js","text":"phantomjs-runner.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"lib/utils/phantomjs-runner.js.html"},"state":{"selected":false}},{"id":"lib/browser.js","text":"browser.js","icon":"jstree-file","parent":"lib","a_attr":{"href":"lib/browser.js.html"},"state":{"selected":false}},{"id":"test","text":"test","icon":"jstree-folder","parent":"#","a_attr":{"href":"test"},"state":{"opened":false}},{"id":"test/amd-specs.js","text":"amd-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"test/amd-specs.js.html"},"state":{"selected":false}},{"id":"test/commonjs-specs.js","text":"commonjs-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"test/commonjs-specs.js.html"},"state":{"selected":false}},{"id":"test/nodejs-specs.js","text":"nodejs-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"test/nodejs-specs.js.html"},"state":{"selected":false}},{"id":"test/require-config.js","text":"require-config.js","icon":"jstree-file","parent":"test","a_attr":{"href":"test/require-config.js.html"},"state":{"selected":false}},{"id":"test/script-tag-specs.js","text":"script-tag-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"test/script-tag-specs.js.html"},"state":{"selected":false}},{"id":"Gruntfile.js","text":"Gruntfile.js","icon":"jstree-file","parent":"#","a_attr":{"href":"Gruntfile.js.html"},"state":{"selected":true}},{"id":"README.md","text":"README.md","icon":"jstree-file","parent":"#","a_attr":{"href":"README.md.html"},"state":{"selected":false}}]
+    </script>
+</head>
+<body class="markdown-body">
+<h1>
+    Gruntfile
+</h1>
+<div class="subHeading">
+    Gruntfile.js
+</div>
+<button type="button" class="navigatorToggle">&#9776; files...</button>
+<nav class="navigationTree minimized">
+    <input type="text" id="jsTreeSearch" placeholder="search..."/>
+    <div></div>
+</nav>
+<section>
+    <ul class="sectionDetails ">
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+                
+            </div><div class="content">
+                <div class="highlight"><pre><span class="hljs-meta">'use strict'</span>;
+<span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+                <p> js-hint options. See the complete list of options <a href="http://jshint.com/docs/options/">here</a></p>
+
+            </div><div class="content">
+                <div class="highlight"><pre><span class="hljs-keyword">var</span> jshintOptions = {
+    nonew: <span class="hljs-literal">true</span>,
+    plusplus: <span class="hljs-literal">true</span>,
+    curly: <span class="hljs-literal">true</span>,
+    latedef: <span class="hljs-literal">true</span>,
+    maxdepth: <span class="hljs-number">6</span>,
+    unused: <span class="hljs-literal">true</span>,
+    noarg: <span class="hljs-literal">true</span>,
+    trailing: <span class="hljs-literal">true</span>,
+    indent: <span class="hljs-number">4</span>,
+    forin: <span class="hljs-literal">true</span>,
+    noempty: <span class="hljs-literal">true</span>,
+    quotmark: <span class="hljs-literal">true</span>,
+    maxparams: <span class="hljs-number">6</span>,
+    node: <span class="hljs-literal">true</span>,
+    eqeqeq: <span class="hljs-literal">true</span>,
+    strict: <span class="hljs-literal">true</span>,
+    undef: <span class="hljs-literal">true</span>,
+    bitwise: <span class="hljs-literal">true</span>,
+    newcap: <span class="hljs-literal">true</span>,
+    immed: <span class="hljs-literal">true</span>,
+    camelcase: <span class="hljs-literal">true</span>,
+    maxcomplexity: <span class="hljs-number">7</span>,
+    maxlen: <span class="hljs-number">120</span>,
+    nonbsp: <span class="hljs-literal">true</span>,
+    freeze: <span class="hljs-literal">true</span>
+};
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">grunt</span>) </span>{</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+                <p> loading the npm task</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>    grunt.loadNpmTasks(<span class="hljs-string">'grunt-contrib-jshint'</span>);
+    grunt.loadNpmTasks(<span class="hljs-string">'grunt-docco-plus'</span>);
+    grunt.loadNpmTasks(<span class="hljs-string">'grunt-gh-pages'</span>);
+    grunt.loadNpmTasks(<span class="hljs-string">'grunt-contrib-copy'</span>);
+    grunt.loadNpmTasks(<span class="hljs-string">'grunt-mocha-test'</span>);
+    grunt.loadNpmTasks(<span class="hljs-string">'grunt-karma'</span>);
+    grunt.loadNpmTasks(<span class="hljs-string">'grunt-istanbul'</span>);
+    grunt.loadNpmTasks(<span class="hljs-string">'grunt-env'</span>);
+    grunt.loadNpmTasks(<span class="hljs-string">'grunt-coveralls'</span>);
+    grunt.loadNpmTasks(<span class="hljs-string">'grunt-contrib-clean'</span>);</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+                <p> Project configuration.</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>    grunt.initConfig({
+        pkg: grunt.file.readJSON(<span class="hljs-string">'package.json'</span>),
+        clean: [
+            <span class="hljs-string">'.coverage'</span>,
+            <span class="hljs-string">'.test'</span>,
+            <span class="hljs-string">'.cache'</span>
+        ],
+        copy: {
+            coverage: {
+                src: <span class="hljs-string">'lib/**'</span>,
+                dest: <span class="hljs-string">'.coverage/instrument/'</span>,</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+                <p> Copy if file does not exist.</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>                filter: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">filepath</span>) </span>{</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+                <p> Construct the destination file path.</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>                    <span class="hljs-keyword">var</span> dest = path.join(
+                        grunt.config(<span class="hljs-string">'copy.coverage.dest'</span>),
+                        path.relative(process.cwd(), filepath)
+                    );</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+                <p> Return false if the file exists.</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>                    <span class="hljs-keyword">return</span> !(grunt.file.exists(dest));
+                }
+            }
+        },
+        jshint: {
+            lib: {
+                src: [
+                    <span class="hljs-string">'lib/**/*.js'</span>,
+                    <span class="hljs-string">'test/**/*.js'</span>,
+                    <span class="hljs-string">'Gruntfile.js'</span>,
+                    <span class="hljs-string">'package.json'</span>
+                ],
+                options: jshintOptions
+            }
+        },
+        karma: {
+            testAMD: {
+                frameworks: [
+                    <span class="hljs-string">'requirejs'</span>,
+                    <span class="hljs-string">'mocha'</span>,
+                    <span class="hljs-string">'chai'</span>
+                ],
+                files: [
+                    {
+                        src: [
+                            <span class="hljs-string">'node_modules/requirejs/require.js'</span>,
+                            <span class="hljs-string">'test/require-config.js'</span>
+                        ],
+                        served: <span class="hljs-literal">true</span>,
+                        included: <span class="hljs-literal">true</span>
+                    },
+                    {
+                        src: [
+                            <span class="hljs-string">'test/amd-specs.js'</span>,
+                            <span class="hljs-string">'lib/**/*.js'</span>,
+                            <span class="hljs-string">'node_modules/jquery/dist/jquery.js'</span>,
+                            <span class="hljs-string">'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'</span>
+                        ],
+                        served: <span class="hljs-literal">true</span>,
+                        included: <span class="hljs-literal">false</span>
+                    }
+                ],
+                plugins: [
+                    <span class="hljs-string">'karma-requirejs'</span>,
+                    <span class="hljs-string">'karma-chai'</span>,
+                    <span class="hljs-string">'karma-mocha'</span>,
+                    <span class="hljs-string">'karma-mocha-reporter'</span>,
+                    <span class="hljs-string">'karma-phantomjs-launcher'</span>
+                ]
+            },
+            coverageAMD: {
+                frameworks: [
+                    <span class="hljs-string">'requirejs'</span>,
+                    <span class="hljs-string">'mocha'</span>,
+                    <span class="hljs-string">'chai'</span>
+                ],
+                files: [
+                    {
+                        src: [
+                            <span class="hljs-string">'node_modules/requirejs/require.js'</span>,
+                            <span class="hljs-string">'test/require-config.js'</span>
+                        ],
+                        served: <span class="hljs-literal">true</span>,
+                        included: <span class="hljs-literal">true</span>
+                    },
+                    {
+                        src: [
+                            <span class="hljs-string">'test/amd-specs.js'</span>,
+                            <span class="hljs-string">'lib/**/*.js'</span>,
+                            <span class="hljs-string">'node_modules/jquery/dist/jquery.js'</span>,
+                            <span class="hljs-string">'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'</span>
+                        ],
+                        served: <span class="hljs-literal">true</span>,
+                        included: <span class="hljs-literal">false</span>
+                    }
+                ],
+                plugins: [
+                    <span class="hljs-string">'karma-requirejs'</span>,
+                    <span class="hljs-string">'karma-coverage'</span>,
+                    <span class="hljs-string">'karma-chai'</span>,
+                    <span class="hljs-string">'karma-mocha'</span>,
+                    <span class="hljs-string">'karma-mocha-reporter'</span>,
+                    <span class="hljs-string">'karma-phantomjs-launcher'</span>
+                ],
+                preprocessors: {
+                    <span class="hljs-string">'lib/**/*.js'</span>: [
+                        <span class="hljs-string">'coverage'</span>
+                    ]
+                },
+                reporters: [
+                    <span class="hljs-string">'mocha'</span>,
+                    <span class="hljs-string">'coverage'</span>
+                ],
+                coverageReporter: {
+                    dir: <span class="hljs-string">'.coverage'</span>,
+                    reporters: [
+                        {
+                            type: <span class="hljs-string">'json'</span>,
+                            subdir: <span class="hljs-string">'json/amd'</span>
+                        },
+                        {
+                            type: <span class="hljs-string">'html'</span>,
+                            subdir: <span class="hljs-string">'html/amd'</span>
+                        }
+                    ]
+                }
+            },
+            testCommonJs: {
+                frameworks: [
+                    <span class="hljs-string">'lasso'</span>,
+                    <span class="hljs-string">'mocha'</span>
+                ],
+                lasso: {
+                    minify: <span class="hljs-literal">false</span>,
+                    bundlingEnabled: <span class="hljs-literal">false</span>,
+                    cacheProfile: <span class="hljs-string">'development'</span>,
+                    tempdir: <span class="hljs-string">'.test'</span>,
+                    ignore: <span class="hljs-string">'node_modules/accessibility-developer-tools/**'</span>
+                },
+                files: [
+                    {
+                        src: [
+                            <span class="hljs-string">'test/commonjs-specs.js'</span>,
+                            <span class="hljs-string">'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'</span>
+                        ]
+                    }
+                ],
+                plugins: [
+                    <span class="hljs-string">'karma-chai'</span>,
+                    <span class="hljs-string">'karma-mocha'</span>,
+                    <span class="hljs-string">'karma-lasso'</span>,
+                    <span class="hljs-string">'karma-mocha-reporter'</span>,
+                    <span class="hljs-string">'karma-phantomjs-launcher'</span>
+                ]
+            },
+            coverageCommonJs: {
+                frameworks: [
+                    <span class="hljs-string">'lasso'</span>,
+                    <span class="hljs-string">'mocha'</span>
+                ],
+                lasso: {
+                    minify: <span class="hljs-literal">false</span>,
+                    bundlingEnabled: <span class="hljs-literal">false</span>,
+                    cacheProfile: <span class="hljs-string">'development'</span>,
+                    tempdir: <span class="hljs-string">'.coverage'</span>,
+                    ignore: <span class="hljs-string">'node_modules/accessibility-developer-tools/**'</span>,
+                    coverage: {
+                        files: <span class="hljs-string">'**/*.js'</span>,
+                        reporters: [
+                            {
+                                type: <span class="hljs-string">'json'</span>,
+                                dir: <span class="hljs-string">'.coverage/json/common'</span>
+                            },
+                            {
+                                type: <span class="hljs-string">'html'</span>,
+                                dir: <span class="hljs-string">'./.coverage/html/common'</span>
+                            }
+                        ]
+                    }
+                },
+                files: [
+                    {
+                        src: [
+                            <span class="hljs-string">'test/commonjs-specs.js'</span>,
+                            <span class="hljs-string">'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'</span>
+                        ]
+                    }
+                ],
+                plugins: [
+                    <span class="hljs-string">'karma-chai'</span>,
+                    <span class="hljs-string">'karma-mocha'</span>,
+                    <span class="hljs-string">'karma-lasso'</span>,
+                    <span class="hljs-string">'karma-mocha-reporter'</span>,
+                    <span class="hljs-string">'karma-phantomjs-launcher'</span>
+                ],
+                reporters: [
+                    <span class="hljs-string">'mocha'</span>,
+                    <span class="hljs-string">'lasso'</span>
+                ]
+            },
+            testScriptTag: {
+                frameworks: [
+                    <span class="hljs-string">'mocha'</span>,
+                    <span class="hljs-string">'chai'</span>
+                ],
+                files: [
+                    {
+                        src: [
+                            <span class="hljs-string">'node_modules/jquery/dist/jquery.js'</span>,
+                            <span class="hljs-string">'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'</span>,
+                            <span class="hljs-string">'lib/index.js'</span>,
+                            <span class="hljs-string">'test/script-tag-specs.js'</span>
+                        ]
+                    }
+                ],
+                plugins: [
+                    <span class="hljs-string">'karma-chai'</span>,
+                    <span class="hljs-string">'karma-mocha'</span>,
+                    <span class="hljs-string">'karma-mocha-reporter'</span>,
+                    <span class="hljs-string">'karma-phantomjs-launcher'</span>
+                ],
+                client: {
+                    mocha: {
+                        ui: <span class="hljs-string">'bdd'</span>
+                    }
+                }
+            },
+            coverageScriptTag: {
+                frameworks: [
+                    <span class="hljs-string">'mocha'</span>,
+                    <span class="hljs-string">'chai'</span>
+                ],
+                files: [
+                    {
+                        src: [
+                            <span class="hljs-string">'node_modules/jquery/dist/jquery.js'</span>,
+                            <span class="hljs-string">'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'</span>,
+                            <span class="hljs-string">'lib/index.js'</span>,
+                            <span class="hljs-string">'test/script-tag-specs.js'</span>
+                        ]
+                    }
+                ],
+                plugins: [
+                    <span class="hljs-string">'karma-chai'</span>,
+                    <span class="hljs-string">'karma-mocha'</span>,
+                    <span class="hljs-string">'karma-coverage'</span>,
+                    <span class="hljs-string">'karma-mocha-reporter'</span>,
+                    <span class="hljs-string">'karma-phantomjs-launcher'</span>
+                ],
+                preprocessors: {
+                    <span class="hljs-string">'lib/**/*.js'</span>: [
+                        <span class="hljs-string">'coverage'</span>
+                    ]
+                },
+                reporters: [
+                    <span class="hljs-string">'mocha'</span>,
+                    <span class="hljs-string">'coverage'</span>
+                ],
+                coverageReporter: {
+                    dir: <span class="hljs-string">'.coverage'</span>,
+                    reporters: [
+                        {
+                            type: <span class="hljs-string">'json'</span>,
+                            subdir: <span class="hljs-string">'json/tag'</span>
+                        },
+                        {
+                            type: <span class="hljs-string">'html'</span>,
+                            subdir: <span class="hljs-string">'html/tag'</span>
+                        }
+                    ]
+                },
+                client: {
+                    mocha: {
+                        ui: <span class="hljs-string">'bdd'</span>
+                    }
+                }
+            },
+            options: {
+                browsers: [
+                    <span class="hljs-string">'PhantomJS'</span>
+                ],
+                client: {
+                    mocha: {
+                        timeout: <span class="hljs-number">500</span>,
+                        ui: <span class="hljs-string">'bdd'</span>
+                    }
+                },
+                singleRun: <span class="hljs-literal">true</span>,
+                reporters: [
+                    <span class="hljs-string">'mocha'</span>
+                ],
+                logLevel: <span class="hljs-string">'WARN'</span>
+            }
+        },</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+                <p> Configure a mochaTest task</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>        mochaTest: {
+            test: {
+                options: {
+                    reporter: <span class="hljs-string">'spec'</span>
+                },
+                src: [
+                    <span class="hljs-string">'test/nodejs-specs.js'</span>
+                ]
+            }
+        },
+        instrument: {
+            files: [
+                <span class="hljs-string">'lib/node.js'</span>
+            ],
+            options: {
+                lazy: <span class="hljs-literal">false</span>,
+                basePath: <span class="hljs-string">'.coverage/instrument/'</span>
+            }
+        },
+        storeCoverage: {
+            options: {
+                dir: <span class="hljs-string">'.coverage/json/'</span>
+            }
+        },
+        makeReport: {
+            src: <span class="hljs-string">'.coverage/json/**/*.json'</span>,
+            options: {
+                type: <span class="hljs-string">'lcov'</span>,
+                dir: <span class="hljs-string">'.coverage/reports/'</span>,
+                print: <span class="hljs-string">'detail'</span>
+            }
+        },
+        env: {
+            coverage: {
+                APP_DIR_FOR_CODE_COVERAGE: <span class="hljs-string">'.coverage/instrument/'</span>
+            }
+        },
+        <span class="hljs-string">'docco-plus'</span>: {
+            debug: {
+                src: [
+                    <span class="hljs-string">'lib/**'</span>,
+                    <span class="hljs-string">'test/**'</span>,
+                    <span class="hljs-string">'*.js'</span>,
+                    <span class="hljs-string">'*.md'</span>
+                ],
+                options: {
+                    output: <span class="hljs-string">'.docs/'</span>
+                }
+            }
+        },
+        <span class="hljs-string">'gh-pages'</span>: {
+            options: {
+                base: <span class="hljs-string">'.docs'</span>,</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+                <p> GH_TOKEN is the environment variable holding the access token for the repository</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>                repo: <span class="hljs-string">'https://'</span> + process.env.GH_TOKEN + <span class="hljs-string">'@github.com/'</span> + process.env.TRAVIS_REPO_SLUG + <span class="hljs-string">'.git'</span>,
+                clone: <span class="hljs-string">'.gh_pages'</span>,
+                message: <span class="hljs-string">'build #'</span> + process.env.TRAVIS_BUILD_NUMBER + <span class="hljs-string">' travis commit'</span>,</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+                <p> This configuration will suppress logging and sanitize error messages.</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>                silent: <span class="hljs-literal">true</span>,
+                user: {
+                    name: <span class="hljs-string">'travis'</span>,
+                    email: <span class="hljs-string">'travis@travis-ci.com'</span>
+                }
+            },
+            src: [
+                <span class="hljs-string">'**'</span>
+            ]
+        },
+        coveralls: {
+            lcov: {</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+                <p> LCOV coverage file relevant to every target</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>                src: <span class="hljs-string">'.coverage/reports/lcov.info'</span>
+            }
+        }
+    });
+    grunt.registerTask(<span class="hljs-string">'test'</span>, [
+        <span class="hljs-string">'clean'</span>,
+        <span class="hljs-string">'jshint'</span>,
+        <span class="hljs-string">'mochaTest:test'</span>,
+        <span class="hljs-string">'karma:testAMD'</span>,
+        <span class="hljs-string">'karma:testCommonJs'</span>,
+        <span class="hljs-string">'karma:testScriptTag'</span>
+    ]);
+    grunt.registerTask(<span class="hljs-string">'coverage'</span>, [
+        <span class="hljs-string">'clean'</span>,
+        <span class="hljs-string">'instrument'</span>,
+        <span class="hljs-string">'env:coverage'</span>,
+        <span class="hljs-string">'copy:coverage'</span>,
+        <span class="hljs-string">'mochaTest'</span>,
+        <span class="hljs-string">'storeCoverage'</span>,
+        <span class="hljs-string">'karma:coverageAMD'</span>,
+        <span class="hljs-string">'karma:coverageCommonJs'</span>,
+        <span class="hljs-string">'karma:coverageScriptTag'</span>,
+        <span class="hljs-string">'makeReport'</span>,
+        <span class="hljs-string">'coveralls:lcov'</span>
+    ]);
+    grunt.registerTask(<span class="hljs-string">'document'</span>, [
+        <span class="hljs-string">'docco-plus'</span>
+    ]);
+};</pre></div>
+            </div>
+        </li>
+        
+    </ul>
+</section>
+</body>
+</html>

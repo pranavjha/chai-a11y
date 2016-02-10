@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>browser</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+        content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../assets/file_1.css"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../assets/file_5.css"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../assets/32px.png"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../assets/40px.png"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../assets/throbber.gif"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../assets/file_7.css"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../assets/file_8.css"/>
+    
+
+    
+    <script src="../assets/file_2.js"
+        type="text/javascript"></script>
+    
+    <script src="../assets/file_3.js"
+        type="text/javascript"></script>
+    
+    <script src="../assets/file_4.js"
+        type="text/javascript"></script>
+    
+    <script src="../assets/file_6.js"
+        type="text/javascript"></script>
+    
+
+    <script type="application/json" id="jsTreeJSON">
+        [{"id":"lib/utils/stringify-response.js","text":"stringify-response.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"utils/stringify-response.js.html"},"state":{"selected":false}},{"id":"lib","text":"lib","icon":"jstree-folder","parent":"#","a_attr":{"href":"."},"state":{"opened":true}},{"id":"lib/index.js","text":"index.js","icon":"jstree-file","parent":"lib","a_attr":{"href":"index.js.html"},"state":{"selected":false}},{"id":"lib/node.js","text":"node.js","icon":"jstree-file","parent":"lib","a_attr":{"href":"node.js.html"},"state":{"selected":false}},{"id":"lib/utils","text":"utils","icon":"jstree-folder","parent":"lib","a_attr":{"href":"utils"},"state":{"opened":false}},{"id":"lib/utils/a11y-auditor.js","text":"a11y-auditor.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"utils/a11y-auditor.js.html"},"state":{"selected":false}},{"id":"lib/utils/normalize-config.js","text":"normalize-config.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"utils/normalize-config.js.html"},"state":{"selected":false}},{"id":"lib/utils/phantomjs-runner.js","text":"phantomjs-runner.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"utils/phantomjs-runner.js.html"},"state":{"selected":false}},{"id":"lib/browser.js","text":"browser.js","icon":"jstree-file","parent":"lib","a_attr":{"href":"browser.js.html"},"state":{"selected":true}},{"id":"test","text":"test","icon":"jstree-folder","parent":"#","a_attr":{"href":"../test"},"state":{"opened":false}},{"id":"test/amd-specs.js","text":"amd-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"../test/amd-specs.js.html"},"state":{"selected":false}},{"id":"test/commonjs-specs.js","text":"commonjs-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"../test/commonjs-specs.js.html"},"state":{"selected":false}},{"id":"test/nodejs-specs.js","text":"nodejs-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"../test/nodejs-specs.js.html"},"state":{"selected":false}},{"id":"test/require-config.js","text":"require-config.js","icon":"jstree-file","parent":"test","a_attr":{"href":"../test/require-config.js.html"},"state":{"selected":false}},{"id":"test/script-tag-specs.js","text":"script-tag-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"../test/script-tag-specs.js.html"},"state":{"selected":false}},{"id":"Gruntfile.js","text":"Gruntfile.js","icon":"jstree-file","parent":"#","a_attr":{"href":"../Gruntfile.js.html"},"state":{"selected":false}},{"id":"README.md","text":"README.md","icon":"jstree-file","parent":"#","a_attr":{"href":"../README.md.html"},"state":{"selected":false}}]
+    </script>
+</head>
+<body class="markdown-body">
+<h1>
+    browser
+</h1>
+<div class="subHeading">
+    lib/browser.js
+</div>
+<button type="button" class="navigatorToggle">&#9776; files...</button>
+<nav class="navigationTree minimized">
+    <input type="text" id="jsTreeSearch" placeholder="search..."/>
+    <div></div>
+</nav>
+<section>
+    <ul class="sectionDetails ">
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+                
+            </div><div class="content">
+                <div class="highlight"><pre><span class="hljs-comment">/* globals window, document, axs */</span></pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+                <h2 id="plugin-implementation-for-browsers-">plugin implementation for browsers.</h2>
+
+            </div><div class="content">
+                <div class="highlight"><pre><span class="hljs-meta">'use strict'</span>;
+<span class="hljs-keyword">var</span> $ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'jquery'</span>);</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+                <p> this function loads accessibility developer tools in the browser environment by injecting a script tag if it doesn’t
+ already exist. Once it ensures that the accessibility tool is loaded in the browser, it calls the callback</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre><span class="hljs-keyword">var</span> loadPlugin = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">cb, eb</span>) </span>{
+    <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">window</span>.axs) {</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+                <p> add the accessibility tool if not present</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>        <span class="hljs-keyword">var</span> scriptTag = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>);
+        scriptTag.type = <span class="hljs-string">'text\/javascript'</span>;
+        scriptTag.onerror = eb;</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+                <p> call the callback once the script loads</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>        scriptTag.onload = cb;
+        <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'head'</span>)[<span class="hljs-number">0</span>].appendChild(scriptTag);</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+                <p> [why rawgit.com instead of raw.github.com]
+ (<a href="http://stackoverflow.com/questions/17341122/link-and-execute-external-javascript-file-hosted-on-github">http://stackoverflow.com/questions/17341122/link-and-execute-external-javascript-file-hosted-on-github</a>)</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>        scriptTag.src = <span class="hljs-string">'//rawgit.com/GoogleChrome/accessibility-developer-tools/stable/dist/js/axs_testing.js'</span>;
+    } <span class="hljs-keyword">else</span> {</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+                <p> if accessibility tools are present, call the callback directly</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>        <span class="hljs-built_in">window</span>.setTimeout(cb);
+    }
+};</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+                <p> actual plugin implementation</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chaiAccessibility</span>(<span class="hljs-params">chai</span>) </span>{
+    <span class="hljs-keyword">var</span> Assertion = chai.Assertion;
+    Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config</span>) </span>{
+        <span class="hljs-keyword">var</span> deferred = $.Deferred();</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+                <p> fetch the element, Element here can be a DOM element, a jQuery element or a HTML String. So, we wrap it in a
+ jQuery object to normalize</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>        <span class="hljs-keyword">var</span> element = $(<span class="hljs-keyword">this</span>._obj);</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+                <p> this boolean is true if the element send was not a part of the DOM and is appended to the DOM by this
+ assertion library</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>        <span class="hljs-keyword">var</span> isOrphan = !$.contains(<span class="hljs-built_in">document</span>, element.get(<span class="hljs-number">0</span>));
+        <span class="hljs-keyword">if</span> (isOrphan) {</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+                <p> if the element is not in the dom, we append it into the DOM</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>            element.appendTo($(<span class="hljs-string">'body'</span>));
+        }
+        loadPlugin(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+                <p> Run the auditor</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>            <span class="hljs-keyword">var</span> configuration = <span class="hljs-keyword">new</span> axs.AuditConfiguration();
+            configuration.scope = element.get(<span class="hljs-number">0</span>);
+            configuration.showUnsupportedRulesWarning = <span class="hljs-literal">false</span>;</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+                <p> normalize config</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>            config = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/normalize-config'</span>)(config);
+            config.ignore.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ignores</span>) </span>{
+                configuration.ignoreSelectors(ignores[<span class="hljs-number">0</span>], ignores[<span class="hljs-number">1</span>] || <span class="hljs-string">'*'</span>);
+            });
+            <span class="hljs-keyword">var</span> response = axs.Audit.run(configuration);</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+                <p> parse the audit results</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>            <span class="hljs-keyword">var</span> message = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/stringify-response'</span>)(response);
+            <span class="hljs-keyword">if</span> (isOrphan) {</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+                <p> if the element was not in the dom, we remove it</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>                element.remove();
+            }
+            <span class="hljs-keyword">if</span> (!message) {</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+                <p> if the audit is successful, the test passes</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>                deferred.resolve(<span class="hljs-string">'OK'</span>);
+            } <span class="hljs-keyword">else</span> {</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+                <p> if the audit fails, the test fails</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>                deferred.reject(message);
+            }
+        }, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+                <p> fail the test if the plugin doesn’t load</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>            deferred.reject(e);
+        });
+        <span class="hljs-keyword">return</span> deferred.promise();
+    });
+};</pre></div>
+            </div>
+        </li>
+        
+    </ul>
+</section>
+</body>
+</html>

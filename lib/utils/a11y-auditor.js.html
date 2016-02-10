@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>a11y-auditor</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+        content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../../assets/file_1.css"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../../assets/file_5.css"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../../assets/32px.png"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../../assets/40px.png"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../../assets/throbber.gif"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../../assets/file_7.css"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="../../assets/file_8.css"/>
+    
+
+    
+    <script src="../../assets/file_2.js"
+        type="text/javascript"></script>
+    
+    <script src="../../assets/file_3.js"
+        type="text/javascript"></script>
+    
+    <script src="../../assets/file_4.js"
+        type="text/javascript"></script>
+    
+    <script src="../../assets/file_6.js"
+        type="text/javascript"></script>
+    
+
+    <script type="application/json" id="jsTreeJSON">
+        [{"id":"lib/utils/stringify-response.js","text":"stringify-response.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"stringify-response.js.html"},"state":{"selected":false}},{"id":"lib","text":"lib","icon":"jstree-folder","parent":"#","a_attr":{"href":".."},"state":{"opened":true}},{"id":"lib/index.js","text":"index.js","icon":"jstree-file","parent":"lib","a_attr":{"href":"../index.js.html"},"state":{"selected":false}},{"id":"lib/node.js","text":"node.js","icon":"jstree-file","parent":"lib","a_attr":{"href":"../node.js.html"},"state":{"selected":false}},{"id":"lib/utils","text":"utils","icon":"jstree-folder","parent":"lib","a_attr":{"href":"."},"state":{"opened":true}},{"id":"lib/utils/a11y-auditor.js","text":"a11y-auditor.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"a11y-auditor.js.html"},"state":{"selected":true}},{"id":"lib/utils/normalize-config.js","text":"normalize-config.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"normalize-config.js.html"},"state":{"selected":false}},{"id":"lib/utils/phantomjs-runner.js","text":"phantomjs-runner.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"phantomjs-runner.js.html"},"state":{"selected":false}},{"id":"lib/browser.js","text":"browser.js","icon":"jstree-file","parent":"lib","a_attr":{"href":"../browser.js.html"},"state":{"selected":false}},{"id":"test","text":"test","icon":"jstree-folder","parent":"#","a_attr":{"href":"../../test"},"state":{"opened":false}},{"id":"test/amd-specs.js","text":"amd-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"../../test/amd-specs.js.html"},"state":{"selected":false}},{"id":"test/commonjs-specs.js","text":"commonjs-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"../../test/commonjs-specs.js.html"},"state":{"selected":false}},{"id":"test/nodejs-specs.js","text":"nodejs-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"../../test/nodejs-specs.js.html"},"state":{"selected":false}},{"id":"test/require-config.js","text":"require-config.js","icon":"jstree-file","parent":"test","a_attr":{"href":"../../test/require-config.js.html"},"state":{"selected":false}},{"id":"test/script-tag-specs.js","text":"script-tag-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"../../test/script-tag-specs.js.html"},"state":{"selected":false}},{"id":"Gruntfile.js","text":"Gruntfile.js","icon":"jstree-file","parent":"#","a_attr":{"href":"../../Gruntfile.js.html"},"state":{"selected":false}},{"id":"README.md","text":"README.md","icon":"jstree-file","parent":"#","a_attr":{"href":"../../README.md.html"},"state":{"selected":false}}]
+    </script>
+</head>
+<body class="markdown-body">
+<h1>
+    a11y-auditor
+</h1>
+<div class="subHeading">
+    lib/utils/a11y-auditor.js
+</div>
+<button type="button" class="navigatorToggle">&#9776; files...</button>
+<nav class="navigationTree minimized">
+    <input type="text" id="jsTreeSearch" placeholder="search..."/>
+    <div></div>
+</nav>
+<section>
+    <ul class="sectionDetails ">
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+                
+            </div><div class="content">
+                <div class="highlight"><pre><span class="hljs-comment">/* globals phantom, axs */</span></pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+                <p> Conducts audits using the Chrome Accessibility Tools and PhantomJS.</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre><span class="hljs-meta">'use strict'</span>;
+<span class="hljs-keyword">var</span> system = <span class="hljs-built_in">require</span>(<span class="hljs-string">'system'</span>);
+<span class="hljs-keyword">var</span> webpage = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpage'</span>).create();
+<span class="hljs-keyword">var</span> config = <span class="hljs-built_in">JSON</span>.parse(system.args[<span class="hljs-number">1</span>]);
+<span class="hljs-keyword">var</span> PAGE_TIMEOUT = <span class="hljs-number">9000</span>;</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+                <p> path for accessibility testing files
+ formats the webpage error for readability</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre><span class="hljs-keyword">var</span> formatTrace = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">trace</span>) </span>{
+    <span class="hljs-keyword">var</span> src = trace.file || trace.sourceURL;
+    <span class="hljs-keyword">var</span> fn = (trace.function ? <span class="hljs-string">' in function '</span> + trace.function : <span class="hljs-string">''</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'→ '</span> + src + <span class="hljs-string">' on line '</span> + trace.line + fn;
+};</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+                <p> console.error is broken in PhantomJS</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre><span class="hljs-built_in">console</span>.error = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    system.stderr.writeLine([].slice.call(<span class="hljs-built_in">arguments</span>).join(<span class="hljs-string">' '</span>));
+};
+
+webpage.settings.resourceTimeout = PAGE_TIMEOUT;
+
+webpage.viewportSize = {
+    width: config.width,
+    height: config.height
+};
+
+webpage.onResourceTimeout = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error code:'</span> + err.errorCode + <span class="hljs-string">' '</span> + err.errorString + <span class="hljs-string">' for '</span> + err.url);
+    phantom.exit(<span class="hljs-number">1</span>);
+};
+
+webpage.onError = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, trace</span>) </span>{
+    <span class="hljs-built_in">console</span>.error(err + <span class="hljs-string">'\n'</span> + formatTrace(trace[<span class="hljs-number">0</span>]) + <span class="hljs-string">'\n'</span>);
+};
+
+webpage.open(config.url, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">status</span>) </span>{
+    <span class="hljs-keyword">if</span> (status === <span class="hljs-string">'fail'</span>) {
+        <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'Couldn\'t load url.'</span>);
+        phantom.exit(<span class="hljs-number">1</span>);
+    }</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+                <p> Inject axs_testing</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>    webpage.injectJs(config.auditorPath);
+    <span class="hljs-keyword">var</span> ret = webpage.evaluate(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config</span>) </span>{</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+                <p> Run the auditor</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>        <span class="hljs-keyword">var</span> configuration = <span class="hljs-keyword">new</span> axs.AuditConfiguration();
+        configuration.showUnsupportedRulesWarning = <span class="hljs-literal">false</span>;</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+                <p> normalize config</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>        config.ignore.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ignores</span>) </span>{
+            configuration.ignoreSelectors(ignores[<span class="hljs-number">0</span>], ignores[<span class="hljs-number">1</span>] || <span class="hljs-string">'*'</span>);
+        });
+        <span class="hljs-keyword">return</span> axs.Audit.run(configuration);
+    }, config);
+
+    <span class="hljs-keyword">if</span> (!ret) {
+        system.stderr.writeLine(<span class="hljs-string">'Audit failed'</span>);
+        phantom.exit(<span class="hljs-number">1</span>);
+        <span class="hljs-keyword">return</span>;
+    }</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+                <p> log the result in console so that it can be picked up form node</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(ret));
+    phantom.exit();
+});</pre></div>
+            </div>
+        </li>
+        
+    </ul>
+</section>
+</body>
+</html>

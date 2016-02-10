@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>chai-a11y</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+        content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    
+    <link rel="stylesheet"
+        media="all"
+        href="assets/file_1.css"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="assets/file_5.css"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="assets/32px.png"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="assets/40px.png"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="assets/throbber.gif"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="assets/file_7.css"/>
+    
+    <link rel="stylesheet"
+        media="all"
+        href="assets/file_8.css"/>
+    
+
+    
+    <script src="assets/file_2.js"
+        type="text/javascript"></script>
+    
+    <script src="assets/file_3.js"
+        type="text/javascript"></script>
+    
+    <script src="assets/file_4.js"
+        type="text/javascript"></script>
+    
+    <script src="assets/file_6.js"
+        type="text/javascript"></script>
+    
+
+    <script type="application/json" id="jsTreeJSON">
+        [{"id":"lib/utils/stringify-response.js","text":"stringify-response.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"lib/utils/stringify-response.js.html"},"state":{"selected":false}},{"id":"lib","text":"lib","icon":"jstree-folder","parent":"#","a_attr":{"href":"lib"},"state":{"opened":false}},{"id":"lib/index.js","text":"index.js","icon":"jstree-file","parent":"lib","a_attr":{"href":"lib/index.js.html"},"state":{"selected":false}},{"id":"lib/node.js","text":"node.js","icon":"jstree-file","parent":"lib","a_attr":{"href":"lib/node.js.html"},"state":{"selected":false}},{"id":"lib/utils","text":"utils","icon":"jstree-folder","parent":"lib","a_attr":{"href":"lib/utils"},"state":{"opened":false}},{"id":"lib/utils/a11y-auditor.js","text":"a11y-auditor.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"lib/utils/a11y-auditor.js.html"},"state":{"selected":false}},{"id":"lib/utils/normalize-config.js","text":"normalize-config.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"lib/utils/normalize-config.js.html"},"state":{"selected":false}},{"id":"lib/utils/phantomjs-runner.js","text":"phantomjs-runner.js","icon":"jstree-file","parent":"lib/utils","a_attr":{"href":"lib/utils/phantomjs-runner.js.html"},"state":{"selected":false}},{"id":"lib/browser.js","text":"browser.js","icon":"jstree-file","parent":"lib","a_attr":{"href":"lib/browser.js.html"},"state":{"selected":false}},{"id":"test","text":"test","icon":"jstree-folder","parent":"#","a_attr":{"href":"test"},"state":{"opened":false}},{"id":"test/amd-specs.js","text":"amd-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"test/amd-specs.js.html"},"state":{"selected":false}},{"id":"test/commonjs-specs.js","text":"commonjs-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"test/commonjs-specs.js.html"},"state":{"selected":false}},{"id":"test/nodejs-specs.js","text":"nodejs-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"test/nodejs-specs.js.html"},"state":{"selected":false}},{"id":"test/require-config.js","text":"require-config.js","icon":"jstree-file","parent":"test","a_attr":{"href":"test/require-config.js.html"},"state":{"selected":false}},{"id":"test/script-tag-specs.js","text":"script-tag-specs.js","icon":"jstree-file","parent":"test","a_attr":{"href":"test/script-tag-specs.js.html"},"state":{"selected":false}},{"id":"Gruntfile.js","text":"Gruntfile.js","icon":"jstree-file","parent":"#","a_attr":{"href":"Gruntfile.js.html"},"state":{"selected":false}},{"id":"README.md","text":"README.md","icon":"jstree-file","parent":"#","a_attr":{"href":"README.md.html"},"state":{"selected":true}}]
+    </script>
+</head>
+<body class="markdown-body">
+<h1>
+    chai-a11y
+</h1>
+<div class="subHeading">
+    README.md
+</div>
+<button type="button" class="navigatorToggle">&#9776; files...</button>
+<nav class="navigationTree minimized">
+    <input type="text" id="jsTreeSearch" placeholder="search..."/>
+    <div></div>
+</nav>
+<section>
+    <ul class="sectionDetails docsOnly">
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+                <p><a href="https://travis-ci.org/pranavjha/chai-a11y"><img src="https://travis-ci.org/pranavjha/chai-a11y.svg" alt="Build Status"></a>
+<a href="https://codeclimate.com/github/pranavjha/chai-a11y"><img src="https://codeclimate.com/github/pranavjha/chai-a11y/badges/gpa.svg" alt="Code Climate"></a>
+<a href="https://coveralls.io/r/pranavjha/chai-a11y"><img src="http://img.shields.io/coveralls/pranavjha/chai-a11y.svg" alt="Coverage Status"></a>
+<a href="http://pranavjha.github.io/chai-a11y/"><img src="https://img.shields.io/badge/documentation-plus-green.svg?style=flat" alt="Documentation"></a></p>
+<p><a href="https://david-dm.org/pranavjha/chai-a11y"><img src="https://david-dm.org/pranavjha/chai-a11y.svg" alt="Dependency Status"></a>
+<a href="https://david-dm.org/pranavjha/chai-a11y#info=devDependencies"><img src="https://david-dm.org/pranavjha/chai-a11y/dev-status.svg" alt="devDependency Status"></a>
+<a href="https://david-dm.org/pranavjha/chai-a11y#info=peerDependencies"><img src="https://david-dm.org/pranavjha/chai-a11y/peer-status.svg" alt="peerDependency Status"></a></p>
+
+<blockquote>
+<p>accessibility testing plugin for chai</p>
+</blockquote>
+<h2 id="how-to-use">How to use</h2>
+<p>Can be used with the <code>should</code>, <code>expect</code> or <code>assert</code> interfaces.</p>
+<pre><code class="lang-javascript">
+<span class="hljs-comment">// 1. testing an HTML string for accessibility</span>
+<span class="hljs-keyword">var</span> htmlString = <span class="hljs-string">'&lt;div id="id"&gt;Demo&lt;/div&gt;'</span>;
+<span class="hljs-keyword">return</span> expect(htmlString).to.be.accessible(options);
+
+<span class="hljs-comment">// 2. testing a jQuery element for accessibility</span>
+<span class="hljs-keyword">var</span> jqElement = $(<span class="hljs-string">'&lt;div id="id"&gt;Demo&lt;/div&gt;'</span>); <span class="hljs-comment">// or $('.abacus')</span>
+<span class="hljs-keyword">return</span> expect(jqElement).to.be.accessible(options);
+
+<span class="hljs-comment">// 3. testing a DOM element for accessibility</span>
+<span class="hljs-keyword">var</span> domElement = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'abacus'</span>);
+<span class="hljs-keyword">return</span> expect(domElement).to.be.accessible(options);
+</code></pre>
+<h2 id="configuration-options-passed">Configuration Options passed</h2>
+<p>An options object can be passed to the plugin assertion. This object has the following keys:</p>
+<ul>
+<li><p><code>ignore</code> is an array or string</p>
+<ul>
+<li><p>If it is a string, it represents an
+<a href="https://github.com/GoogleChrome/accessibility-developer-tools/wiki/Audit-Rules">accessibility rule</a> name to ignore</p>
+</li>
+<li><p>If it is an array, the array elements can be a String or another Array</p>
+</li>
+<li><p>If the array element is another array, it should have 2 elements: a rule name and a query selector string
+representing the parts of the page to be ignored for that audit rule.</p>
+</li>
+<li><p>If the array element is a string, it represents the rule name to ignore.</p>
+</li>
+</ul>
+</li>
+<li><p><code>width</code> is the width of the phantomJS browser to run the tests on. This option is honoured only for server side tests</p>
+</li>
+<li><p><code>height</code> is the height of the phantomJS browser to run the tests on. This option is honoured only for server side
+tests</p>
+</li>
+<li><p><code>port</code> is the port on which the http server serving the html should start. This option is honoured only for server
+side tests</p>
+</li>
+</ul>
+<h2 id="installation-and-setup">Installation and Setup</h2>
+<h3 id="nodejs">NodeJS</h3>
+<p>Do an <code>npm install chai-a11y</code> to get up and running. Then:</p>
+<pre><code class="lang-javascript">
+<span class="hljs-keyword">var</span> chai = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chai'</span>);
+<span class="hljs-keyword">var</span> chaiA11y = <span class="hljs-built_in">require</span>(<span class="hljs-string">'chai-a11y'</span>);
+
+chai.use(chaiA11y);
+</code></pre>
+<h3 id="amd-requirejs">AMD / RequireJS</h3>
+<p>Chai A11y supports being used as an <a href="http://requirejs.org/">AMD</a> module, registering itself anonymously (just like
+Chai). So, assuming you have configured your loader to map the Chai and Chai a11y files to the respective module IDs
+<code>&quot;chai&quot;</code> and <code>&quot;chai-a11y&quot;</code>, you can use them as follows:</p>
+<pre><code class="lang-javascript">
+define([
+  <span class="hljs-string">'chai'</span>,
+  <span class="hljs-string">'chai-a11y'</span>
+], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">chai, chaiA11y</span>) </span>{
+<span class="hljs-meta">  'use strict'</span>;
+  chai.use(chaiA11y);
+  <span class="hljs-keyword">var</span> expect = chai.expect;
+  <span class="hljs-comment">// ... write your its here</span>
+});
+</code></pre>
+<p>When using AMD / RequireJS style code, the <code>jquery</code> dependency must be fulfilled by <a href="https://jquery.com/">jQuery</a>.</p>
+<h3 id="lasso-js-browserify">Lasso JS / Browserify</h3>
+<p>For <a href="http://raptorjs.org/">Lasso JS</a> and <a href="http://browserify.org/">Browserify</a>, usage will be similar to when using in a
+NodeJS environment.</p>
+<h3 id="-script-tag"><code>&lt;script ... &gt;</code> tag</h3>
+<p>If you include Chai A11y directly with a <code>&lt;script&gt;</code> tag, after the one for Chai itself, then it will
+automatically plug in to Chai and be ready for use:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"chai.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"chai-a11y/lib/index.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h3 id="optional-dependency">Optional Dependency</h3>
+<p><code>chai-a11y</code> plugin relies on
+<a href="https://github.com/GoogleChrome/accessibility-developer-tools">accessibility-developer-tools</a>.</p>
+<p>The plugin will look for the file [axs_testing.js]
+(<a href="https://raw.github.com/GoogleChrome/accessibility-developer-tools/stable/dist/js/axs_testing.js">https://raw.github.com/GoogleChrome/accessibility-developer-tools/stable/dist/js/axs_testing.js</a>) on the browser and if
+it is not present, will try loading it form the remote url. So, if there is no internet access in the test environment,
+it is recommended that a local copy of the file be served in the test runner. This is not required for NodeJS
+environment.</p>
+
+            </div><div class="content">
+                
+            </div>
+        </li>
+        
+    </ul>
+</section>
+</body>
+</html>
