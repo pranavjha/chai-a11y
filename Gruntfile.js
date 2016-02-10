@@ -31,7 +31,7 @@ var jshintOptions = {
 module.exports = function(grunt) {
     // loading the npm task
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-docco');
+    grunt.loadNpmTasks('grunt-docco-plus');
     grunt.loadNpmTasks('grunt-gh-pages');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-mocha-test');
@@ -427,9 +427,10 @@ module.exports = function(grunt) {
         'karma:coverageAMD',
         'karma:coverageCommonJs',
         'karma:coverageScriptTag',
-        'makeReport'
+        'makeReport',
+        'coveralls:lcov'
     ]);
     grunt.registerTask('document', [
-        'docco'
+        'docco-plus'
     ]);
 };
