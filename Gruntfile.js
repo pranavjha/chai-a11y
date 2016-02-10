@@ -1,4 +1,5 @@
 'use strict';
+var path = require('path');
 // js-hint options. See the complete list of options [here](http://jshint.com/docs/options/)
 var jshintOptions = {
     nonew: true,
@@ -32,6 +33,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-docco');
     grunt.loadNpmTasks('grunt-gh-pages');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-istanbul');
@@ -45,6 +47,22 @@ module.exports = function(grunt) {
             '.test',
             '.cache'
         ],
+        copy: {
+            coverage: {
+                src: 'lib/**',
+                dest: '.coverage/instrument/',
+                // Copy if file does not exist.
+                filter: function(filepath) {
+                    // Construct the destination file path.
+                    var dest = path.join(
+                        grunt.config('copy.coverage.dest'),
+                        path.relative(process.cwd(), filepath)
+                    );
+                    // Return false if the file exists.
+                    return !(grunt.file.exists(dest));
+                }
+            }
+        },
         jshint: {
             lib: {
                 src: [
@@ -341,7 +359,7 @@ module.exports = function(grunt) {
             }
         },
         makeReport: {
-            src: '.coverage/json/*.json',
+            src: '.coverage/json/**/*.json',
             options: {
                 type: 'lcov',
                 dir: '.coverage/reports/',
@@ -401,6 +419,7 @@ module.exports = function(grunt) {
     grunt.registerTask('coverage', [
         'instrument',
         'env:coverage',
+        'copy:coverage',
         'mochaTest',
         'storeCoverage',
         'karma:coverageAMD',
