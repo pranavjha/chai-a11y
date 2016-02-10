@@ -7,9 +7,6 @@
 [![devDependency Status](https://img.shields.io/david/dev/pranavjha/chai-a11y.svg?style=flat-square)](https://david-dm.org/pranavjha/chai-a11y#info=devDependencies)
 [![peerDependency Status](https://img.shields.io/david/peer/pranavjha/chai-a11y.svg?style=flat-square)](https://david-dm.org/pranavjha/chai-a11y#info=peerDependencies)
 
-[![NPM](https://nodei.co/npm/chai-a11y.png)](https://nodei.co/npm/chai-a11y/)
-[![NPM](https://nodei.co/npm-dl/chai-a11y.png?months=9&height=1)](https://nodei.co/npm/chai-a11y/)
-
 
 # chai-a11y
 
