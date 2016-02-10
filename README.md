@@ -1,15 +1,15 @@
-[![Build Status](https://travis-ci.org/pranavjha/chai-a11y.svg)](https://travis-ci.org/pranavjha/chai-a11y)
-[![Code Climate](https://codeclimate.com/github/pranavjha/chai-a11y/badges/gpa.svg)](https://codeclimate.com/github/pranavjha/chai-a11y)
-[![Coverage Status](http://img.shields.io/coveralls/pranavjha/chai-a11y.svg)](https://coveralls.io/r/pranavjha/chai-a11y)
-[![Documentation](https://img.shields.io/badge/documentation-plus-green.svg?style=flat)](http://pranavjha.github.io/chai-a11y/)
+[![Build Status](https://img.shields.io/travis/pranavjha/chai-a11y.svg?style=flat-square)](https://travis-ci.org/pranavjha/chai-a11y)
+[![Code Climate](https://img.shields.io/codeclimate/github/pranavjha/chai-a11y.svg?style=flat-square)](https://codeclimate.com/github/pranavjha/chai-a11y)
+[![Coverage Status](http://img.shields.io/coveralls/pranavjha/chai-a11y.svg?style=flat-square)](https://coveralls.io/r/pranavjha/chai-a11y)
+[![Documentation](https://img.shields.io/badge/documentation-plus-green.svg?style=flat-square)](http://pranavjha.github.io/chai-a11y/)
 
-[![Dependency Status](https://david-dm.org/pranavjha/chai-a11y.svg)](https://david-dm.org/pranavjha/chai-a11y)
-[![devDependency Status](https://david-dm.org/pranavjha/chai-a11y/dev-status.svg)](https://david-dm.org/pranavjha/chai-a11y#info=devDependencies)
-[![peerDependency Status](https://david-dm.org/pranavjha/chai-a11y/peer-status.svg)](https://david-dm.org/pranavjha/chai-a11y#info=peerDependencies)
-
+[![Dependency Status](https://img.shields.io/david/pranavjha/chai-a11y.svg?style=flat-square)](https://david-dm.org/pranavjha/chai-a11y)
+[![devDependency Status](https://img.shields.io/david/dev/pranavjha/chai-a11y.svg?style=flat-square)](https://david-dm.org/pranavjha/chai-a11y#info=devDependencies)
+[![peerDependency Status](https://img.shields.io/david/peer/pranavjha/chai-a11y.svg?style=flat-square)](https://david-dm.org/pranavjha/chai-a11y#info=peerDependencies)
 
 [![NPM](https://nodei.co/npm/chai-a11y.png?downloadRank=true)](https://nodei.co/npm/chai-a11y/)
 [![NPM](https://nodei.co/npm-dl/chai-a11y.png?months=9&height=2)](https://nodei.co/npm/chai-a11y/)
+
 
 # chai-a11y
 
