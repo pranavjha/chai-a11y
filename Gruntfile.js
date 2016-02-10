@@ -34,178 +34,379 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-gh-pages');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-istanbul');
+    grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-contrib-clean');
     // Project configuration.
     grunt.initConfig({
-            pkg: grunt.file.readJSON('package.json'),
-            clean: [
-                '.coverage',
-                '.test',
-                '.cache'
-            ],
-            jshint: {
-                lib: {
-                    src: [
-                        'lib/**/*.js',
-                        'Gruntfile.js',
-                        'package.json'
-                    ],
-                    options: jshintOptions
-                }
+        pkg: grunt.file.readJSON('package.json'),
+        clean: [
+            '.coverage',
+            '.test',
+            '.cache'
+        ],
+        jshint: {
+            lib: {
+                src: [
+                    'lib/**/*.js',
+                    'test/**/*.js',
+                    'Gruntfile.js',
+                    'package.json'
+                ],
+                options: jshintOptions
+            }
+        },
+        karma: {
+            testAMD: {
+                frameworks: [
+                    'requirejs',
+                    'mocha',
+                    'chai'
+                ],
+                files: [
+                    {
+                        src: [
+                            'node_modules/requirejs/require.js',
+                            'test/require-config.js'
+                        ],
+                        served: true,
+                        included: true
+                    },
+                    {
+                        src: [
+                            'test/amd-specs.js',
+                            'lib/**/*.js',
+                            'node_modules/jquery/dist/jquery.js',
+                            'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'
+                        ],
+                        served: true,
+                        included: false
+                    }
+                ],
+                plugins: [
+                    'karma-requirejs',
+                    'karma-chai',
+                    'karma-mocha',
+                    'karma-mocha-reporter',
+                    'karma-phantomjs-launcher'
+                ]
             },
-            karma: {
-                testAMD: {
-                    frameworks: [
-                        'requirejs',
-                        'mocha',
-                        'chai'
-                    ],
-                    files: [
+            coverageAMD: {
+                frameworks: [
+                    'requirejs',
+                    'mocha',
+                    'chai'
+                ],
+                files: [
+                    {
+                        src: [
+                            'node_modules/requirejs/require.js',
+                            'test/require-config.js'
+                        ],
+                        served: true,
+                        included: true
+                    },
+                    {
+                        src: [
+                            'test/amd-specs.js',
+                            'lib/**/*.js',
+                            'node_modules/jquery/dist/jquery.js',
+                            'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'
+                        ],
+                        served: true,
+                        included: false
+                    }
+                ],
+                plugins: [
+                    'karma-requirejs',
+                    'karma-coverage',
+                    'karma-chai',
+                    'karma-mocha',
+                    'karma-mocha-reporter',
+                    'karma-phantomjs-launcher'
+                ],
+                preprocessors: {
+                    'lib/**/*.js': [
+                        'coverage'
+                    ]
+                },
+                reporters: [
+                    'mocha',
+                    'coverage'
+                ],
+                coverageReporter: {
+                    dir: '.coverage',
+                    reporters: [
                         {
-                            src: [
-                                'node_modules/requirejs/require.js',
-                                'test/require-config.js'
-                            ],
-                            served: true,
-                            included: true
+                            type: 'json',
+                            subdir: 'json/amd'
                         },
                         {
-                            src: [
-                                'test/amd-specs.js',
-                                'lib/**/*.js',
-                                'node_modules/jquery/dist/jquery.js',
-                                'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'
-                            ],
-                            served: true,
-                            included: false
+                            type: 'html',
+                            subdir: 'html/amd'
                         }
-                    ],
-                    plugins: [
-                        'karma-requirejs',
-                        'karma-chai',
-                        'karma-mocha',
-                        'karma-mocha-reporter',
-                        'karma-phantomjs-launcher'
                     ]
+                }
+            },
+            testCommonJs: {
+                frameworks: [
+                    'lasso',
+                    'mocha'
+                ],
+                lasso: {
+                    minify: false,
+                    bundlingEnabled: false,
+                    cacheProfile: 'development',
+                    tempdir: '.test',
+                    ignore: 'node_modules/accessibility-developer-tools/**'
                 },
-                testCommonJs: {
-                    frameworks: [
-                        'lasso',
-                        'mocha'
-                    ],
-                    lasso: {
-                        minify: false,
-                        bundlingEnabled: false,
-                        cacheProfile: 'development',
-                        tempdir: '.test',
-                        ignore: 'node_modules/accessibility-developer-tools/**'
-                    },
-                    files: [
-                        {
-                            src: [
-                                'test/commonjs-specs.js',
-                                'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'
-                            ]
-                        }
-                    ],
-                    plugins: [
-                        'karma-chai',
-                        'karma-mocha',
-                        'karma-lasso',
-                        'karma-mocha-reporter',
-                        'karma-phantomjs-launcher'
-                    ]
-                },
-                testScriptTag: {
-                    frameworks: [
-                        'mocha',
-                        'chai'
-                    ],
-                    files: [
-                        {
-                            src: [
-                                'node_modules/jquery/dist/jquery.js',
-                                'node_modules/accessibility-developer-tools/dist/js/axs_testing.js',
-                                'lib/index.js',
-                                'test/script-tag-specs.js'
-                            ]
-                        }
-                    ],
-                    plugins: [
-                        'karma-chai',
-                        'karma-mocha',
-                        'karma-mocha-reporter',
-                        'karma-phantomjs-launcher'
-                    ],
-                    client: {
-                        mocha: {
-                            ui: 'bdd'
-                        }
+                files: [
+                    {
+                        src: [
+                            'test/commonjs-specs.js',
+                            'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'
+                        ]
+                    }
+                ],
+                plugins: [
+                    'karma-chai',
+                    'karma-mocha',
+                    'karma-lasso',
+                    'karma-mocha-reporter',
+                    'karma-phantomjs-launcher'
+                ]
+            },
+            coverageCommonJs: {
+                frameworks: [
+                    'lasso',
+                    'mocha'
+                ],
+                lasso: {
+                    minify: false,
+                    bundlingEnabled: false,
+                    cacheProfile: 'development',
+                    tempdir: '.coverage',
+                    ignore: 'node_modules/accessibility-developer-tools/**',
+                    coverage: {
+                        files: '**/*.js',
+                        reporters: [
+                            {
+                                type: 'json',
+                                dir: '.coverage/json/common'
+                            },
+                            {
+                                type: 'html',
+                                dir: './.coverage/html/common'
+                            }
+                        ]
                     }
                 },
-                options: {
-                    browsers: [
-                        'PhantomJS'
-                    ],
-                    client: {
-                        mocha: {
-                            timeout: 500,
-                            ui: 'bdd'
-                        }
-                    },
-                    singleRun: true,
+                files: [
+                    {
+                        src: [
+                            'test/commonjs-specs.js',
+                            'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'
+                        ]
+                    }
+                ],
+                plugins: [
+                    'karma-chai',
+                    'karma-mocha',
+                    'karma-lasso',
+                    'karma-mocha-reporter',
+                    'karma-phantomjs-launcher'
+                ],
+                reporters: [
+                    'mocha',
+                    'lasso'
+                ]
+            },
+            testScriptTag: {
+                frameworks: [
+                    'mocha',
+                    'chai'
+                ],
+                files: [
+                    {
+                        src: [
+                            'node_modules/jquery/dist/jquery.js',
+                            'node_modules/accessibility-developer-tools/dist/js/axs_testing.js',
+                            'lib/index.js',
+                            'test/script-tag-specs.js'
+                        ]
+                    }
+                ],
+                plugins: [
+                    'karma-chai',
+                    'karma-mocha',
+                    'karma-mocha-reporter',
+                    'karma-phantomjs-launcher'
+                ],
+                client: {
+                    mocha: {
+                        ui: 'bdd'
+                    }
+                }
+            },
+            coverageScriptTag: {
+                frameworks: [
+                    'mocha',
+                    'chai'
+                ],
+                files: [
+                    {
+                        src: [
+                            'node_modules/jquery/dist/jquery.js',
+                            'node_modules/accessibility-developer-tools/dist/js/axs_testing.js',
+                            'lib/index.js',
+                            'test/script-tag-specs.js'
+                        ]
+                    }
+                ],
+                plugins: [
+                    'karma-chai',
+                    'karma-mocha',
+                    'karma-coverage',
+                    'karma-mocha-reporter',
+                    'karma-phantomjs-launcher'
+                ],
+                preprocessors: {
+                    'lib/**/*.js': [
+                        'coverage'
+                    ]
+                },
+                reporters: [
+                    'mocha',
+                    'coverage'
+                ],
+                coverageReporter: {
+                    dir: '.coverage',
                     reporters: [
-                        'mocha'
-                    ],
-                    logLevel: 'WARN'
-                }
-            },
-            // Configure a mochaTest task
-            mochaTest: {
-                test: {
-                    options: {
-                        reporter: 'spec'
-                    },
-                    src: [
-                        'test/nodejs-specs.js'
+                        {
+                            type: 'json',
+                            subdir: 'json/tag'
+                        },
+                        {
+                            type: 'html',
+                            subdir: 'html/tag'
+                        }
                     ]
-                }
-            },
-            docco: {
-                debug: {
-                    src: [
-                        'lib/**',
-                        'README.md'
-                    ],
-                    options: {
-                        output: '.docs/'
+                },
+                client: {
+                    mocha: {
+                        ui: 'bdd'
                     }
                 }
             },
-            'gh-pages': {
+            options: {
+                browsers: [
+                    'PhantomJS'
+                ],
+                client: {
+                    mocha: {
+                        timeout: 500,
+                        ui: 'bdd'
+                    }
+                },
+                singleRun: true,
+                reporters: [
+                    'mocha'
+                ],
+                logLevel: 'WARN'
+            }
+        },
+        // Configure a mochaTest task
+        mochaTest: {
+            test: {
                 options: {
-                    base: '.docs',
-                    // GH_TOKEN is the environment variable holding the access token for the repository
-                    repo: 'https://' + process.env.GH_TOKEN + '@github.com/pranavjha/chai-a11y.git',
-                    clone: '.gh_pages',
-                    message: 'auto commit chai-a11y on <%= grunt.template.today("yyyy-mm-dd") %>',
-                    // This configuration will suppress logging and sanitize error messages.
-                    silent: true,
-                    user: {
-                        name: 'Pranav Jha',
-                        email: 'jha.pranav.s@gmail.com'
-                    }
+                    reporter: 'spec'
                 },
                 src: [
-                    '**'
+                    'test/nodejs-specs.js'
                 ]
             }
+        },
+        instrument: {
+            files: [
+                'lib/**/*.js'
+            ],
+            options: {
+                lazy: false,
+                basePath: '.coverage/instrument/'
+            }
+        },
+        storeCoverage: {
+            options: {
+                dir: '.coverage/json/'
+            }
+        },
+        makeReport: {
+            src: '.coverage/json/*.json',
+            options: {
+                type: 'lcov',
+                dir: '.coverage/reports/',
+                print: 'detail'
+            }
+        },
+        env: {
+            coverage: {
+                APP_DIR_FOR_CODE_COVERAGE: '.coverage/instrument/'
+            }
+        },
+        'docco-plus': {
+            debug: {
+                src: [
+                    'lib/**',
+                    'test/**',
+                    '*.js',
+                    '*.md'
+                ],
+                options: {
+                    output: '.docs/'
+                }
+            }
+        },
+        'gh-pages': {
+            options: {
+                base: '.docs',
+                // GH_TOKEN is the environment variable holding the access token for the repository
+                repo: 'https://' + process.env.GH_TOKEN + '@github.com/' + process.env.TRAVIS_REPO_SLUG + '.git',
+                clone: '.gh_pages',
+                message: 'build #' + process.env.TRAVIS_BUILD_NUMBER + ' travis commit',
+                // This configuration will suppress logging and sanitize error messages.
+                silent: true,
+                user: {
+                    name: 'travis',
+                    email: 'travis@travis-ci.com'
+                }
+            },
+            src: [
+                '**'
+            ]
+        },
+        coveralls: {
+            lcov: {
+                // LCOV coverage file relevant to every target
+                src: '.coverage/reports/lcov.info'
+            }
         }
-    );
+    });
     grunt.registerTask('test', [
         'jshint',
+        'mochaTest:test',
+        'karma:testAMD',
+        'karma:testCommonJs',
+        'karma:testScriptTag'
+    ]);
+    grunt.registerTask('coverage', [
+        'instrument',
+        'env:coverage',
         'mochaTest',
-        'karma'
+        'storeCoverage',
+        'karma:coverageAMD',
+        'karma:coverageCommonJs',
+        'karma:coverageScriptTag',
+        'makeReport'
     ]);
     grunt.registerTask('document', [
         'docco'

@@ -1,3 +1,5 @@
+/* globals window */
+'use strict';
 var allTestFiles = [];
 var TEST_REGEXP = /\/base\/test\/.*\-specs.js$/;
 Object.keys(window.__karma__.files).forEach(function(file) {

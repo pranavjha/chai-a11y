@@ -1,3 +1,4 @@
+/* globals $, describe, it, expect */
 describe('chai a11y', function() {
     'use strict';
     it('should be able to validate an html string', function() {
@@ -35,5 +36,5 @@ describe('chai a11y', function() {
             expect($('#temp_div > #temp_id').size()).to.eql(1);
             $('#temp_id').remove();
         });
-    })
+    });
 });

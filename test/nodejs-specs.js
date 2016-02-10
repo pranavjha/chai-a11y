@@ -1,6 +1,7 @@
+/* globals describe, it */
 'use strict';
 var chai = require('chai');
-chai.use(require('../'));
+chai.use(require('../' + (process.env.APP_DIR_FOR_CODE_COVERAGE || '') + 'lib/node'));
 var expect = chai.expect;
 describe('chai a11y', function() {
     it('should be able to validate an html string', function() {

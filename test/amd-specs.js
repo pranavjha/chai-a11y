@@ -1,3 +1,4 @@
+/* globals define, describe, it */
 define([
     'chai',
     'chaiA11y',
@@ -42,6 +43,6 @@ define([
                 expect($('#temp_div > #temp_id').size()).to.eql(1);
                 $('#temp_id').remove();
             });
-        })
+        });
     });
 });
