@@ -9,7 +9,7 @@
 
 
 [![NPM](https://nodei.co/npm/chai-a11y.png?downloadRank=true)](https://nodei.co/npm/chai-a11y/)
-[![NPM](https://nodei.co/npm-dl/chai-a11y.png?months=12&height=2)](https://nodei.co/npm/chai-a11y/)
+[![NPM](https://nodei.co/npm-dl/chai-a11y.png?months=9&height=2)](https://nodei.co/npm/chai-a11y/)
 
 # chai-a11y
 
