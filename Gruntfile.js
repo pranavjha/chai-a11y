@@ -410,6 +410,7 @@ module.exports = function(grunt) {
         }
     });
     grunt.registerTask('test', [
+        'clean',
         'jshint',
         'mochaTest:test',
         'karma:testAMD',
@@ -417,6 +418,7 @@ module.exports = function(grunt) {
         'karma:testScriptTag'
     ]);
     grunt.registerTask('coverage', [
+        'clean',
         'instrument',
         'env:coverage',
         'copy:coverage',
