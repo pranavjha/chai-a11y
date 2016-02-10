@@ -346,7 +346,7 @@ module.exports = function(grunt) {
         },
         instrument: {
             files: [
-                'lib/**/*.js'
+                'lib/node.js'
             ],
             options: {
                 lazy: false,

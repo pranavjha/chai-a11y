@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/pranavjha/chai-a11y.svg)](https://travis-ci.org/pranavjha/chai-a11y)
 [![Code Climate](https://codeclimate.com/github/pranavjha/chai-a11y/badges/gpa.svg)](https://codeclimate.com/github/pranavjha/chai-a11y)
+[![Coverage Status](http://img.shields.io/coveralls/pranavjha/chai-a11y.svg)](https://coveralls.io/r/pranavjha/chai-a11y)
+[![Documentation](https://img.shields.io/badge/documentation-plus-green.svg?style=flat)](http://pranavjha.github.io/chai-a11y/)
 
 [![Dependency Status](https://david-dm.org/pranavjha/chai-a11y.svg)](https://david-dm.org/pranavjha/chai-a11y)
 [![devDependency Status](https://david-dm.org/pranavjha/chai-a11y/dev-status.svg)](https://david-dm.org/pranavjha/chai-a11y#info=devDependencies)
