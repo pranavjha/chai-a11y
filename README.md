@@ -8,6 +8,9 @@
 [![peerDependency Status](https://david-dm.org/pranavjha/chai-a11y/peer-status.svg)](https://david-dm.org/pranavjha/chai-a11y#info=peerDependencies)
 
 
+[![NPM](https://nodei.co/npm/chai-a11y.png?downloadRank=true)](https://nodei.co/npm/chai-a11y/)
+[![NPM](https://nodei.co/npm-dl/chai-a11y.png?months=3&height=2)](https://nodei.co/npm/chai-a11y/)
+
 # chai-a11y
 
 > accessibility testing plugin for chai
