@@ -96,7 +96,7 @@ module.exports = function(grunt) {
                             'test/amd-specs.js',
                             'lib/**/*.js',
                             'node_modules/jquery/dist/jquery.js',
-                            'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'
+                            'node_modules/a11y-auditor/dist/a11y-auditor.js'
                         ],
                         served: true,
                         included: false
@@ -130,7 +130,7 @@ module.exports = function(grunt) {
                             'test/amd-specs.js',
                             'lib/**/*.js',
                             'node_modules/jquery/dist/jquery.js',
-                            'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'
+                            'node_modules/a11y-auditor/dist/a11y-auditor.js'
                         ],
                         served: true,
                         included: false
@@ -177,13 +177,13 @@ module.exports = function(grunt) {
                     bundlingEnabled: false,
                     cacheProfile: 'development',
                     tempdir: '.test',
-                    ignore: 'node_modules/accessibility-developer-tools/**'
+                    ignore: 'node_modules/a11y-auditor/**'
                 },
                 files: [
                     {
                         src: [
                             'test/commonjs-specs.js',
-                            'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'
+                            'node_modules/a11y-auditor/dist/a11y-auditor.js'
                         ]
                     }
                 ],
@@ -205,7 +205,7 @@ module.exports = function(grunt) {
                     bundlingEnabled: false,
                     cacheProfile: 'development',
                     tempdir: '.coverage',
-                    ignore: 'node_modules/accessibility-developer-tools/**',
+                    ignore: 'node_modules/a11y-auditor/**',
                     coverage: {
                         files: '**/*.js',
                         reporters: [
@@ -224,7 +224,7 @@ module.exports = function(grunt) {
                     {
                         src: [
                             'test/commonjs-specs.js',
-                            'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'
+                            'node_modules/a11y-auditor/dist/a11y-auditor.js'
                         ]
                     }
                 ],
@@ -249,7 +249,7 @@ module.exports = function(grunt) {
                     {
                         src: [
                             'node_modules/jquery/dist/jquery.js',
-                            'node_modules/accessibility-developer-tools/dist/js/axs_testing.js',
+                            'node_modules/a11y-auditor/dist/a11y-auditor.js',
                             'lib/index.js',
                             'test/script-tag-specs.js'
                         ]
@@ -276,7 +276,7 @@ module.exports = function(grunt) {
                     {
                         src: [
                             'node_modules/jquery/dist/jquery.js',
-                            'node_modules/accessibility-developer-tools/dist/js/axs_testing.js',
+                            'node_modules/a11y-auditor/dist/a11y-auditor.js',
                             'lib/index.js',
                             'test/script-tag-specs.js'
                         ]
