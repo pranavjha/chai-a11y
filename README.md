@@ -38,17 +38,13 @@ return expect(domElement).to.be.accessible(options);
 
 An options object can be passed to the plugin assertion. This object has the following keys:
 
- - `ignore` is an array or string
+ - `ignore` is a Map or string
 
    - If it is a string, it represents an
-   [accessibility rule](https://github.com/GoogleChrome/accessibility-developer-tools/wiki/Audit-Rules) name to ignore
+   [accessibility rule](https://github.com/dsathyakumar/a11y-auditor/blob/master/a11y.properties.json) id to ignore
 
-   - If it is an array, the array elements can be a String or another Array
-
-   - If the array element is another array, it should have 2 elements: a rule name and a query selector string
-   representing the parts of the page to be ignored for that audit rule.
-
-   - If the array element is a string, it represents the rule name to ignore.
+   - If it is a map, the key defines the selector on which the ignores should be executed, and the value is a single
+   rule of an array of rules to ignore
 
  - `width` is the width of the phantomJS browser to run the tests on. This option is honoured only for server side tests
 
@@ -112,16 +108,16 @@ automatically plug in to Chai and be ready for use:
 
 ```html
 <script src="chai.js"></script>
-<script src="chai-a11y/lib/index.js"></script>
+<script src="chai-a11y/dist/a11y-auditor.js"></script>
 ```
 
 ### Optional Dependency
 
 `chai-a11y` plugin relies on
-[accessibility-developer-tools](https://github.com/GoogleChrome/accessibility-developer-tools).
+[a11y-auditor](https://npmjs.com/package/a11y-auditor).
 
-The plugin will look for the file [axs_testing.js]
-(https://raw.github.com/GoogleChrome/accessibility-developer-tools/stable/dist/js/axs_testing.js) on the browser and if
-it is not present, will try loading it form the remote url. So, if there is no internet access in the test environment,
-it is recommended that a local copy of the file be served in the test runner. This is not required for NodeJS
-environment.
+The plugin will look for the file
+[a11y-auditor.js](https://raw.githubusercontent.com/pranavjha/a11y-auditor/master/dist/a11y-auditor.js) on the browser
+and if it is not present, will try loading it form the remote url. So, if there is no internet access in the test
+environment, it is recommended that a local copy of the file be served in the test runner. This is not required for
+NodeJS environment.
