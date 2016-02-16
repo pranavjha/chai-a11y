@@ -17,7 +17,7 @@
         "accessibility-developer-tools": "2.10.0",
         "bluebird": "^3.2.2",
         "jquery": "^2",
-        "a11y-auditor": "pranavjha/a11y-auditor"
+        "a11y-auditor": "0.0.4"
     },
     "devDependencies": {
         "chai": "^2",

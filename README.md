@@ -47,7 +47,7 @@ An options object can be passed to the plugin assertion. This object has the fol
    [accessibility rule](https://github.com/dsathyakumar/a11y-auditor/blob/master/a11y.properties.json) id to ignore
 
    - If it is a map, the key defines the selector on which the ignores should be executed, and the value is a single
-   rule of an array of rules to ignore
+   rule or an array of rules to ignore
 
  - `width` is the width of the phantomJS browser to run the tests on. This option is honoured only for server side tests
 
