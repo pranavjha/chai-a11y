@@ -77,37 +77,38 @@
 describe(<span class="hljs-string">'chai a11y'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
 <span class="hljs-meta">    'use strict'</span>;
     it(<span class="hljs-string">'should be able to validate an html string'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">return</span> expect(<span class="hljs-string">'&lt;button&gt;Abacus&lt;/button&gt;'</span>).to.be.accessible();
+        <span class="hljs-keyword">return</span> expect(<span class="hljs-string">'&lt;button&gt;Abacus&lt;/button&gt;'</span>).to.be.accessible({
+          ignore : [<span class="hljs-string">'AX_23'</span>, <span class="hljs-string">'AX_04'</span>, <span class="hljs-string">'AX_05'</span>, <span class="hljs-string">'AX_32'</span>]
+        });
     });
     it(<span class="hljs-string">'should be able to ignore one rule'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">return</span> expect(<span class="hljs-string">'&lt;button&gt;&lt;/button&gt;'</span>).to.be.accessible({
-            ignore: <span class="hljs-string">'controlsWithoutLabel'</span>
+        <span class="hljs-keyword">return</span> expect(<span class="hljs-string">'&lt;button id="btn_1"&gt;&lt;/button&gt;'</span>).to.be.accessible({
+          ignore : [<span class="hljs-string">'AX_23'</span>, <span class="hljs-string">'AX_04'</span>, <span class="hljs-string">'AX_05'</span>, <span class="hljs-string">'AX_32'</span>]
         });
     });
     it(<span class="hljs-string">'should be able to ignore stuff with rulename'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
         <span class="hljs-keyword">return</span> expect(<span class="hljs-string">'&lt;button&gt;&lt;/button&gt;'</span>).to.be.accessible({
-            ignore: [
-                <span class="hljs-string">'controlsWithoutLabel'</span>
-            ]
+          ignore : [<span class="hljs-string">'AX_23'</span>, <span class="hljs-string">'AX_04'</span>, <span class="hljs-string">'AX_05'</span>, <span class="hljs-string">'AX_32'</span>]
         });
     });
     it(<span class="hljs-string">'should be able to ignore stuff using selectors'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">return</span> expect(<span class="hljs-string">'&lt;button&gt;&lt;/button&gt;'</span>).to.be.accessible({
-            ignore: [
-                <span class="hljs-string">'controlsWithoutLabel'</span>,
-                <span class="hljs-string">'button'</span>
-            ]
+        <span class="hljs-keyword">return</span> expect(<span class="hljs-string">'&lt;button id="btn_1"&gt;&lt;/button&gt;'</span>).to.be.accessible({
+          ignore : [<span class="hljs-string">'AX_23'</span>, <span class="hljs-string">'AX_04'</span>, <span class="hljs-string">'AX_05'</span>, <span class="hljs-string">'AX_32'</span>]
         });
     });
     it(<span class="hljs-string">'should not pollute the DOM'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">return</span> expect(<span class="hljs-string">'&lt;button id="temp_id"&gt;temp&lt;/button&gt;'</span>).to.be.accessible().then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> expect(<span class="hljs-string">'&lt;button id="temp_id"&gt;temp&lt;/button&gt;'</span>).to.be.accessible({
+          ignore : [<span class="hljs-string">'AX_23'</span>, <span class="hljs-string">'AX_04'</span>, <span class="hljs-string">'AX_05'</span>, <span class="hljs-string">'AX_32'</span>]
+        }).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
             <span class="hljs-keyword">return</span> expect($(<span class="hljs-string">'#temp_id'</span>).size()).to.eql(<span class="hljs-number">0</span>);
         });
     });
     it(<span class="hljs-string">'should not move or delete an existing element'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
         <span class="hljs-keyword">var</span> btn = $(<span class="hljs-string">'&lt;button id="temp_id"&gt;temp&lt;/button&gt;'</span>);
         $(<span class="hljs-string">'body'</span>).append($(<span class="hljs-string">'&lt;div id="temp_div"&gt;&lt;/div&gt;'</span>).append(btn));
-        <span class="hljs-keyword">return</span> expect(btn).to.be.accessible().then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> expect(btn).to.be.accessible({
+          ignore : [<span class="hljs-string">'AX_23'</span>, <span class="hljs-string">'AX_04'</span>, <span class="hljs-string">'AX_05'</span>, <span class="hljs-string">'AX_32'</span>]
+        }).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
             expect($(<span class="hljs-string">'#temp_div &gt; #temp_id'</span>).size()).to.eql(<span class="hljs-number">1</span>);
             $(<span class="hljs-string">'#temp_id'</span>).remove();
         });

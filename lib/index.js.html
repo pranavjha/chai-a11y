@@ -96,7 +96,7 @@
             </div><div class="content">
                 <div class="highlight"><pre>    <span class="hljs-keyword">var</span> loadPlugin = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">cb, eb</span>) </span>{
         <span class="hljs-comment">/* global window */</span>
-        <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">window</span>.axs) {
+        <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">window</span>.auditRunner) {
             cb();</pre></div>
             </div>
         </li>
@@ -131,8 +131,7 @@
  (<a href="http://stackoverflow.com/questions/17341122/link-and-execute-external-javascript-file-hosted-on-github">http://stackoverflow.com/questions/17341122/link-and-execute-external-javascript-file-hosted-on-github</a>)</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>            scriptTag.src = <span class="hljs-string">'//rawgit.com/GoogleChrome/accessibility-developer-tools/'</span> +
-                <span class="hljs-string">'87d39115aa6716abf210bf1e0a5a5e0a5c98c9b9/dist/js/axs_testing.js'</span>;
+                <div class="highlight"><pre>            scriptTag.src = <span class="hljs-string">'//raw.githubusercontent.com/dsathyakumar/a11y-auditor/master/dist/a11y-auditor.js'</span>;
         } <span class="hljs-keyword">else</span> {</pre></div>
             </div>
         </li>
@@ -156,23 +155,18 @@
 
             </div><div class="content">
                 <div class="highlight"><pre>    <span class="hljs-keyword">var</span> normalizeConfig = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config</span>) </span>{
-        config = config || {};
-        config.ignore = config.ignore || [];
-        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> config.ignore === <span class="hljs-string">'string'</span>) {
-            config.ignore = [
-                config.ignore
+      <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> config.ignore === <span class="hljs-string">'string'</span> ||
+        config.ignore <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>){
+        config.ignore = {<span class="hljs-string">'*'</span>: config.ignore};
+      }
+      <span class="hljs-built_in">Object</span>.keys(config.ignore).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">selector</span>) </span>{
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> config.ignore[selector] === <span class="hljs-string">'string'</span>) {
+            config.ignore[selector] = [
+              config.ignore[selector]
             ];
         }
-        config.ignore = config.ignore.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">singleIgnore</span>) </span>{
-            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> singleIgnore === <span class="hljs-string">'string'</span>) {
-                <span class="hljs-keyword">return</span> [
-                    singleIgnore,
-                    <span class="hljs-string">'*'</span>
-                ];
-            }
-            <span class="hljs-keyword">return</span> singleIgnore;
-        });
-        <span class="hljs-keyword">return</span> config;
+      });
+      <span class="hljs-keyword">return</span> config;
     };</pre></div>
             </div>
         </li>
@@ -184,50 +178,58 @@
 
             </div><div class="content">
                 <div class="highlight"><pre>    <span class="hljs-keyword">var</span> stringifyResponse = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>{
-        <span class="hljs-keyword">var</span> message = <span class="hljs-string">''</span>;
-        response.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>{
-            <span class="hljs-keyword">return</span> (item.result === <span class="hljs-string">'FAIL'</span>);
-        }).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>{</pre></div>
+        <span class="hljs-keyword">var</span> messageCount = <span class="hljs-number">0</span>;
+        <span class="hljs-built_in">Array</span>.prototype.concat.apply([], <span class="hljs-built_in">Object</span>.keys(response).map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ruleKey</span>) </span>{
+            <span class="hljs-keyword">return</span> response[ruleKey];
+        })).filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>{</pre></div>
             </div>
         </li>
         
         
         <li id="section-9">
             <div class="annotation">
-                <p> get the important information in the string to be returned</p>
+                <p> filter all the FAILed cases</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>            message += (<span class="hljs-string">'\nrule name:       '</span> + item.rule.name);
-            message += (<span class="hljs-string">'\nrule severity:   '</span> + item.rule.severity);
-            message += (<span class="hljs-string">'\nrule code:       '</span> + item.rule.code);
-            message += (<span class="hljs-string">'\nrule heading:    '</span> + item.rule.heading);
-            message += (<span class="hljs-string">'\nrule url:        '</span> + item.rule.url);
-            item.elements.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">el, index</span>) </span>{
-                message += (<span class="hljs-string">'\nviolation #'</span> + index + <span class="hljs-string">':    '</span> + el.outerHTML);
-            });
-            message += <span class="hljs-string">'\n'</span>;
-        });
-        <span class="hljs-keyword">return</span> message;
-    };</pre></div>
+                <div class="highlight"><pre>            <span class="hljs-keyword">return</span> (!item.errMsg.result);
+        }).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>{
+            messageCount = messageCount + <span class="hljs-number">1</span>;</pre></div>
             </div>
         </li>
         
         
         <li id="section-10">
             <div class="annotation">
-                <p> modules will have keys: $ and axs</p>
+                <p> get the important information in the string to be returned</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Description:     '</span> + item.description);
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error Message:   '</span> + item.errMsg);
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Rule ID:         '</span> + item.ruleID);
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Severity:        '</span> + item.severityEnum);
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">''</span>);
+        });
+        <span class="hljs-keyword">return</span> messageCount;
+    };</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+                <p> modules will have keys: $ and auditRunner</p>
 
             </div><div class="content">
                 <div class="highlight"><pre>    <span class="hljs-keyword">var</span> chaiAccessibility = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chai, utils, modules</span>) </span>{
         <span class="hljs-comment">/* global document */</span>
         <span class="hljs-keyword">var</span> $ = modules.$;
         <span class="hljs-keyword">var</span> Assertion = chai.Assertion;
-        Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config</span>) </span>{</pre></div>
+        Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config, executeGlobalRules</span>) </span>{</pre></div>
             </div>
         </li>
         
         
-        <li id="section-11">
+        <li id="section-12">
             <div class="annotation">
                 <p> get the modules for use</p>
 
@@ -237,7 +239,7 @@
         </li>
         
         
-        <li id="section-12">
+        <li id="section-13">
             <div class="annotation">
                 <p> check if the element is a part of DOM</p>
 
@@ -248,7 +250,7 @@
         </li>
         
         
-        <li id="section-13">
+        <li id="section-14">
             <div class="annotation">
                 <p> if the element is not in the dom, we append it into the DOM</p>
 
@@ -256,23 +258,10 @@
                 <div class="highlight"><pre>                element.appendTo($(<span class="hljs-string">'body'</span>));
             }
             <span class="hljs-keyword">var</span> deferred = $.Deferred();
-            <span class="hljs-keyword">if</span> (modules.axs) {
-                <span class="hljs-built_in">window</span>.axs = modules.axs;
+            <span class="hljs-keyword">if</span> (modules.auditRunner) {
+                <span class="hljs-built_in">window</span>.auditRunner = modules.auditRunner;
             }
-            loadPlugin(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-                <span class="hljs-comment">/* global axs */</span></pre></div>
-            </div>
-        </li>
-        
-        
-        <li id="section-14">
-            <div class="annotation">
-                <p> Run the auditor</p>
-
-            </div><div class="content">
-                <div class="highlight"><pre>                <span class="hljs-keyword">var</span> configuration = <span class="hljs-keyword">new</span> axs.AuditConfiguration();
-                configuration.scope = element.get(<span class="hljs-number">0</span>);
-                configuration.showUnsupportedRulesWarning = <span class="hljs-literal">false</span>;</pre></div>
+            loadPlugin(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</pre></div>
             </div>
         </li>
         
@@ -282,35 +271,41 @@
                 <p> normalize config</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>                config = normalizeConfig(config);
-                config.ignore.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ignores</span>) </span>{
-                    configuration.ignoreSelectors(ignores[<span class="hljs-number">0</span>], ignores[<span class="hljs-number">1</span>] || <span class="hljs-string">'*'</span>);
-                });
-                <span class="hljs-keyword">var</span> response = axs.Audit.run(configuration);</pre></div>
+                <div class="highlight"><pre>                config = normalizeConfig(config);</pre></div>
             </div>
         </li>
         
         
         <li id="section-16">
             <div class="annotation">
-                <p> parse the audit results</p>
+                <p> Run the auditor</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>                <span class="hljs-keyword">var</span> message = stringifyResponse(response);
-                <span class="hljs-keyword">if</span> (isOrphan) {</pre></div>
+                <div class="highlight"><pre>                <span class="hljs-keyword">var</span> response = <span class="hljs-built_in">window</span>.auditRunner(element.get(<span class="hljs-number">0</span>), config.ignore, executeGlobalRules);</pre></div>
             </div>
         </li>
         
         
         <li id="section-17">
             <div class="annotation">
+                <p> parse the audit results</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>                <span class="hljs-keyword">var</span> errorCount = stringifyResponse(response);
+                <span class="hljs-keyword">if</span> (isOrphan) {</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
                 <p> if the element was not in the dom, we remove it</p>
 
             </div><div class="content">
                 <div class="highlight"><pre>                    element.remove();
                 }
-                <span class="hljs-keyword">if</span> (message) {
-                    deferred.reject(message);
+                <span class="hljs-keyword">if</span> (errorCount) {
+                    deferred.reject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(errorCount + <span class="hljs-string">' issues reported!'</span>));
                 } <span class="hljs-keyword">else</span> {
                     deferred.resolve(<span class="hljs-string">'OK'</span>);
                 }
@@ -324,7 +319,7 @@
         </li>
         
         
-        <li id="section-18">
+        <li id="section-19">
             <div class="annotation">
                 <p> this function wraps the chai plugin into different formats to make sure it works when loaded in the 4 different
  scenarios listed above.</p>
@@ -332,7 +327,7 @@
             </div><div class="content">
                 <div class="highlight"><pre>    <span class="hljs-keyword">var</span> wrap = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">plugin</span>) </span>{
         <span class="hljs-comment">/* global module:false, define:false */</span>
-        <span class="hljs-comment">/* global jQuery, axs, chai */</span>
+        <span class="hljs-comment">/* global jQuery, chai */</span>
         <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">require</span> === <span class="hljs-string">'function'</span> &amp;&amp;
             <span class="hljs-keyword">typeof</span> exports === <span class="hljs-string">'object'</span> &amp;&amp;
             <span class="hljs-keyword">typeof</span> <span class="hljs-built_in">module</span> === <span class="hljs-string">'object'</span>) {</pre></div>
@@ -340,7 +335,7 @@
         </li>
         
         
-        <li id="section-19">
+        <li id="section-20">
             <div class="annotation">
                 <p> <strong>browserify or raptorjs stack</strong></p>
 
@@ -351,7 +346,7 @@
         </li>
         
         
-        <li id="section-20">
+        <li id="section-21">
             <div class="annotation">
                 <p> <strong>AMD:</strong> Assumes importing <code>chai</code>, <code>jquery</code> and <code>accessibility-developer-tools (axs)</code>. Returns a
  function to inject with <code>chai.use()</code>.</p>
@@ -359,12 +354,12 @@
             </div><div class="content">
                 <div class="highlight"><pre>            define([
                 <span class="hljs-string">'jquery'</span>,
-                <span class="hljs-string">'axs'</span>
-            ], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$, axs</span>) </span>{
+                <span class="hljs-string">'auditRunner'</span>
+            ], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$, auditRunner</span>) </span>{
                 <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chai, utils</span>) </span>{
                     <span class="hljs-keyword">return</span> plugin(chai, utils, {
                         $: $,
-                        axs: axs
+                        auditRunner: auditRunner
                     });
                 };
             });
@@ -373,7 +368,7 @@
         </li>
         
         
-        <li id="section-21">
+        <li id="section-22">
             <div class="annotation">
                 <p> <strong>Other environment</strong> (usually <script> tag): plug in to global chai instance directly.</p>
 
@@ -389,7 +384,7 @@
         </li>
         
         
-        <li id="section-22">
+        <li id="section-23">
             <div class="annotation">
                 <p> Hook it all together.</p>
 

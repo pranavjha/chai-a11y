@@ -101,7 +101,7 @@
         config.width = config.width || <span class="hljs-number">1024</span>;
         config.height = config.height || <span class="hljs-number">768</span>;
         config.url = url;
-        config.auditorPath = <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'accessibility-developer-tools/dist/js/axs_testing.js'</span>);
+        config.auditorPath = <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'a11y-auditor/dist/a11y-auditor.js'</span>);
         execFile(phantomjs.path, [
             path.join(__dirname, <span class="hljs-string">'a11y-auditor.js'</span>),
             <span class="hljs-built_in">JSON</span>.stringify(config),

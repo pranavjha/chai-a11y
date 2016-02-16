@@ -147,7 +147,7 @@
                 <p> parse the response and check for any errors</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>                <span class="hljs-keyword">var</span> message = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/stringify-response'</span>)(response);</pre></div>
+                <div class="highlight"><pre>                <span class="hljs-keyword">var</span> issueCount = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/stringify-response'</span>)(response);</pre></div>
             </div>
         </li>
         
@@ -157,7 +157,7 @@
                 <p> if there is no error, the test passes</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>                <span class="hljs-keyword">if</span> (!message) {
+                <div class="highlight"><pre>                <span class="hljs-keyword">if</span> (!issueCount) {
                     <span class="hljs-keyword">return</span> <span class="hljs-string">'OK'</span>;
                 }</pre></div>
             </div>
@@ -169,7 +169,7 @@
                 <p> else, the error is thrown</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>                <span class="hljs-keyword">throw</span> message;
+                <div class="highlight"><pre>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(issueCount + <span class="hljs-string">' issues found!'</span>);
             }
         ).finally(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</pre></div>
             </div>
