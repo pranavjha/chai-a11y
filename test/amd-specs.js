@@ -9,14 +9,7 @@ define([
     var expect = chai.expect;
     describe('chai a11y', function() {
         it('should be able to validate an html string', function() {
-            return expect('<button>Abacus</button>').to.be.accessible({
-                ignore: [
-                    'AX_23',
-                    'AX_04',
-                    'AX_05',
-                    'AX_32'
-                ]
-            });
+            return expect('<button>Abacus</button>').to.be.accessible();
         });
         it('should be able to ignore one rule', function() {
             return expect('<button></button>').to.be.accessible({
