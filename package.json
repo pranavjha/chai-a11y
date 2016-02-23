@@ -1,6 +1,6 @@
 {
     "name": "chai-a11y",
-    "version": "1.0.2",
+    "version": "2.0.1",
     "description": "accessibility plugin for chai",
     "main": "./lib/node.js",
     "browser": "./lib/index.js",
@@ -14,9 +14,9 @@
     },
     "dependencies": {
         "phantomjs": "^1",
-        "accessibility-developer-tools": "2.10.0",
         "bluebird": "^3.2.2",
-        "jquery": "^2"
+        "jquery": "^2",
+        "a11y-auditor": ">=0.0.4"
     },
     "devDependencies": {
         "chai": "^2",
