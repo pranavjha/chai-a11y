@@ -11,7 +11,7 @@ require.config({
     paths: {
         jquery: '../node_modules/jquery/dist/jquery',
         chai: '../node_modules/chai/chai',
-        auditRunner: '../node_modules/a11y-auditor/dist/a11y-auditor',
+        auditRunner: '../node_modules/a11y-auditor/dist/a11y-auditor.min',
         chaiA11y: '../lib/index'
     },
     baseUrl: '/base/src',
