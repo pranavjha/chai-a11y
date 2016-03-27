@@ -131,7 +131,7 @@
  (<a href="http://stackoverflow.com/questions/17341122/link-and-execute-external-javascript-file-hosted-on-github">http://stackoverflow.com/questions/17341122/link-and-execute-external-javascript-file-hosted-on-github</a>)</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>            scriptTag.src = <span class="hljs-string">'//raw.githubusercontent.com/dsathyakumar/a11y-auditor/master/dist/a11y-auditor.js'</span>;
+                <div class="highlight"><pre>            scriptTag.src = <span class="hljs-string">'//raw.githubusercontent.com/dsathyakumar/a11y-auditor/master/dist/a11y-auditor.min.js'</span>;
         } <span class="hljs-keyword">else</span> {</pre></div>
             </div>
         </li>
@@ -155,6 +155,8 @@
 
             </div><div class="content">
                 <div class="highlight"><pre>    <span class="hljs-keyword">var</span> normalizeConfig = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config</span>) </span>{
+        config = config || {};
+        config.ignore = config.ignore || {};
         <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> config.ignore === <span class="hljs-string">'string'</span> ||
             config.ignore <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>) {
             config.ignore = {
@@ -209,6 +211,7 @@
             <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error Message:   '</span> + item.errMsg);
             <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Rule ID:         '</span> + item.ruleID);
             <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Severity:        '</span> + item.severityEnum);
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'IsGlobal:        '</span> + item.isGlobal);
             <span class="hljs-built_in">console</span>.log(<span class="hljs-string">''</span>);
         });
         <span class="hljs-keyword">return</span> messageCount;
@@ -226,7 +229,7 @@
         <span class="hljs-comment">/* global document */</span>
         <span class="hljs-keyword">var</span> $ = modules.$;
         <span class="hljs-keyword">var</span> Assertion = chai.Assertion;
-        Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config, executeGlobalRules</span>) </span>{</pre></div>
+        Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config, auditConfig</span>) </span>{</pre></div>
             </div>
         </li>
         
@@ -283,7 +286,7 @@
                 <p> Run the auditor</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>                <span class="hljs-keyword">var</span> response = <span class="hljs-built_in">window</span>.auditRunner(element.get(<span class="hljs-number">0</span>), config.ignore, executeGlobalRules);</pre></div>
+                <div class="highlight"><pre>                <span class="hljs-keyword">var</span> response = <span class="hljs-built_in">window</span>.auditRunner(element.get(<span class="hljs-number">0</span>), config.ignore, auditConfig);</pre></div>
             </div>
         </li>
         

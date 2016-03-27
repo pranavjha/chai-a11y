@@ -130,7 +130,7 @@
  (<a href="http://stackoverflow.com/questions/17341122/link-and-execute-external-javascript-file-hosted-on-github">http://stackoverflow.com/questions/17341122/link-and-execute-external-javascript-file-hosted-on-github</a>)</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>        scriptTag.src = <span class="hljs-string">'//raw.githubusercontent.com/pranavjha/a11y-auditor/master/dist/a11y-auditor.js'</span>;
+                <div class="highlight"><pre>        scriptTag.src = <span class="hljs-string">'//raw.githubusercontent.com/dsathyakumar/a11y-auditor/master/dist/a11y-auditor.min.js'</span>;
     } <span class="hljs-keyword">else</span> {</pre></div>
             </div>
         </li>
@@ -155,7 +155,7 @@
             </div><div class="content">
                 <div class="highlight"><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chaiAccessibility</span>(<span class="hljs-params">chai</span>) </span>{
     <span class="hljs-keyword">var</span> Assertion = chai.Assertion;
-    Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config</span>) </span>{
+    Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config, auditConfig</span>) </span>{
         <span class="hljs-keyword">var</span> deferred = $.Deferred();</pre></div>
             </div>
         </li>
@@ -212,7 +212,7 @@
                 <p> Run the auditor</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>            <span class="hljs-keyword">var</span> response = <span class="hljs-built_in">window</span>.auditRunner(element.get(<span class="hljs-number">0</span>), config.ignore);</pre></div>
+                <div class="highlight"><pre>            <span class="hljs-keyword">var</span> response = <span class="hljs-built_in">window</span>.auditRunner(element.get(<span class="hljs-number">0</span>), config.ignore, auditConfig);</pre></div>
             </div>
         </li>
         

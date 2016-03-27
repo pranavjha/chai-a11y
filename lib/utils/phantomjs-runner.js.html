@@ -95,13 +95,14 @@
 </ul>
 
             </div><div class="content">
-                <div class="highlight"><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">url, config</span>) </span>{
+                <div class="highlight"><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">url, config, auditConfig</span>) </span>{
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
         config = config || {};
         config.width = config.width || <span class="hljs-number">1024</span>;
         config.height = config.height || <span class="hljs-number">768</span>;
         config.url = url;
-        config.auditorPath = <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'a11y-auditor/dist/a11y-auditor.js'</span>);
+        config.auditorPath = <span class="hljs-built_in">require</span>.resolve(<span class="hljs-string">'a11y-auditor/dist/a11y-auditor.min.js'</span>);
+        config.auditConfig = auditConfig || {};
         execFile(phantomjs.path, [
             path.join(__dirname, <span class="hljs-string">'a11y-auditor.js'</span>),
             <span class="hljs-built_in">JSON</span>.stringify(config),
