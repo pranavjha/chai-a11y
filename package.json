@@ -52,5 +52,8 @@
     "bugs": {
         "url": "https://github.com/pranavjha/chai-a11y/issues"
     },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
+    },
     "homepage": "https://pranavjha.github.io/chai-a11y"
 }
