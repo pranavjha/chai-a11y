@@ -1,6 +1,6 @@
 {
     "name": "chai-a11y",
-    "version": "2.0.1",
+    "version": "2.0.12",
     "description": "accessibility plugin for chai",
     "main": "./lib/node.js",
     "browser": "./lib/index.js",
@@ -16,7 +16,7 @@
         "phantomjs": "^1",
         "bluebird": "^3.2.2",
         "jquery": "^2",
-        "a11y-auditor": ">=0.0.4"
+        "a11y-auditor": "^0.0.12"
     },
     "devDependencies": {
         "chai": "^2",
@@ -51,6 +51,9 @@
     "license": "Unlicense",
     "bugs": {
         "url": "https://github.com/pranavjha/chai-a11y/issues"
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/"
     },
     "homepage": "https://pranavjha.github.io/chai-a11y"
 }

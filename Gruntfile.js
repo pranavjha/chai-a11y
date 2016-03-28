@@ -96,7 +96,7 @@ module.exports = function(grunt) {
                             'test/amd-specs.js',
                             'lib/**/*.js',
                             'node_modules/jquery/dist/jquery.js',
-                            'node_modules/a11y-auditor/dist/a11y-auditor.js'
+                            'node_modules/a11y-auditor/dist/a11y-auditor.min.js'
                         ],
                         served: true,
                         included: false
@@ -130,7 +130,7 @@ module.exports = function(grunt) {
                             'test/amd-specs.js',
                             'lib/**/*.js',
                             'node_modules/jquery/dist/jquery.js',
-                            'node_modules/a11y-auditor/dist/a11y-auditor.js'
+                            'node_modules/a11y-auditor/dist/a11y-auditor.min.js'
                         ],
                         served: true,
                         included: false
@@ -183,7 +183,7 @@ module.exports = function(grunt) {
                     {
                         src: [
                             'test/commonjs-specs.js',
-                            'node_modules/a11y-auditor/dist/a11y-auditor.js'
+                            'node_modules/a11y-auditor/dist/a11y-auditor.min.js'
                         ]
                     }
                 ],
@@ -224,7 +224,7 @@ module.exports = function(grunt) {
                     {
                         src: [
                             'test/commonjs-specs.js',
-                            'node_modules/a11y-auditor/dist/a11y-auditor.js'
+                            'node_modules/a11y-auditor/dist/a11y-auditor.min.js'
                         ]
                     }
                 ],
@@ -249,7 +249,7 @@ module.exports = function(grunt) {
                     {
                         src: [
                             'node_modules/jquery/dist/jquery.js',
-                            'node_modules/a11y-auditor/dist/a11y-auditor.js',
+                            'node_modules/a11y-auditor/dist/a11y-auditor.min.js',
                             'lib/index.js',
                             'test/script-tag-specs.js'
                         ]
@@ -276,7 +276,7 @@ module.exports = function(grunt) {
                     {
                         src: [
                             'node_modules/jquery/dist/jquery.js',
-                            'node_modules/a11y-auditor/dist/a11y-auditor.js',
+                            'node_modules/a11y-auditor/dist/a11y-auditor.min.js',
                             'lib/index.js',
                             'test/script-tag-specs.js'
                         ]
