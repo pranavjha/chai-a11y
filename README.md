@@ -53,6 +53,9 @@ An options object can be passed to the plugin assertion. This object has the fol
 
  - `port` is the port on which the http server serving the html should start. This option is honoured only for server
  side tests
+ 
+ - `url` is the url of the page whose accessibility issues are to be detected. (If url is specified, the url gets precedence over 
+ the string passed)
 
 
 ## Installation and Setup
