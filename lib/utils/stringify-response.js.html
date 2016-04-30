@@ -86,10 +86,10 @@
         
         <li id="section-2">
             <div class="annotation">
-                <p> filter all the FAILed cases</p>
+                <p> filter all the FAILed cases &amp; cases which are ERRORs</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>        <span class="hljs-keyword">return</span> (!item.errMsg.result);
+                <div class="highlight"><pre>        <span class="hljs-keyword">return</span> (!item.result &amp;&amp; item.severityEnum === <span class="hljs-string">'error'</span>);
     }).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>{
         messageCount = messageCount + <span class="hljs-number">1</span>;</pre></div>
             </div>
