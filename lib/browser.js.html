@@ -73,7 +73,7 @@
             <div class="annotation">
                 
             </div><div class="content">
-                <div class="highlight"><pre><span class="hljs-comment">/* globals window, document */</span></pre></div>
+                <div class="highlight"><pre><span class="hljs-comment">/* globals window, document, axs */</span></pre></div>
             </div>
         </li>
         
@@ -96,7 +96,7 @@
 
             </div><div class="content">
                 <div class="highlight"><pre><span class="hljs-keyword">var</span> loadPlugin = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">cb, eb</span>) </span>{
-    <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">window</span>.auditRunner) {</pre></div>
+    <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">window</span>.axs) {</pre></div>
             </div>
         </li>
         
@@ -130,8 +130,7 @@
  (<a href="http://stackoverflow.com/questions/17341122/link-and-execute-external-javascript-file-hosted-on-github">http://stackoverflow.com/questions/17341122/link-and-execute-external-javascript-file-hosted-on-github</a>)</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>        <span class="hljs-keyword">var</span> url = <span class="hljs-string">'//raw.githubusercontent.com/dsathyakumar/a11y-auditor/master/dist/a11y-auditor.0-0-14.min.js'</span>;
-        scriptTag.src = url;
+                <div class="highlight"><pre>        scriptTag.src = <span class="hljs-string">'//rawgit.com/GoogleChrome/accessibility-developer-tools/stable/dist/js/axs_testing.js'</span>;
     } <span class="hljs-keyword">else</span> {</pre></div>
             </div>
         </li>
@@ -156,7 +155,7 @@
             </div><div class="content">
                 <div class="highlight"><pre><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chaiAccessibility</span>(<span class="hljs-params">chai</span>) </span>{
     <span class="hljs-keyword">var</span> Assertion = chai.Assertion;
-    Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config, auditConfig</span>) </span>{
+    Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config</span>) </span>{
         <span class="hljs-keyword">var</span> deferred = $.Deferred();</pre></div>
             </div>
         </li>
@@ -199,21 +198,26 @@
         
         <li id="section-12">
             <div class="annotation">
-                <p> Run the auditor
- normalize config</p>
+                <p> Run the auditor</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>            config = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/normalize-config'</span>)(config);</pre></div>
+                <div class="highlight"><pre>            <span class="hljs-keyword">var</span> configuration = <span class="hljs-keyword">new</span> axs.AuditConfiguration();
+            configuration.scope = element.get(<span class="hljs-number">0</span>);
+            configuration.showUnsupportedRulesWarning = <span class="hljs-literal">false</span>;</pre></div>
             </div>
         </li>
         
         
         <li id="section-13">
             <div class="annotation">
-                <p> Run the auditor</p>
+                <p> normalize config</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>            <span class="hljs-keyword">var</span> response = <span class="hljs-built_in">window</span>.auditRunner(element.get(<span class="hljs-number">0</span>), config.ignore, auditConfig);</pre></div>
+                <div class="highlight"><pre>            config = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/normalize-config'</span>)(config);
+            config.ignore.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ignores</span>) </span>{
+                configuration.ignoreSelectors(ignores[<span class="hljs-number">0</span>], ignores[<span class="hljs-number">1</span>] || <span class="hljs-string">'*'</span>);
+            });
+            <span class="hljs-keyword">var</span> response = axs.Audit.run(configuration);</pre></div>
             </div>
         </li>
         
@@ -223,7 +227,7 @@
                 <p> parse the audit results</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>            <span class="hljs-keyword">var</span> errorCount = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/stringify-response'</span>)(response);
+                <div class="highlight"><pre>            <span class="hljs-keyword">var</span> message = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/stringify-response'</span>)(response);
             <span class="hljs-keyword">if</span> (isOrphan) {</pre></div>
             </div>
         </li>
@@ -236,7 +240,7 @@
             </div><div class="content">
                 <div class="highlight"><pre>                element.remove();
             }
-            <span class="hljs-keyword">if</span> (!errorCount) {</pre></div>
+            <span class="hljs-keyword">if</span> (!message) {</pre></div>
             </div>
         </li>
         
@@ -257,7 +261,7 @@
                 <p> if the audit fails, the test fails</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>                deferred.reject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(errorCount + <span class="hljs-string">' issues reported!'</span>));
+                <div class="highlight"><pre>                deferred.reject(message);
             }
         }, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{</pre></div>
             </div>

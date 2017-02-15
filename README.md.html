@@ -100,13 +100,17 @@
 <h2 id="configuration-options-passed">Configuration Options passed</h2>
 <p>An options object can be passed to the plugin assertion. This object has the following keys:</p>
 <ul>
-<li><p><code>ignore</code> is a Map or string</p>
+<li><p><code>ignore</code> is an array or string</p>
 <ul>
 <li><p>If it is a string, it represents an
-<a href="https://github.com/dsathyakumar/a11y-auditor/blob/master/a11y.properties.json">accessibility rule</a> id to ignore</p>
+<a href="https://github.com/GoogleChrome/accessibility-developer-tools/wiki/Audit-Rules">accessibility rule</a> name to ignore</p>
 </li>
-<li><p>If it is a map, the key defines the selector on which the ignores should be executed, and the value is a single
-rule or an array of rules to ignore</p>
+<li><p>If it is an array, the array elements can be a String or another Array</p>
+</li>
+<li><p>If the array element is another array, it should have 2 elements: a rule name and a query selector string
+representing the parts of the page to be ignored for that audit rule.</p>
+</li>
+<li><p>If the array element is a string, it represents the rule name to ignore.</p>
 </li>
 </ul>
 </li>
@@ -117,9 +121,6 @@ tests</p>
 </li>
 <li><p><code>port</code> is the port on which the http server serving the html should start. This option is honoured only for server
 side tests</p>
-</li>
-<li><p><code>url</code> is the url of the page whose accessibility issues are to be detected. (If url is specified, the url gets precedence over 
-the string passed)</p>
 </li>
 </ul>
 <h2 id="installation-and-setup">Installation and Setup</h2>
@@ -154,16 +155,16 @@ NodeJS environment.</p>
 <p>If you include Chai A11y directly with a <code>&lt;script&gt;</code> tag, after the one for Chai itself, then it will
 automatically plug in to Chai and be ready for use:</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"chai.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"chai-a11y/dist/a11y-auditor.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"chai-a11y/lib/index.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <h3 id="optional-dependency">Optional Dependency</h3>
 <p><code>chai-a11y</code> plugin relies on
-<a href="https://npmjs.com/package/a11y-auditor">a11y-auditor</a>.</p>
-<p>The plugin will look for the file
-<a href="https://raw.githubusercontent.com/pranavjha/a11y-auditor/master/dist/a11y-auditor.js">a11y-auditor.js</a> on the browser
-and if it is not present, will try loading it form the remote url. So, if there is no internet access in the test
-environment, it is recommended that a local copy of the file be served in the test runner. This is not required for
-NodeJS environment.</p>
+<a href="https://github.com/GoogleChrome/accessibility-developer-tools">accessibility-developer-tools</a>.</p>
+<p>The plugin will look for the file [axs_testing.js]
+(<a href="https://raw.github.com/GoogleChrome/accessibility-developer-tools/stable/dist/js/axs_testing.js">https://raw.github.com/GoogleChrome/accessibility-developer-tools/stable/dist/js/axs_testing.js</a>) on the browser and if
+it is not present, will try loading it form the remote url. So, if there is no internet access in the test environment,
+it is recommended that a local copy of the file be served in the test runner. This is not required for NodeJS
+environment.</p>
 
             </div><div class="content">
                 

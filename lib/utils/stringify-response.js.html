@@ -76,22 +76,19 @@
             </div><div class="content">
                 <div class="highlight"><pre><span class="hljs-meta">'use strict'</span>;
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>{
-    <span class="hljs-keyword">var</span> messageCount = <span class="hljs-number">0</span>;
-    <span class="hljs-built_in">Array</span>.prototype.concat.apply([], <span class="hljs-built_in">Object</span>.keys(response).map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ruleKey</span>) </span>{
-        <span class="hljs-keyword">return</span> response[ruleKey];
-    })).filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>{</pre></div>
+    <span class="hljs-keyword">var</span> message = <span class="hljs-string">''</span>;
+    response.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>{</pre></div>
             </div>
         </li>
         
         
         <li id="section-2">
             <div class="annotation">
-                <p> filter all the FAILed cases &amp; cases which are ERRORs</p>
+                <p> filter all the FAILed cases</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>        <span class="hljs-keyword">return</span> (!item.result &amp;&amp; item.severityEnum === <span class="hljs-string">'error'</span>);
-    }).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>{
-        messageCount = messageCount + <span class="hljs-number">1</span>;</pre></div>
+                <div class="highlight"><pre>        <span class="hljs-keyword">return</span> (item.result === <span class="hljs-string">'FAIL'</span>);
+    }).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>{</pre></div>
             </div>
         </li>
         
@@ -101,14 +98,17 @@
                 <p> get the important information in the string to be returned</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Description:     '</span> + item.description);
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Error Message:   '</span> + item.errMsg);
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Rule ID:         '</span> + item.ruleID);
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Severity:        '</span> + item.severityEnum);
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'IsGlobal:        '</span> + item.isGlobal);
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">''</span>);
+                <div class="highlight"><pre>        message += (<span class="hljs-string">'\nrule name:       '</span> + item.rule.name);
+        message += (<span class="hljs-string">'\nrule severity:   '</span> + item.rule.severity);
+        message += (<span class="hljs-string">'\nrule code:       '</span> + item.rule.code);
+        message += (<span class="hljs-string">'\nrule heading:    '</span> + item.rule.heading);
+        message += (<span class="hljs-string">'\nrule url:        '</span> + item.rule.url);
+        item.elements.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">el, index</span>) </span>{
+            message += (<span class="hljs-string">'\nviolation #'</span> + index + <span class="hljs-string">':    '</span> + el.outerHTML);
+        });
+        message += <span class="hljs-string">'\n'</span>;
     });
-    <span class="hljs-keyword">return</span> messageCount;
+    <span class="hljs-keyword">return</span> message;
 };</pre></div>
             </div>
         </li>

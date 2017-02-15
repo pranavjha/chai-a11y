@@ -85,31 +85,31 @@
 
             </div><div class="content">
                 <div class="highlight"><pre><span class="hljs-keyword">var</span> jshintOptions = {
-    nonew: <span class="hljs-literal">true</span>,
-    plusplus: <span class="hljs-literal">true</span>,
-    curly: <span class="hljs-literal">true</span>,
-    latedef: <span class="hljs-literal">true</span>,
-    maxdepth: <span class="hljs-number">6</span>,
-    unused: <span class="hljs-literal">true</span>,
-    noarg: <span class="hljs-literal">true</span>,
-    trailing: <span class="hljs-literal">true</span>,
-    indent: <span class="hljs-number">4</span>,
-    forin: <span class="hljs-literal">true</span>,
-    noempty: <span class="hljs-literal">true</span>,
-    quotmark: <span class="hljs-literal">true</span>,
-    maxparams: <span class="hljs-number">6</span>,
-    node: <span class="hljs-literal">true</span>,
-    eqeqeq: <span class="hljs-literal">true</span>,
-    strict: <span class="hljs-literal">true</span>,
-    undef: <span class="hljs-literal">true</span>,
-    bitwise: <span class="hljs-literal">true</span>,
-    newcap: <span class="hljs-literal">true</span>,
-    immed: <span class="hljs-literal">true</span>,
-    camelcase: <span class="hljs-literal">true</span>,
-    maxcomplexity: <span class="hljs-number">7</span>,
-    maxlen: <span class="hljs-number">120</span>,
-    nonbsp: <span class="hljs-literal">true</span>,
-    freeze: <span class="hljs-literal">true</span>
+    <span class="hljs-attr">nonew</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">plusplus</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">curly</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">latedef</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">maxdepth</span>: <span class="hljs-number">6</span>,
+    <span class="hljs-attr">unused</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">noarg</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">trailing</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">indent</span>: <span class="hljs-number">4</span>,
+    <span class="hljs-attr">forin</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">noempty</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">quotmark</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">maxparams</span>: <span class="hljs-number">6</span>,
+    <span class="hljs-attr">node</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">eqeqeq</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">strict</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">undef</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">bitwise</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">newcap</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">immed</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">camelcase</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">maxcomplexity</span>: <span class="hljs-number">7</span>,
+    <span class="hljs-attr">maxlen</span>: <span class="hljs-number">120</span>,
+    <span class="hljs-attr">nonbsp</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">freeze</span>: <span class="hljs-literal">true</span>
 };
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">grunt</span>) </span>{</pre></div>
             </div>
@@ -141,16 +141,16 @@
 
             </div><div class="content">
                 <div class="highlight"><pre>    grunt.initConfig({
-        pkg: grunt.file.readJSON(<span class="hljs-string">'package.json'</span>),
-        clean: [
+        <span class="hljs-attr">pkg</span>: grunt.file.readJSON(<span class="hljs-string">'package.json'</span>),
+        <span class="hljs-attr">clean</span>: [
             <span class="hljs-string">'.coverage'</span>,
             <span class="hljs-string">'.test'</span>,
             <span class="hljs-string">'.cache'</span>
         ],
-        copy: {
-            coverage: {
-                src: <span class="hljs-string">'lib/**'</span>,
-                dest: <span class="hljs-string">'.coverage/instrument/'</span>,</pre></div>
+        <span class="hljs-attr">copy</span>: {
+            <span class="hljs-attr">coverage</span>: {
+                <span class="hljs-attr">src</span>: <span class="hljs-string">'lib/**'</span>,
+                <span class="hljs-attr">dest</span>: <span class="hljs-string">'.coverage/instrument/'</span>,</pre></div>
             </div>
         </li>
         
@@ -187,45 +187,45 @@
                 }
             }
         },
-        jshint: {
-            lib: {
-                src: [
+        <span class="hljs-attr">jshint</span>: {
+            <span class="hljs-attr">lib</span>: {
+                <span class="hljs-attr">src</span>: [
                     <span class="hljs-string">'lib/**/*.js'</span>,
                     <span class="hljs-string">'test/**/*.js'</span>,
                     <span class="hljs-string">'Gruntfile.js'</span>,
                     <span class="hljs-string">'package.json'</span>
                 ],
-                options: jshintOptions
+                <span class="hljs-attr">options</span>: jshintOptions
             }
         },
-        karma: {
-            testAMD: {
-                frameworks: [
+        <span class="hljs-attr">karma</span>: {
+            <span class="hljs-attr">testAMD</span>: {
+                <span class="hljs-attr">frameworks</span>: [
                     <span class="hljs-string">'requirejs'</span>,
                     <span class="hljs-string">'mocha'</span>,
                     <span class="hljs-string">'chai'</span>
                 ],
-                files: [
+                <span class="hljs-attr">files</span>: [
                     {
-                        src: [
+                        <span class="hljs-attr">src</span>: [
                             <span class="hljs-string">'node_modules/requirejs/require.js'</span>,
                             <span class="hljs-string">'test/require-config.js'</span>
                         ],
-                        served: <span class="hljs-literal">true</span>,
-                        included: <span class="hljs-literal">true</span>
+                        <span class="hljs-attr">served</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">included</span>: <span class="hljs-literal">true</span>
                     },
                     {
-                        src: [
+                        <span class="hljs-attr">src</span>: [
                             <span class="hljs-string">'test/amd-specs.js'</span>,
                             <span class="hljs-string">'lib/**/*.js'</span>,
                             <span class="hljs-string">'node_modules/jquery/dist/jquery.js'</span>,
-                            <span class="hljs-string">'node_modules/a11y-auditor/dist/a11y-auditor.min.js'</span>
+                            <span class="hljs-string">'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'</span>
                         ],
-                        served: <span class="hljs-literal">true</span>,
-                        included: <span class="hljs-literal">false</span>
+                        <span class="hljs-attr">served</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">included</span>: <span class="hljs-literal">false</span>
                     }
                 ],
-                plugins: [
+                <span class="hljs-attr">plugins</span>: [
                     <span class="hljs-string">'karma-requirejs'</span>,
                     <span class="hljs-string">'karma-chai'</span>,
                     <span class="hljs-string">'karma-mocha'</span>,
@@ -233,33 +233,33 @@
                     <span class="hljs-string">'karma-phantomjs-launcher'</span>
                 ]
             },
-            coverageAMD: {
-                frameworks: [
+            <span class="hljs-attr">coverageAMD</span>: {
+                <span class="hljs-attr">frameworks</span>: [
                     <span class="hljs-string">'requirejs'</span>,
                     <span class="hljs-string">'mocha'</span>,
                     <span class="hljs-string">'chai'</span>
                 ],
-                files: [
+                <span class="hljs-attr">files</span>: [
                     {
-                        src: [
+                        <span class="hljs-attr">src</span>: [
                             <span class="hljs-string">'node_modules/requirejs/require.js'</span>,
                             <span class="hljs-string">'test/require-config.js'</span>
                         ],
-                        served: <span class="hljs-literal">true</span>,
-                        included: <span class="hljs-literal">true</span>
+                        <span class="hljs-attr">served</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">included</span>: <span class="hljs-literal">true</span>
                     },
                     {
-                        src: [
+                        <span class="hljs-attr">src</span>: [
                             <span class="hljs-string">'test/amd-specs.js'</span>,
                             <span class="hljs-string">'lib/**/*.js'</span>,
                             <span class="hljs-string">'node_modules/jquery/dist/jquery.js'</span>,
-                            <span class="hljs-string">'node_modules/a11y-auditor/dist/a11y-auditor.min.js'</span>
+                            <span class="hljs-string">'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'</span>
                         ],
-                        served: <span class="hljs-literal">true</span>,
-                        included: <span class="hljs-literal">false</span>
+                        <span class="hljs-attr">served</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">included</span>: <span class="hljs-literal">false</span>
                     }
                 ],
-                plugins: [
+                <span class="hljs-attr">plugins</span>: [
                     <span class="hljs-string">'karma-requirejs'</span>,
                     <span class="hljs-string">'karma-coverage'</span>,
                     <span class="hljs-string">'karma-chai'</span>,
@@ -267,50 +267,50 @@
                     <span class="hljs-string">'karma-mocha-reporter'</span>,
                     <span class="hljs-string">'karma-phantomjs-launcher'</span>
                 ],
-                preprocessors: {
+                <span class="hljs-attr">preprocessors</span>: {
                     <span class="hljs-string">'lib/**/*.js'</span>: [
                         <span class="hljs-string">'coverage'</span>
                     ]
                 },
-                reporters: [
+                <span class="hljs-attr">reporters</span>: [
                     <span class="hljs-string">'mocha'</span>,
                     <span class="hljs-string">'coverage'</span>
                 ],
-                coverageReporter: {
-                    dir: <span class="hljs-string">'.coverage'</span>,
-                    reporters: [
+                <span class="hljs-attr">coverageReporter</span>: {
+                    <span class="hljs-attr">dir</span>: <span class="hljs-string">'.coverage'</span>,
+                    <span class="hljs-attr">reporters</span>: [
                         {
-                            type: <span class="hljs-string">'json'</span>,
-                            subdir: <span class="hljs-string">'json/amd'</span>
+                            <span class="hljs-attr">type</span>: <span class="hljs-string">'json'</span>,
+                            <span class="hljs-attr">subdir</span>: <span class="hljs-string">'json/amd'</span>
                         },
                         {
-                            type: <span class="hljs-string">'html'</span>,
-                            subdir: <span class="hljs-string">'html/amd'</span>
+                            <span class="hljs-attr">type</span>: <span class="hljs-string">'html'</span>,
+                            <span class="hljs-attr">subdir</span>: <span class="hljs-string">'html/amd'</span>
                         }
                     ]
                 }
             },
-            testCommonJs: {
-                frameworks: [
+            <span class="hljs-attr">testCommonJs</span>: {
+                <span class="hljs-attr">frameworks</span>: [
                     <span class="hljs-string">'lasso'</span>,
                     <span class="hljs-string">'mocha'</span>
                 ],
-                lasso: {
-                    minify: <span class="hljs-literal">false</span>,
-                    bundlingEnabled: <span class="hljs-literal">false</span>,
-                    cacheProfile: <span class="hljs-string">'development'</span>,
-                    tempdir: <span class="hljs-string">'.test'</span>,
-                    ignore: <span class="hljs-string">'node_modules/a11y-auditor/**'</span>
+                <span class="hljs-attr">lasso</span>: {
+                    <span class="hljs-attr">minify</span>: <span class="hljs-literal">false</span>,
+                    <span class="hljs-attr">bundlingEnabled</span>: <span class="hljs-literal">false</span>,
+                    <span class="hljs-attr">cacheProfile</span>: <span class="hljs-string">'development'</span>,
+                    <span class="hljs-attr">tempdir</span>: <span class="hljs-string">'.test'</span>,
+                    <span class="hljs-attr">ignore</span>: <span class="hljs-string">'node_modules/accessibility-developer-tools/**'</span>
                 },
-                files: [
+                <span class="hljs-attr">files</span>: [
                     {
-                        src: [
+                        <span class="hljs-attr">src</span>: [
                             <span class="hljs-string">'test/commonjs-specs.js'</span>,
-                            <span class="hljs-string">'node_modules/a11y-auditor/dist/a11y-auditor.min.js'</span>
+                            <span class="hljs-string">'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'</span>
                         ]
                     }
                 ],
-                plugins: [
+                <span class="hljs-attr">plugins</span>: [
                     <span class="hljs-string">'karma-chai'</span>,
                     <span class="hljs-string">'karma-mocha'</span>,
                     <span class="hljs-string">'karma-lasso'</span>,
@@ -318,143 +318,143 @@
                     <span class="hljs-string">'karma-phantomjs-launcher'</span>
                 ]
             },
-            coverageCommonJs: {
-                frameworks: [
+            <span class="hljs-attr">coverageCommonJs</span>: {
+                <span class="hljs-attr">frameworks</span>: [
                     <span class="hljs-string">'lasso'</span>,
                     <span class="hljs-string">'mocha'</span>
                 ],
-                lasso: {
-                    minify: <span class="hljs-literal">false</span>,
-                    bundlingEnabled: <span class="hljs-literal">false</span>,
-                    cacheProfile: <span class="hljs-string">'development'</span>,
-                    tempdir: <span class="hljs-string">'.coverage'</span>,
-                    ignore: <span class="hljs-string">'node_modules/a11y-auditor/**'</span>,
-                    coverage: {
-                        files: <span class="hljs-string">'**/*.js'</span>,
-                        reporters: [
+                <span class="hljs-attr">lasso</span>: {
+                    <span class="hljs-attr">minify</span>: <span class="hljs-literal">false</span>,
+                    <span class="hljs-attr">bundlingEnabled</span>: <span class="hljs-literal">false</span>,
+                    <span class="hljs-attr">cacheProfile</span>: <span class="hljs-string">'development'</span>,
+                    <span class="hljs-attr">tempdir</span>: <span class="hljs-string">'.coverage'</span>,
+                    <span class="hljs-attr">ignore</span>: <span class="hljs-string">'node_modules/accessibility-developer-tools/**'</span>,
+                    <span class="hljs-attr">coverage</span>: {
+                        <span class="hljs-attr">files</span>: <span class="hljs-string">'**/*.js'</span>,
+                        <span class="hljs-attr">reporters</span>: [
                             {
-                                type: <span class="hljs-string">'json'</span>,
-                                dir: <span class="hljs-string">'.coverage/json/common'</span>
+                                <span class="hljs-attr">type</span>: <span class="hljs-string">'json'</span>,
+                                <span class="hljs-attr">dir</span>: <span class="hljs-string">'.coverage/json/common'</span>
                             },
                             {
-                                type: <span class="hljs-string">'html'</span>,
-                                dir: <span class="hljs-string">'./.coverage/html/common'</span>
+                                <span class="hljs-attr">type</span>: <span class="hljs-string">'html'</span>,
+                                <span class="hljs-attr">dir</span>: <span class="hljs-string">'./.coverage/html/common'</span>
                             }
                         ]
                     }
                 },
-                files: [
+                <span class="hljs-attr">files</span>: [
                     {
-                        src: [
+                        <span class="hljs-attr">src</span>: [
                             <span class="hljs-string">'test/commonjs-specs.js'</span>,
-                            <span class="hljs-string">'node_modules/a11y-auditor/dist/a11y-auditor.min.js'</span>
+                            <span class="hljs-string">'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'</span>
                         ]
                     }
                 ],
-                plugins: [
+                <span class="hljs-attr">plugins</span>: [
                     <span class="hljs-string">'karma-chai'</span>,
                     <span class="hljs-string">'karma-mocha'</span>,
                     <span class="hljs-string">'karma-lasso'</span>,
                     <span class="hljs-string">'karma-mocha-reporter'</span>,
                     <span class="hljs-string">'karma-phantomjs-launcher'</span>
                 ],
-                reporters: [
+                <span class="hljs-attr">reporters</span>: [
                     <span class="hljs-string">'mocha'</span>,
                     <span class="hljs-string">'lasso'</span>
                 ]
             },
-            testScriptTag: {
-                frameworks: [
+            <span class="hljs-attr">testScriptTag</span>: {
+                <span class="hljs-attr">frameworks</span>: [
                     <span class="hljs-string">'mocha'</span>,
                     <span class="hljs-string">'chai'</span>
                 ],
-                files: [
+                <span class="hljs-attr">files</span>: [
                     {
-                        src: [
+                        <span class="hljs-attr">src</span>: [
                             <span class="hljs-string">'node_modules/jquery/dist/jquery.js'</span>,
-                            <span class="hljs-string">'node_modules/a11y-auditor/dist/a11y-auditor.min.js'</span>,
+                            <span class="hljs-string">'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'</span>,
                             <span class="hljs-string">'lib/index.js'</span>,
                             <span class="hljs-string">'test/script-tag-specs.js'</span>
                         ]
                     }
                 ],
-                plugins: [
+                <span class="hljs-attr">plugins</span>: [
                     <span class="hljs-string">'karma-chai'</span>,
                     <span class="hljs-string">'karma-mocha'</span>,
                     <span class="hljs-string">'karma-mocha-reporter'</span>,
                     <span class="hljs-string">'karma-phantomjs-launcher'</span>
                 ],
-                client: {
-                    mocha: {
-                        ui: <span class="hljs-string">'bdd'</span>
+                <span class="hljs-attr">client</span>: {
+                    <span class="hljs-attr">mocha</span>: {
+                        <span class="hljs-attr">ui</span>: <span class="hljs-string">'bdd'</span>
                     }
                 }
             },
-            coverageScriptTag: {
-                frameworks: [
+            <span class="hljs-attr">coverageScriptTag</span>: {
+                <span class="hljs-attr">frameworks</span>: [
                     <span class="hljs-string">'mocha'</span>,
                     <span class="hljs-string">'chai'</span>
                 ],
-                files: [
+                <span class="hljs-attr">files</span>: [
                     {
-                        src: [
+                        <span class="hljs-attr">src</span>: [
                             <span class="hljs-string">'node_modules/jquery/dist/jquery.js'</span>,
-                            <span class="hljs-string">'node_modules/a11y-auditor/dist/a11y-auditor.min.js'</span>,
+                            <span class="hljs-string">'node_modules/accessibility-developer-tools/dist/js/axs_testing.js'</span>,
                             <span class="hljs-string">'lib/index.js'</span>,
                             <span class="hljs-string">'test/script-tag-specs.js'</span>
                         ]
                     }
                 ],
-                plugins: [
+                <span class="hljs-attr">plugins</span>: [
                     <span class="hljs-string">'karma-chai'</span>,
                     <span class="hljs-string">'karma-mocha'</span>,
                     <span class="hljs-string">'karma-coverage'</span>,
                     <span class="hljs-string">'karma-mocha-reporter'</span>,
                     <span class="hljs-string">'karma-phantomjs-launcher'</span>
                 ],
-                preprocessors: {
+                <span class="hljs-attr">preprocessors</span>: {
                     <span class="hljs-string">'lib/**/*.js'</span>: [
                         <span class="hljs-string">'coverage'</span>
                     ]
                 },
-                reporters: [
+                <span class="hljs-attr">reporters</span>: [
                     <span class="hljs-string">'mocha'</span>,
                     <span class="hljs-string">'coverage'</span>
                 ],
-                coverageReporter: {
-                    dir: <span class="hljs-string">'.coverage'</span>,
-                    reporters: [
+                <span class="hljs-attr">coverageReporter</span>: {
+                    <span class="hljs-attr">dir</span>: <span class="hljs-string">'.coverage'</span>,
+                    <span class="hljs-attr">reporters</span>: [
                         {
-                            type: <span class="hljs-string">'json'</span>,
-                            subdir: <span class="hljs-string">'json/tag'</span>
+                            <span class="hljs-attr">type</span>: <span class="hljs-string">'json'</span>,
+                            <span class="hljs-attr">subdir</span>: <span class="hljs-string">'json/tag'</span>
                         },
                         {
-                            type: <span class="hljs-string">'html'</span>,
-                            subdir: <span class="hljs-string">'html/tag'</span>
+                            <span class="hljs-attr">type</span>: <span class="hljs-string">'html'</span>,
+                            <span class="hljs-attr">subdir</span>: <span class="hljs-string">'html/tag'</span>
                         }
                     ]
                 },
-                client: {
-                    mocha: {
-                        ui: <span class="hljs-string">'bdd'</span>
+                <span class="hljs-attr">client</span>: {
+                    <span class="hljs-attr">mocha</span>: {
+                        <span class="hljs-attr">ui</span>: <span class="hljs-string">'bdd'</span>
                     }
                 }
             },
-            options: {
-                browsers: [
+            <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">browsers</span>: [
                     <span class="hljs-string">'PhantomJS'</span>
                 ],
-                client: {
-                    mocha: {
-                        timeout: <span class="hljs-number">500</span>,
-                        ui: <span class="hljs-string">'bdd'</span>
+                <span class="hljs-attr">client</span>: {
+                    <span class="hljs-attr">mocha</span>: {
+                        <span class="hljs-attr">timeout</span>: <span class="hljs-number">500</span>,
+                        <span class="hljs-attr">ui</span>: <span class="hljs-string">'bdd'</span>
                     }
                 },
-                singleRun: <span class="hljs-literal">true</span>,
-                reporters: [
+                <span class="hljs-attr">singleRun</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">reporters</span>: [
                     <span class="hljs-string">'mocha'</span>
                 ],
-                logLevel: <span class="hljs-string">'WARN'</span>
+                <span class="hljs-attr">logLevel</span>: <span class="hljs-string">'WARN'</span>
             }
         },</pre></div>
             </div>
@@ -467,58 +467,58 @@
 
             </div><div class="content">
                 <div class="highlight"><pre>        mochaTest: {
-            test: {
-                options: {
-                    reporter: <span class="hljs-string">'spec'</span>
+            <span class="hljs-attr">test</span>: {
+                <span class="hljs-attr">options</span>: {
+                    <span class="hljs-attr">reporter</span>: <span class="hljs-string">'spec'</span>
                 },
-                src: [
+                <span class="hljs-attr">src</span>: [
                     <span class="hljs-string">'test/nodejs-specs.js'</span>
                 ]
             }
         },
-        instrument: {
-            files: [
+        <span class="hljs-attr">instrument</span>: {
+            <span class="hljs-attr">files</span>: [
                 <span class="hljs-string">'lib/node.js'</span>
             ],
-            options: {
-                lazy: <span class="hljs-literal">false</span>,
-                basePath: <span class="hljs-string">'.coverage/instrument/'</span>
+            <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">lazy</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-attr">basePath</span>: <span class="hljs-string">'.coverage/instrument/'</span>
             }
         },
-        storeCoverage: {
-            options: {
-                dir: <span class="hljs-string">'.coverage/json/'</span>
+        <span class="hljs-attr">storeCoverage</span>: {
+            <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">dir</span>: <span class="hljs-string">'.coverage/json/'</span>
             }
         },
-        makeReport: {
-            src: <span class="hljs-string">'.coverage/json/**/*.json'</span>,
-            options: {
-                type: <span class="hljs-string">'lcov'</span>,
-                dir: <span class="hljs-string">'.coverage/reports/'</span>,
-                print: <span class="hljs-string">'detail'</span>
+        <span class="hljs-attr">makeReport</span>: {
+            <span class="hljs-attr">src</span>: <span class="hljs-string">'.coverage/json/**/*.json'</span>,
+            <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">type</span>: <span class="hljs-string">'lcov'</span>,
+                <span class="hljs-attr">dir</span>: <span class="hljs-string">'.coverage/reports/'</span>,
+                <span class="hljs-attr">print</span>: <span class="hljs-string">'detail'</span>
             }
         },
-        env: {
-            coverage: {
-                APP_DIR_FOR_CODE_COVERAGE: <span class="hljs-string">'.coverage/instrument/'</span>
+        <span class="hljs-attr">env</span>: {
+            <span class="hljs-attr">coverage</span>: {
+                <span class="hljs-attr">APP_DIR_FOR_CODE_COVERAGE</span>: <span class="hljs-string">'.coverage/instrument/'</span>
             }
         },
         <span class="hljs-string">'docco-plus'</span>: {
-            debug: {
-                src: [
+            <span class="hljs-attr">debug</span>: {
+                <span class="hljs-attr">src</span>: [
                     <span class="hljs-string">'lib/**'</span>,
                     <span class="hljs-string">'test/**'</span>,
                     <span class="hljs-string">'*.js'</span>,
                     <span class="hljs-string">'*.md'</span>
                 ],
-                options: {
-                    output: <span class="hljs-string">'.docs/'</span>
+                <span class="hljs-attr">options</span>: {
+                    <span class="hljs-attr">output</span>: <span class="hljs-string">'.docs/'</span>
                 }
             }
         },
         <span class="hljs-string">'gh-pages'</span>: {
-            options: {
-                base: <span class="hljs-string">'.docs'</span>,</pre></div>
+            <span class="hljs-attr">options</span>: {
+                <span class="hljs-attr">base</span>: <span class="hljs-string">'.docs'</span>,</pre></div>
             </div>
         </li>
         
@@ -529,8 +529,8 @@
 
             </div><div class="content">
                 <div class="highlight"><pre>                repo: <span class="hljs-string">'https://'</span> + process.env.GH_TOKEN + <span class="hljs-string">'@github.com/'</span> + process.env.TRAVIS_REPO_SLUG + <span class="hljs-string">'.git'</span>,
-                clone: <span class="hljs-string">'.gh_pages'</span>,
-                message: <span class="hljs-string">'build #'</span> + process.env.TRAVIS_BUILD_NUMBER + <span class="hljs-string">' travis commit'</span>,</pre></div>
+                <span class="hljs-attr">clone</span>: <span class="hljs-string">'.gh_pages'</span>,
+                <span class="hljs-attr">message</span>: <span class="hljs-string">'build #'</span> + process.env.TRAVIS_BUILD_NUMBER + <span class="hljs-string">' travis commit'</span>,</pre></div>
             </div>
         </li>
         
@@ -541,17 +541,17 @@
 
             </div><div class="content">
                 <div class="highlight"><pre>                silent: <span class="hljs-literal">true</span>,
-                user: {
-                    name: <span class="hljs-string">'travis'</span>,
-                    email: <span class="hljs-string">'travis@travis-ci.com'</span>
+                <span class="hljs-attr">user</span>: {
+                    <span class="hljs-attr">name</span>: <span class="hljs-string">'travis'</span>,
+                    <span class="hljs-attr">email</span>: <span class="hljs-string">'travis@travis-ci.com'</span>
                 }
             },
-            src: [
+            <span class="hljs-attr">src</span>: [
                 <span class="hljs-string">'**'</span>
             ]
         },
-        coveralls: {
-            lcov: {</pre></div>
+        <span class="hljs-attr">coveralls</span>: {
+            <span class="hljs-attr">lcov</span>: {</pre></div>
             </div>
         </li>
         

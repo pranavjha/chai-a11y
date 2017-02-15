@@ -73,7 +73,7 @@
             <div class="annotation">
                 
             </div><div class="content">
-                <div class="highlight"><pre><span class="hljs-comment">/* globals phantom, window */</span></pre></div>
+                <div class="highlight"><pre><span class="hljs-comment">/* globals phantom, axs */</span></pre></div>
             </div>
         </li>
         
@@ -119,8 +119,8 @@
 webpage.settings.resourceTimeout = PAGE_TIMEOUT;
 
 webpage.viewportSize = {
-    width: config.width,
-    height: config.height
+    <span class="hljs-attr">width</span>: config.width,
+    <span class="hljs-attr">height</span>: config.height
 };
 
 webpage.onResourceTimeout = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
@@ -157,7 +157,21 @@ webpage.open(config.url, <span class="hljs-function"><span class="hljs-keyword">
                 <p> Run the auditor</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">window</span>.auditRunner(<span class="hljs-string">'body'</span>, config.ignore, config.auditConfig);
+                <div class="highlight"><pre>        <span class="hljs-keyword">var</span> configuration = <span class="hljs-keyword">new</span> axs.AuditConfiguration();
+        configuration.showUnsupportedRulesWarning = <span class="hljs-literal">false</span>;</pre></div>
+            </div>
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+                <p> normalize config</p>
+
+            </div><div class="content">
+                <div class="highlight"><pre>        config.ignore.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ignores</span>) </span>{
+            configuration.ignoreSelectors(ignores[<span class="hljs-number">0</span>], ignores[<span class="hljs-number">1</span>] || <span class="hljs-string">'*'</span>);
+        });
+        <span class="hljs-keyword">return</span> axs.Audit.run(configuration);
     }, config);
 
     <span class="hljs-keyword">if</span> (!ret) {
@@ -169,7 +183,7 @@ webpage.open(config.url, <span class="hljs-function"><span class="hljs-keyword">
         </li>
         
         
-        <li id="section-7">
+        <li id="section-8">
             <div class="annotation">
                 <p> log the result in console so that it can be picked up form node</p>
 

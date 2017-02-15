@@ -77,7 +77,7 @@
                 <div class="highlight"><pre><span class="hljs-meta">'use strict'</span>;
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chaiAccessibility</span>(<span class="hljs-params">chai</span>) </span>{
     <span class="hljs-keyword">var</span> Assertion = chai.Assertion;
-    Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config, auditConfig</span>) </span>{</pre></div>
+    Assertion.addMethod(<span class="hljs-string">'accessible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config</span>) </span>{</pre></div>
             </div>
         </li>
         
@@ -107,107 +107,82 @@
                 <p> get the value of port</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>        <span class="hljs-keyword">var</span> port;
-		
-		<span class="hljs-keyword">var</span> server;
-		<span class="hljs-keyword">var</span> url;
-		
-		<span class="hljs-keyword">if</span>(normalizedConfig.url) {</pre></div>
+                <div class="highlight"><pre>        <span class="hljs-keyword">var</span> port = normalizedConfig.port || <span class="hljs-number">4567</span>;</pre></div>
             </div>
         </li>
         
         
         <li id="section-5">
             <div class="annotation">
-                <p>url is specified</p>
+                <p> create a temporary http server</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>			port = normalizedConfig.port || <span class="hljs-number">80</span>;
-			<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'url was specified'</span>);
-			url = normalizedConfig.url + <span class="hljs-string">':'</span> + port;
-		}
-		<span class="hljs-keyword">else</span> {</pre></div>
+                <div class="highlight"><pre>        <span class="hljs-keyword">var</span> server = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>).createServer(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">request, response</span>) </span>{
+            response.writeHeader(<span class="hljs-number">200</span>, {
+                <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'text/html'</span>
+            });
+            response.write(<span class="hljs-string">'&lt;html lang="en"&gt;&lt;head&gt;&lt;title&gt;Sample A11y Check&lt;/title&gt;&lt;body&gt;'</span> + element + <span class="hljs-string">'&lt;/body&gt;&lt;/head&gt;'</span>);
+            response.end();
+        }).listen(port);</pre></div>
             </div>
         </li>
         
         
         <li id="section-6">
             <div class="annotation">
-                <p> create a temporary http server</p>
-
-            </div><div class="content">
-                <div class="highlight"><pre>			port = normalizedConfig.port || <span class="hljs-number">4567</span>;
-			server = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>).createServer(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">request, response</span>) </span>{
-            response.writeHeader(<span class="hljs-number">200</span>, {
-					<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'text/html'</span>
-				});
-				response.write(<span class="hljs-string">'&lt;html lang="en"&gt;&lt;head&gt;&lt;title&gt;Sample A11y Check&lt;/title&gt;&lt;body&gt;'</span> + 
-					element + <span class="hljs-string">'&lt;/body&gt;&lt;/head&gt;'</span>);
-				response.end();
-			}).listen(port);
-			url = <span class="hljs-string">'http://localhost:'</span> + port;
-		}</pre></div>
-            </div>
-        </li>
-        
-        
-        <li id="section-7">
-            <div class="annotation">
                 <p> run the file on phantomJS to test accessibility</p>
 
             </div><div class="content">
                 <div class="highlight"><pre>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/phantomjs-runner'</span>)(
-            (url),
-            normalizedConfig,
-            auditConfig
+            (<span class="hljs-string">'http://localhost:'</span> + port),
+            normalizedConfig
         ).then(
             <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>{</pre></div>
             </div>
         </li>
         
         
-        <li id="section-8">
+        <li id="section-7">
             <div class="annotation">
                 <p> parse the response and check for any errors</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>                <span class="hljs-keyword">var</span> issueCount = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/stringify-response'</span>)(response);</pre></div>
+                <div class="highlight"><pre>                <span class="hljs-keyword">var</span> message = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./utils/stringify-response'</span>)(response);</pre></div>
             </div>
         </li>
         
         
-        <li id="section-9">
+        <li id="section-8">
             <div class="annotation">
                 <p> if there is no error, the test passes</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>                <span class="hljs-keyword">if</span> (!issueCount) {
+                <div class="highlight"><pre>                <span class="hljs-keyword">if</span> (!message) {
                     <span class="hljs-keyword">return</span> <span class="hljs-string">'OK'</span>;
                 }</pre></div>
             </div>
         </li>
         
         
-        <li id="section-10">
+        <li id="section-9">
             <div class="annotation">
                 <p> else, the error is thrown</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(issueCount + <span class="hljs-string">' issues found!'</span>);
+                <div class="highlight"><pre>                <span class="hljs-keyword">throw</span> message;
             }
         ).finally(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{</pre></div>
             </div>
         </li>
         
         
-        <li id="section-11">
+        <li id="section-10">
             <div class="annotation">
                 <p> shut down the server after the test</p>
 
             </div><div class="content">
-                <div class="highlight"><pre>			<span class="hljs-keyword">if</span>(server) {
-				server.close();
-			}
+                <div class="highlight"><pre>            server.close();
+
         });
     });
 };</pre></div>
